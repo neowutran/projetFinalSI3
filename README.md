@@ -1,2 +1,2 @@
-projetFinalSI3
-==============
+miniProjet
+==========

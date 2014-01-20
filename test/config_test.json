@@ -1,0 +1,50 @@
+{
+
+    "equipment":{
+        "tablet":{
+                "OperatingSystem":[
+                    "Windows",
+                    "Android",
+                    "Linux",
+                    "Mac"
+                ]
+
+        },
+        "phone":{
+                "OperatingSystem":[
+                    "Windows",
+                    "Android",
+                    "Linux",
+                    "Mac"
+                ]
+        },
+        "camera":{
+
+        },
+        "headphones":{
+
+        }
+    },
+    "borrower":{
+        "student":{
+            "maximum_advance_days": 7,
+            "maximum_hours": 1000
+        },
+        "teacher":{
+            "maximum_advance_days": 0,
+            "maximum_hours": 2000
+        }
+    },
+    "feature":{
+        "OperatingSystem" : "Operating system"
+    },
+    "template":{
+      "features":{
+          "OperatingSystem": "{name} : {value}"
+      }
+    },
+    "data_file":"MiniProject/data.json",
+    "random_counter":1000
+
+
+}

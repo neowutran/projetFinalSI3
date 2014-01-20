@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JUnit"/>
+<<<<<<< HEAD
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/google-gson-2.21"/>
+	<classpathentry kind="lib" path="/home/neowutran/Dev/Java/google-gson/gson-2.2.4.jar"/>
+=======
+	<classpathentry kind="lib" path="/home/draragar/Dev/Java/google-gson-2.2.4/gson-2.2.4.jar"/>
+	<classpathentry kind="lib" path="/home/draragar/Dev/Java/JUnit/hamcrest-core-1.3.jar"/>
+	<classpathentry kind="lib" path="/home/draragar/Dev/Java/JUnit/junit-4.11.jar"/>
+	<classpathentry kind="lib" path="/home/draragar/Dev/Java/commons-cli-1.2/commons-cli-1.2.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/google-gson-2.21"/>
+>>>>>>> b8bf765b8b3c0f3bd8d9645bd74556cee3e12071
+	<classpathentry kind="output" path="out/production/miniProjet"/>
+</classpath>
