@@ -10,10 +10,7 @@ import java.util.Set;
 
 import model.Equipment;
 import model.Inventory;
-<<<<<<< HEAD
 import model.InventoryElement;
-=======
->>>>>>> b8bf765b8b3c0f3bd8d9645bd74556cee3e12071
 import model.MiniProjectException;
 import model.State;
 

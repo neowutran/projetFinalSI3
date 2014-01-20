@@ -1,0 +1,85 @@
+{
+
+    "equipment": {
+        "tablet": {
+            "OperatingSystem": [
+                "Windows",
+                "Android",
+                "Linux",
+                "Mac"
+            ],
+            "maximum_borrow_time": 2000
+
+        },
+        "phone": {
+            "OperatingSystem": [
+                "Windows",
+                "Android",
+                "Linux",
+                "Mac"
+            ],
+            "maximum_borrow_time": 2000
+        },
+        "camera": {
+            "maximum_borrow_time": 2000
+
+        },
+        "headphones": {
+            "maximum_borrow_time": 2000
+
+        }
+    },
+    "quantity_time": {
+
+        "1": 1
+
+    },
+    "borrower": {
+        "student": {
+            "maximum_advance_days": 7,
+            "maximum_hours": 1000
+        },
+        "teacher": {
+            "maximum_advance_days": 0,
+            "maximum_hours": 2000
+        }
+    },
+    "template": {
+        "features": {
+            "OperatingSystem": "{name} : {value}"
+        },
+        "borrow": "Borrow:\n\tequipmentId={equipmentId}\n\tborrowerId={borrowerId}\n\tadministratorId={administratorId}\n\tstate={state}\n\tborrowStart={borrowStart}\n\tborrowEnd={borrowEnd}\n\treturned={returned}\n\tid={id}",
+        "format": "dd/MM/yyyy HH:mm",
+        "equipment": "Equipment:\n\ttype={type}\n\tfeatures={features}\n\tid={id}",
+
+        "person": "Person\n\tname={name}\n\ttype={type}\n\tid={id}"
+    },
+
+    "data_file": "MiniProject/data.json",
+    "random_counter": 1000,
+    "error": {
+        "1": "cannot create this person",
+        "2": "This person already exist!",
+        "3": "you can use this operator on this feature",
+        "4": "this feature doesn't exist",
+        "5": "Not same size",
+        "6": "Invalid Id",
+        "7": "This equipment does not exist",
+        "8": "Feature - equipment invalid",
+        "9": "This equipment already exist!",
+        "10": "The random generator isn't enough random anymore",
+        "11": "Unimplemented",
+        "12": "You cannot borrow so  long",
+        "13": "Invalid date",
+        "14": "Equipment unavailable",
+        "15": "You cannot borrow so much in advance",
+        "16": "Your OS does not exist",
+        "17": "method not found"
+
+
+    }
+
+
+
+
+}

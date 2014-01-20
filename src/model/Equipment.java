@@ -4,12 +4,6 @@ package model;
 import java.security.InvalidParameterException;
 import java.util.List;
 import java.util.Map;
-
-<<<<<<< HEAD
-=======
-import model.person.InventoryElement;
-
->>>>>>> b8bf765b8b3c0f3bd8d9645bd74556cee3e12071
 import com.google.gson.annotations.Expose;
 
 import config.Config;

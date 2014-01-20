@@ -7,9 +7,6 @@ import java.lang.reflect.Method;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import model.person.Borrower;
-import model.person.Borrower.Borrow;
-
 import org.junit.*;
 
 import controllers.MiniProjectController;
@@ -44,7 +41,7 @@ public class InventoryTest {
 
     @Test
     public void testAddBorrow() {
-       
+
       Inventory.getInstance().addBorrow(null);
     }
 
