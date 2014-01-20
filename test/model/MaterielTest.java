@@ -51,12 +51,12 @@ public class MaterielTest {
         List<Feature> lc3 = new ArrayList<>();
         lc3.add(c3);
 
-        Equipment m1 = new Equipment("tablet",lc1);
-        Equipment m2 = new Equipment("tablet", lc1);
-        Equipment m3 = new Equipment("tablet", lc1);
-        Equipment m4 = new Equipment("phone", lc1);
-        Equipment m5 = new Equipment("tablet", lc2);
-        Equipment m6 = new Equipment("tablet", lc3);
+        Equipment m1 = new Equipment("tablet",lc1, new Health(HealthState.OK), false);
+        Equipment m2 = new Equipment("tablet", lc1, new Health(HealthState.OK), false);
+        Equipment m3 = new Equipment("tablet", lc1, new Health(HealthState.OK), false);
+        Equipment m4 = new Equipment("phone", lc1, new Health(HealthState.OK), false);
+        Equipment m5 = new Equipment("tablet", lc2, new Health(HealthState.OK), false);
+        Equipment m6 = new Equipment("tablet", lc3, new Health(HealthState.OK), false);
 
         boolean e1 = m1.equals(m2);
         boolean e2 = m1.equals(m3);
@@ -87,7 +87,7 @@ public class MaterielTest {
 
 
         try {
-            materiel = new Equipment("tablet", null);
+            materiel = new Equipment("tablet", null, new Health(HealthState.OK), false);
             //BON
         } catch (Exception e) {
             //Pas BON
@@ -100,7 +100,7 @@ public class MaterielTest {
         caracteristiques.add(new OperatingSystem("Windows", "tablet"));
 
         try{
-            materiel = new Equipment("tablet", caracteristiques);
+            materiel = new Equipment("tablet", caracteristiques, new Health(HealthState.OK), false);
         }catch (Exception e){
             Assert.assertThat(true, CoreMatchers.equalTo(false));
             //PAS BON
@@ -108,7 +108,7 @@ public class MaterielTest {
         }
 
         try{
-            materiel = new Equipment("headphone", caracteristiques);
+            materiel = new Equipment("headphone", caracteristiques, new Health(HealthState.OK), false);
             Assert.assertThat(true, CoreMatchers.equalTo(false));
             //PAS BON
 
@@ -117,7 +117,7 @@ public class MaterielTest {
         }
 
         try{
-            materiel = new Equipment("Tabblette", caracteristiques);
+            materiel = new Equipment("Tabblette", caracteristiques, new Health(HealthState.OK), false);
             Assert.assertThat(true, CoreMatchers.equalTo(false));
         }catch (Exception e){
 

@@ -50,8 +50,8 @@
         },
         "borrow": "Borrow:\n\tequipmentId={equipmentId}\n\tborrowerId={borrowerId}\n\tadministratorId={administratorId}\n\tstate={state}\n\tborrowStart={borrowStart}\n\tborrowEnd={borrowEnd}\n\treturned={returned}\n\tid={id}",
         "format": "dd/MM/yyyy HH:mm",
-        "equipment": "Equipment:\n\ttype={type}\n\tfeatures={features}\n\tid={id}",
-
+        "equipment": "Equipment:\n\ttype={type}\n\tfeatures={features}\n\tid={id}\n\tunder repair={underRepair}",
+        "health": "Health\n\tstate={state}\n\tcause={cause}",
         "person": "Person\n\tname={name}\n\ttype={type}\n\tid={id}"
     },
 
@@ -74,7 +74,9 @@
         "14": "Equipment unavailable",
         "15": "You cannot borrow so much in advance",
         "16": "Your OS does not exist",
-        "17": "method not found"
+        "17": "method not found",
+        "18": "This state doesn't exist",
+        "19": "You can't put an equipment under repair if the equipment is fine"
 
 
     }

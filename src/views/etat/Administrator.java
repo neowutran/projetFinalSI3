@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import model.Inventory;
+import config.*;
+import config.Error;
+import model.*;
 import views.Command;
 
 /**
@@ -29,7 +31,7 @@ public class Administrator extends User {
         }
         if( ( ( model.person.Administrator ) Inventory.findPersonById(model.User
                 .getInstance().getPersonId()) ).setBorrowStat( borrow,
-                model.State.ACCEPT ) ) {
+                BorrowState.ACCEPT ) ) {
             System.out.println( "Borrow accepted" );
         } else {
             System.out.println( "Error, the borrow cannot be accepted" );
@@ -108,7 +110,7 @@ public class Administrator extends User {
         }
         ( ( model.person.Administrator ) Inventory.findPersonById( model.User
                 .getInstance( ).getPersonId( ) ) ).setBorrowStat( borrow,
-                model.State.REFUSE );
+                BorrowState.REFUSE );
         System.out.println( "Borrow refused" );
 
     }
@@ -129,10 +131,67 @@ public class Administrator extends User {
         }
         ( ( model.person.Administrator ) Inventory.findPersonById( model.User
                 .getInstance( ).getPersonId( ) ) ).setBorrowStat( borrow,
-                model.State.RETURNED );
+                BorrowState.RETURNED );
         System.out.println( "Borrow returned" );
 
     }
+
+
+    @SuppressWarnings( "unused" )
+    private void findEquipmentUnderRepair( ) {
+        System.out.println(Inventory.findEquipmentUnderRepair());
+    }
+
+    @SuppressWarnings( "unused" )
+    private void findEquipmentWhoNeedRepair( ) {
+        System.out.println(Inventory.findEquipmentWhoNeedRepair());
+    }
+
+
+    @SuppressWarnings( "unused" )
+    private void equipmentHealth(final String id, final String healthState, final String message ) {
+
+        final Equipment equipment = Inventory.findEquipmentById( id );
+        if( equipment == null ) {
+            this.printHelp( );
+            return;
+        }
+
+        HealthState state;
+        switch (healthState){
+            case "OK":
+                state = HealthState.OK;
+                break;
+            case "NOT_OK":
+                state = HealthState.NOT_OK;
+                break;
+            default:
+                System.out.println(Error.STATE_DO_NOT_EXIST);
+                return;
+
+        }
+
+        Health health = equipment.getHealth();
+        health.setCause(message);
+        health.setHealthState(state);
+        equipment.setHealth(health);
+
+         //TODO Lors du changement d'etat de santé de materiel (exemple: une tablette tactile qui se casse, il faut prendre en compte que les personnes ayant fait des reservations de cet equipement doivent etre modifier.
+
+    }
+
+    @SuppressWarnings( "unused" )
+    private void equipmentHealth(final String id, final String healthState, final String message, final boolean underRepair ) {
+
+        this.equipmentHealth(id, healthState, message);
+        try {
+            Inventory.findEquipmentById( id ).setUnderRepair(underRepair);
+        } catch (MiniProjectException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
 
     /*
      * (non-Javadoc)
@@ -173,6 +232,36 @@ public class Administrator extends User {
         final Command command7 = new Command( "return", args5, this, "return",
                 "Marque un emprunt comment etant rendu à la date courante" );
 
+        final Command command8 = new Command(
+                "findEquipmentUnderRepair", new LinkedList<String>( ),
+                this, "findEquipmentUnderRepair",
+                "Cherche les equipements en cours de reparation" );
+
+
+        final Command command9 = new Command(
+                "findEquipmentWhoNeedRepair", new LinkedList<String>( ),
+                this, "findEquipmentWhoNeedRepair",
+                "Cherche les equipements qui ont besoin de reparation et qui ne sont pas en reparation" );
+
+
+
+        final List<String> args10 = new LinkedList<>( );
+        args10.add( "equipmentId" );
+        args10.add("healthState");
+        args10.add("message");
+        final Command command10 = new Command( "equipmentHealth", args10, this,
+                "equipmentHealth", "Change l'etat de santé d'un equipement" );
+
+
+        final List<String> args11 = new LinkedList<>( );
+        args11.add( "equipmentId" );
+        args11.add("healthState");
+        args11.add("message");
+        args11.add("underRepair");
+        final Command command11 = new Command( "equipmentHealth", args11, this,
+                "equipmentHealth", "Change l'etat de santé d'un equipement" );
+
+
         commands.add( command1 );
         commands.add( command2 );
         commands.add( command3 );
@@ -180,6 +269,10 @@ public class Administrator extends User {
         commands.add( command5 );
         commands.add( command6 );
         commands.add( command7 );
+        commands.add( command8 );
+        commands.add( command9 );
+        commands.add( command10 );
+        commands.add( command11 );
         commands.addAll( super.setCommands( ) );
 
         return commands;

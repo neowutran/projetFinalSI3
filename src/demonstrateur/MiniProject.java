@@ -27,7 +27,7 @@ public final class MiniProject {
 
     /**
      * Load config file.
-     * 
+     *
      * @param configFile
      *            the config file
      */
@@ -39,7 +39,7 @@ public final class MiniProject {
 
     /**
      * The main method.
-     * 
+     *
      * @param args
      *            the arguments
      */
@@ -66,6 +66,9 @@ public final class MiniProject {
             CopyFile.copyFile( this.getClass( ).getClassLoader( )
                     .getResourceAsStream( MiniProject.CONFIG ),
                     MiniProject.FOLDER + MiniProject.CONFIG );
+
+        }
+        if(!new java.io.File(MiniProject.FOLDER + MiniProject.DATA).exists()){
             CopyFile.copyFile( this.getClass( ).getClassLoader( )
                     .getResourceAsStream( MiniProject.DATA ),
                     MiniProject.FOLDER + MiniProject.DATA );

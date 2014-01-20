@@ -6,14 +6,16 @@ package model;
  */
 public class MiniProjectException extends Exception {
 
-    /** The Constant serialVersionUID. */
+    /**
+     * The Constant serialVersionUID.
+     */
     private static final long serialVersionUID = 1L;
 
     /**
      * Instantiates a new mini project exception.
      */
-    public MiniProjectException( ) {
-        super( );
+    public MiniProjectException() {
+        super();
     }
 
     /**
@@ -21,18 +23,18 @@ public class MiniProjectException extends Exception {
      *
      * @param message the message
      */
-    public MiniProjectException( final String message ) {
-        super( message );
+    public MiniProjectException(final String message) {
+        super(message);
     }
 
     /**
      * Instantiates a new mini project exception.
      *
      * @param message the message
-     * @param cause the cause
+     * @param cause   the cause
      */
-    public MiniProjectException( final String message, final Throwable cause ) {
-        super( message, cause );
+    public MiniProjectException(final String message, final Throwable cause) {
+        super(message, cause);
     }
 
     /**
@@ -40,7 +42,7 @@ public class MiniProjectException extends Exception {
      *
      * @param cause the cause
      */
-    public MiniProjectException( final Throwable cause ) {
-        super( cause );
+    public MiniProjectException(final Throwable cause) {
+        super(cause);
     }
 }

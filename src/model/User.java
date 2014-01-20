@@ -6,10 +6,14 @@ package model;
  */
 public class User {
 
-    /** The person id. */
-    private String      personId;
+    /**
+     * The person id.
+     */
+    private String personId;
 
-    /** The instance. */
+    /**
+     * The instance.
+     */
     private static User instance = null;
 
     /**
@@ -17,9 +21,9 @@ public class User {
      *
      * @return single instance of User
      */
-    public static User getInstance( ) {
-        if( User.instance == null ) {
-            User.instance = new User( );
+    public static User getInstance() {
+        if (User.instance == null) {
+            User.instance = new User();
         }
         return User.instance;
     }
@@ -27,7 +31,7 @@ public class User {
     /**
      * Instantiates a new user.
      */
-    protected User( ) {
+    protected User() {
 
     }
 
@@ -36,7 +40,7 @@ public class User {
      *
      * @return the person id
      */
-    public String getPersonId( ) {
+    public String getPersonId() {
 
         return this.personId;
     }
@@ -44,18 +48,18 @@ public class User {
     /**
      * Login.
      *
-     * @param id the id
+     * @param id       the id
      * @param password the password
      * @return true, if successful
      */
-    public boolean login( final String id, final String password ) {
+    public boolean login(final String id, final String password) {
 
-        final Person person = Inventory.findPersonById( id );
-        if( person == null ) {
+        final Person person = Inventory.findPersonById(id);
+        if (person == null) {
             return false;
         }
-        if( person.getPassword( ).equals( password ) ) {
-            this.setPersonId( id );
+        if (person.getPassword().equals(password)) {
+            this.setPersonId(id);
             return true;
         }
         return false;
@@ -64,8 +68,8 @@ public class User {
     /**
      * Logout.
      */
-    public void logout( ) {
-        this.setPersonId( null );
+    public void logout() {
+        this.setPersonId(null);
     }
 
     /**
@@ -73,7 +77,7 @@ public class User {
      *
      * @param personId the new person id
      */
-    private void setPersonId( final String personId ) {
+    private void setPersonId(final String personId) {
 
         this.personId = personId;
     }

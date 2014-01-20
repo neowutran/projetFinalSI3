@@ -110,6 +110,16 @@ public final class Error {
                                                                  .get( "error" ) )
                                                                  .get( "17" );
 
+    public static final String STATE_DO_NOT_EXIST          = ( String ) ( ( Map ) Config
+            .getConfiguration( )
+            .get( "error" ) )
+            .get( "18" );
+
+    public static final String REPAIR_OK          = ( String ) ( ( Map ) Config
+            .getConfiguration( )
+            .get( "error" ) )
+            .get( "19" );
+
     /**
      * Instantiates a new error.
      */

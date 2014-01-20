@@ -101,7 +101,7 @@ public abstract class User extends State {
     /*
      * (non-Javadoc)
      *
-     * @see views.State#setCommands()
+     * @see views.BorrowState#setCommands()
      */
     @Override
     public List<Command> setCommands( ) {

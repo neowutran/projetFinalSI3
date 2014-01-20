@@ -1,15 +1,14 @@
 
 package model;
 
+import com.google.gson.annotations.Expose;
+import config.Config;
+import config.Error;
+
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import com.google.gson.annotations.Expose;
-
-import config.Config;
-import config.Error;
 
 /**
  * The Class Person.
@@ -22,13 +21,13 @@ public abstract class Person {
      * @param id the id
      * @return true, if successful
      */
-    public static boolean exist( final String id ) {
+    public static boolean exist(final String id) {
 
-        for( final Person person : Person.person ) {
-            if( person == null ) {
+        for (final Person person : Person.person) {
+            if (person == null) {
                 continue;
             }
-            if( id.equals( person.getId( ) ) ) {
+            if (id.equals(person.getId())) {
                 return true;
             }
         }
@@ -40,50 +39,60 @@ public abstract class Person {
      *
      * @return the persons
      */
-    public static List<Person> getPersons( ) {
+    public static List<Person> getPersons() {
 
         return Person.person;
     }
 
-    /** The name. */
+    /**
+     * The name.
+     */
     @Expose
-    private String              name;
+    private String name;
 
-    /** The type. */
+    /**
+     * The type.
+     */
     @Expose
-    private String              type;
+    private String type;
 
-    /** The id. */
+    /**
+     * The id.
+     */
     @Expose
-    private String              id;
+    private String id;
 
-    /** The person. */
+    /**
+     * The person.
+     */
     @Expose
-    private static List<Person> person = new ArrayList<>( );
+    private static List<Person> person = new ArrayList<>();
 
-    /** The password. */
+    /**
+     * The password.
+     */
     @Expose
-    private String              password;
+    private String password;
 
     /**
      * Instantiates a new person.
      *
-     * @param name the name
-     * @param id the id
+     * @param name     the name
+     * @param id       the id
      * @param password the password
      * @throws InvalidParameterException the invalid parameter exception
      */
-    public Person( final String name, final String id, final String password )
+    public Person(final String name, final String id, final String password)
             throws InvalidParameterException {
 
-        if( Person.exist( id ) ) {
-            throw new InvalidParameterException( Error.PERSON_ALREADY_EXIST );
+        if (Person.exist(id)) {
+            throw new InvalidParameterException(Error.PERSON_ALREADY_EXIST);
         }
 
         this.name = name;
         this.id = id;
         this.password = password;
-        Person.person.add( this );
+        Person.person.add(this);
     }
 
     /**
@@ -91,7 +100,7 @@ public abstract class Person {
      *
      * @return the id
      */
-    public String getId( ) {
+    public String getId() {
 
         return this.id;
     }
@@ -101,7 +110,7 @@ public abstract class Person {
      *
      * @return the name
      */
-    public String getName( ) {
+    public String getName() {
 
         return this.name;
     }
@@ -111,7 +120,7 @@ public abstract class Person {
      *
      * @return the password
      */
-    public String getPassword( ) {
+    public String getPassword() {
 
         return this.password;
     }
@@ -121,7 +130,7 @@ public abstract class Person {
      *
      * @return the type
      */
-    public String getType( ) {
+    public String getType() {
 
         return this.type;
     }
@@ -131,7 +140,7 @@ public abstract class Person {
      *
      * @param id the new id
      */
-    public void setId( final String id ) {
+    public void setId(final String id) {
 
         this.id = id;
     }
@@ -141,7 +150,7 @@ public abstract class Person {
      *
      * @param name the new name
      */
-    public void setName( final String name ) {
+    public void setName(final String name) {
 
         this.name = name;
     }
@@ -151,7 +160,7 @@ public abstract class Person {
      *
      * @param password the new password
      */
-    public void setPassword( final String password ) {
+    public void setPassword(final String password) {
 
         this.password = password;
     }
@@ -161,7 +170,7 @@ public abstract class Person {
      *
      * @param type the new type
      */
-    protected void setType( final String type ) {
+    protected void setType(final String type) {
 
         this.type = type;
     }
@@ -172,15 +181,15 @@ public abstract class Person {
      * @see java.lang.Object#toString()
      */
     @Override
-    public String toString( ) {
+    public String toString() {
 
-        String template = ( String ) ( ( Map ) Config.getConfiguration( ).get(
-                Config.TEMPLATE ) ).get( Config.PERSON );
+        String template = (String) ((Map) Config.getConfiguration().get(
+                Config.TEMPLATE)).get(Config.PERSON);
 
-        template = template.replaceAll( "\\{name\\}", this.name );
-        template = template.replaceAll( "\\{type\\}", this.type );
+        template = template.replaceAll("\\{name\\}", this.name);
+        template = template.replaceAll("\\{type\\}", this.type);
 
-        template = template.replaceAll( "\\{id\\}", this.getId( ) );
+        template = template.replaceAll("\\{id\\}", this.getId());
 
         return template;
 

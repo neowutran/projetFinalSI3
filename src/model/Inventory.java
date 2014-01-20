@@ -1,24 +1,26 @@
 
 package model;
 
-import java.lang.reflect.InvocationTargetException;
-import java.security.InvalidParameterException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import com.google.gson.annotations.Expose;
 import config.Error;
 import model.finder.IInteger;
 import model.finder.IString;
 import model.person.Borrower;
 
-import com.google.gson.annotations.Expose;
+import java.lang.reflect.InvocationTargetException;
+import java.security.InvalidParameterException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 /**
  * The Class Inventory.
  */
 public final class Inventory {
 
-    /** The instance. */
+    /**
+     * The instance.
+     */
     private static Inventory instance = null;
 
     /**
@@ -26,25 +28,29 @@ public final class Inventory {
      *
      * @return single instance of Inventory
      */
-    public static Inventory getInstance( ) {
-        if( Inventory.instance == null ) {
-            Inventory.instance = new Inventory( );
+    public static Inventory getInstance() {
+        if (Inventory.instance == null) {
+            Inventory.instance = new Inventory();
         }
         return Inventory.instance;
     }
 
-    /** The equipments. */
+    /**
+     * The equipments.
+     */
     @Expose
-    private java.util.List<Equipment>   equipments = new ArrayList<>( );
+    private java.util.List<Equipment> equipments = new ArrayList<>();
 
-    /** The borrows. */
+    /**
+     * The borrows.
+     */
     @Expose
-    private final List<Borrower.Borrow> borrows    = new ArrayList<>( );
+    private final List<Borrower.Borrow> borrows = new ArrayList<>();
 
     /**
      * Instantiates a new inventory.
      */
-    protected Inventory( ) {
+    protected Inventory() {
         // Exists only to defeat instantiation.
     }
 
@@ -53,9 +59,9 @@ public final class Inventory {
      *
      * @param borrow the borrow
      */
-    public void addBorrow( final Borrower.Borrow borrow ) {
+    public void addBorrow(final Borrower.Borrow borrow) {
 
-        this.borrows.add( borrow );
+        this.borrows.add(borrow);
 
     }
 
@@ -64,7 +70,7 @@ public final class Inventory {
      *
      * @return the borrows
      */
-    public List<Borrower.Borrow> getBorrows( ) {
+    public List<Borrower.Borrow> getBorrows() {
 
         return this.borrows;
     }
@@ -74,7 +80,7 @@ public final class Inventory {
      *
      * @return the equipments
      */
-    public java.util.List<Equipment> getEquipments( ) {
+    public java.util.List<Equipment> getEquipments() {
 
         return this.equipments;
     }
@@ -84,7 +90,7 @@ public final class Inventory {
      *
      * @param equipments the new equipments
      */
-    public void setEquipments( final java.util.List<Equipment> equipments ) {
+    public void setEquipments(final java.util.List<Equipment> equipments) {
 
         this.equipments = equipments;
     }
@@ -93,22 +99,18 @@ public final class Inventory {
     /**
      * Check size.
      *
-     * @param features
-     *            the features
-     * @param operator
-     *            the operator
-     * @param value
-     *            the value
-     * @throws java.security.InvalidParameterException
-     *             the invalid parameter exception
+     * @param features the features
+     * @param operator the operator
+     * @param value    the value
+     * @throws java.security.InvalidParameterException the invalid parameter exception
      */
-    private static void checkSize( final List<String> features,
-                                   final List<String> operator, final List<String> value )
+    private static void checkSize(final List<String> features,
+                                  final List<String> operator, final List<String> value)
             throws InvalidParameterException {
 
-        if( ( features.size( ) != operator.size( ) )
-                || ( operator.size( ) != value.size( ) ) ) {
-            throw new InvalidParameterException( config.Error.NOT_SAME_SIZE );
+        if ((features.size() != operator.size())
+                || (operator.size() != value.size())) {
+            throw new InvalidParameterException(config.Error.NOT_SAME_SIZE);
         }
 
     }
@@ -116,92 +118,87 @@ public final class Inventory {
     /**
      * Evaluate.
      *
-     * @param featureString
-     *            the feature string
-     * @param operator
-     *            the operator
-     * @param value
-     *            the value
-     * @param feature
-     *            the feature
+     * @param featureString the feature string
+     * @param operator      the operator
+     * @param value         the value
+     * @param feature       the feature
      * @return the boolean
-     * @throws MiniProjectException
-     *             the mini project exception
+     * @throws MiniProjectException the mini project exception
      */
-    private static Boolean evaluate( final String featureString,
-                                     final String operator, final String value, final Feature feature )
+    private static Boolean evaluate(final String featureString,
+                                    final String operator, final String value, final Feature feature)
             throws MiniProjectException {
 
         Integer type = 0;
         try {
-            final Class classFeature = Class.forName( "model.feature."
-                    + featureString );
-            final Class[ ] interfaceFeature = classFeature.getInterfaces( );
-            for( final Class anInterfaceFeature : interfaceFeature ) {
-                if( anInterfaceFeature.equals( IString.class ) && ( type != 2 ) ) {
+            final Class classFeature = Class.forName("model.feature."
+                    + featureString);
+            final Class[] interfaceFeature = classFeature.getInterfaces();
+            for (final Class anInterfaceFeature : interfaceFeature) {
+                if (anInterfaceFeature.equals(IString.class) && (type != 2)) {
                     type = 1;
                 }
-                if( anInterfaceFeature.equals( IInteger.class ) ) {
+                if (anInterfaceFeature.equals(IInteger.class)) {
                     type = 2;
                 }
             }
 
-            if( type == 0 ) {
-                throw new MiniProjectException( Error.FEATURE_DOESNT_EXIST );
+            if (type == 0) {
+                throw new MiniProjectException(Error.FEATURE_DOESNT_EXIST);
 
             }
 
-            switch( operator ) {
+            switch (operator) {
                 case "=":
 
-                    return ( Boolean ) feature.getClass( )
-                            .getMethod( "isEquals", String.class )
-                            .invoke( feature, value );
+                    return (Boolean) feature.getClass()
+                            .getMethod("isEquals", String.class)
+                            .invoke(feature, value);
 
                 case ">=":
 
-                    if( type != 2 ) {
+                    if (type != 2) {
                         throw new MiniProjectException(
-                                Error.CANNOT_USE_THIS_OPERATOR );
+                                Error.CANNOT_USE_THIS_OPERATOR);
                     }
-                    return ( Boolean ) feature.getClass( )
-                            .getMethod( "greaterThanOrEquals", String.class )
-                            .invoke( feature, value );
+                    return (Boolean) feature.getClass()
+                            .getMethod("greaterThanOrEquals", String.class)
+                            .invoke(feature, value);
 
                 case "<=":
-                    if( type != 2 ) {
+                    if (type != 2) {
                         throw new MiniProjectException(
-                                Error.CANNOT_USE_THIS_OPERATOR );
+                                Error.CANNOT_USE_THIS_OPERATOR);
                     }
-                    return ( Boolean ) feature.getClass( )
-                            .getMethod( "lesserThanOrEquals", String.class )
-                            .invoke( feature, value );
+                    return (Boolean) feature.getClass()
+                            .getMethod("lesserThanOrEquals", String.class)
+                            .invoke(feature, value);
 
                 case "<":
-                    if( type != 2 ) {
+                    if (type != 2) {
                         throw new MiniProjectException(
-                                Error.CANNOT_USE_THIS_OPERATOR );
+                                Error.CANNOT_USE_THIS_OPERATOR);
                     }
-                    return ( Boolean ) feature.getClass( )
-                            .getMethod( "lesserThan", String.class )
-                            .invoke( feature, value );
+                    return (Boolean) feature.getClass()
+                            .getMethod("lesserThan", String.class)
+                            .invoke(feature, value);
 
                 case ">":
-                    if( type != 2 ) {
+                    if (type != 2) {
                         throw new MiniProjectException(
-                                Error.CANNOT_USE_THIS_OPERATOR );
+                                Error.CANNOT_USE_THIS_OPERATOR);
                     }
-                    return ( Boolean ) feature.getClass( )
-                            .getMethod( "greaterThan", String.class )
-                            .invoke( feature, value );
+                    return (Boolean) feature.getClass()
+                            .getMethod("greaterThan", String.class)
+                            .invoke(feature, value);
                 default:
-                    throw new MiniProjectException( Error.CANNOT_USE_THIS_OPERATOR );
+                    throw new MiniProjectException(Error.CANNOT_USE_THIS_OPERATOR);
 
             }
 
-        } catch( ClassNotFoundException | NoSuchMethodException
-                | InvocationTargetException | IllegalAccessException e ) {
-            throw new MiniProjectException( e );
+        } catch (ClassNotFoundException | NoSuchMethodException
+                | InvocationTargetException | IllegalAccessException e) {
+            throw new MiniProjectException(e);
         }
 
     }
@@ -209,37 +206,32 @@ public final class Inventory {
     /**
      * Find.
      *
-     * @param type
-     *            the type
-     * @param features
-     *            the features
-     * @param operators
-     *            the operators
-     * @param value
-     *            the value
+     * @param type      the type
+     * @param features  the features
+     * @param operators the operators
+     * @param value     the value
      * @return the list
-     * @throws MiniProjectException
-     *             the mini project exception
+     * @throws MiniProjectException the mini project exception
      */
-    public static List<Equipment> find( final String type,
-                                        final List<String> features, final List<String> operators,
-                                        final List<String> value ) throws MiniProjectException {
-        Inventory.checkSize( features, operators, value );
-        final List<Equipment> equipments = new ArrayList<>( );
-        for( final Equipment equipment : Inventory.getInstance( )
-                .getEquipments( ) ) {
+    public static List<Equipment> find(final String type,
+                                       final List<String> features, final List<String> operators,
+                                       final List<String> value) throws MiniProjectException {
+        Inventory.checkSize(features, operators, value);
+        final List<Equipment> equipments = new ArrayList<>();
+        for (final Equipment equipment : Inventory.getInstance()
+                .getEquipments()) {
 
-            if( !equipment.getType( ).equals( type ) && ( type != null ) ) {
+            if (!equipment.getType().equals(type) && (type != null)) {
                 continue;
             }
             boolean good = true;
-            for( int i = 0; i < features.size( ); i++ ) {
+            for (int i = 0; i < features.size(); i++) {
 
-                for( final Feature equipmentFeature : equipment.getFeatures( ) ) {
+                for (final Feature equipmentFeature : equipment.getFeatures()) {
 
-                    if( !Inventory.evaluate( features.get( i ),
-                            operators.get( i ), value.get( i ),
-                            equipmentFeature ) ) {
+                    if (!Inventory.evaluate(features.get(i),
+                            operators.get(i), value.get(i),
+                            equipmentFeature)) {
                         good = false;
                     }
 
@@ -247,8 +239,8 @@ public final class Inventory {
 
             }
 
-            if( good ) {
-                equipments.add( equipment );
+            if (good) {
+                equipments.add(equipment);
             }
 
         }
@@ -259,19 +251,18 @@ public final class Inventory {
     /**
      * Find actual borrow by borrower.
      *
-     * @param borrowerId
-     *            the borrower id
+     * @param borrowerId the borrower id
      * @return the list
      */
     public static List<Borrower.Borrow> findActualBorrowByBorrower(
-            final String borrowerId ) {
-        final List<Borrower.Borrow> borrows = new ArrayList<>( );
+            final String borrowerId) {
+        final List<Borrower.Borrow> borrows = new ArrayList<>();
 
-        for( final Borrower.Borrow borrow : Inventory.getInstance( ).getBorrows( ) ) {
+        for (final Borrower.Borrow borrow : Inventory.getInstance().getBorrows()) {
 
-            if( borrow.getBorrowerId( ).equals( borrowerId )
-                    && !borrow.getState( ).equals( State.RETURNED ) ) {
-                borrows.add( borrow );
+            if (borrow.getBorrowerId().equals(borrowerId)
+                    && !borrow.getState().equals(BorrowState.RETURNED)) {
+                borrows.add(borrow);
             }
 
         }
@@ -281,28 +272,26 @@ public final class Inventory {
     /**
      * Find available.
      *
-     * @param start
-     *            the start
-     * @param end
-     *            the end
+     * @param start the start
+     * @param end   the end
      * @return the list
      */
-    public static List<Equipment> findAvailable( final Calendar start,
-                                                 final Calendar end ) {
+    public static List<Equipment> findAvailable(final Calendar start,
+                                                final Calendar end) {
 
-        final List<Equipment> equipments = new ArrayList<>( );
-        for( final Equipment equipment : Inventory.getInstance( )
-                .getEquipments( ) ) {
+        final List<Equipment> equipments = new ArrayList<>();
+        for (final Equipment equipment : Inventory.getInstance()
+                .getEquipments()) {
 
             Boolean available = true;
 
-            for( final Borrower.Borrow borrow : Inventory.getInstance( ).getBorrows( ) ) {
+            for (final Borrower.Borrow borrow : Inventory.getInstance().getBorrows()) {
 
-                if( borrow.getEquipmentId( ).contains( equipment.getId( ) )
-                        && ( borrow.getBorrowStart( ).getTimeInMillis( ) < end
-                        .getTimeInMillis( ) )
-                        && ( borrow.getBorrowEnd( ).getTimeInMillis( ) > start
-                        .getTimeInMillis( ) ) ) {
+                if (borrow.getEquipmentId().contains(equipment.getId())
+                        && (borrow.getBorrowStart().getTimeInMillis() < end
+                        .getTimeInMillis())
+                        && (borrow.getBorrowEnd().getTimeInMillis() > start
+                        .getTimeInMillis())) {
 
                     available = false;
 
@@ -310,8 +299,8 @@ public final class Inventory {
 
             }
 
-            if( available ) {
-                equipments.add( equipment );
+            if (available) {
+                equipments.add(equipment);
             }
 
         }
@@ -322,17 +311,16 @@ public final class Inventory {
     /**
      * Find borrow by borrower.
      *
-     * @param borrowerId
-     *            the borrower id
+     * @param borrowerId the borrower id
      * @return the list
      */
-    public static List<Borrower.Borrow> findBorrowByBorrower( final String borrowerId ) {
+    public static List<Borrower.Borrow> findBorrowByBorrower(final String borrowerId) {
 
-        final List<Borrower.Borrow> borrows = new ArrayList<>( );
-        for( final Borrower.Borrow borrow : Inventory.getInstance( ).getBorrows( ) ) {
+        final List<Borrower.Borrow> borrows = new ArrayList<>();
+        for (final Borrower.Borrow borrow : Inventory.getInstance().getBorrows()) {
 
-            if( borrow.getBorrowerId( ).equals( borrowerId ) ) {
-                borrows.add( borrow );
+            if (borrow.getBorrowerId().equals(borrowerId)) {
+                borrows.add(borrow);
             }
 
         }
@@ -343,14 +331,13 @@ public final class Inventory {
     /**
      * Find borrow by id.
      *
-     * @param id
-     *            the id
+     * @param id the id
      * @return the borrow
      */
-    public static Borrower.Borrow findBorrowById( final String id ) {
+    public static Borrower.Borrow findBorrowById(final String id) {
 
-        for( final Borrower.Borrow borrow : Inventory.getInstance( ).getBorrows( ) ) {
-            if( borrow.getId( ).equals( id ) ) {
+        for (final Borrower.Borrow borrow : Inventory.getInstance().getBorrows()) {
+            if (borrow.getId().equals(id)) {
                 return borrow;
             }
         }
@@ -363,11 +350,11 @@ public final class Inventory {
      *
      * @return the list
      */
-    public static List<Borrower.Borrow> findBorrowWaitingForAdministrator( ) {
-        final List<Borrower.Borrow> borrows = new ArrayList<>( );
-        for( final Borrower.Borrow borrow : Inventory.getInstance( ).getBorrows( ) ) {
-            if( borrow.getState( ).equals( State.ASK_BORROW ) ) {
-                borrows.add( borrow );
+    public static List<Borrower.Borrow> findBorrowWaitingForAdministrator() {
+        final List<Borrower.Borrow> borrows = new ArrayList<>();
+        for (final Borrower.Borrow borrow : Inventory.getInstance().getBorrows()) {
+            if (borrow.getState().equals(BorrowState.ASK_BORROW)) {
+                borrows.add(borrow);
             }
         }
         return borrows;
@@ -376,15 +363,14 @@ public final class Inventory {
     /**
      * Find equipment by id.
      *
-     * @param id
-     *            the id
+     * @param id the id
      * @return the equipment
      */
-    public static Equipment findEquipmentById( final String id ) {
+    public static Equipment findEquipmentById(final String id) {
 
-        for( final Equipment equipment : Inventory.getInstance( )
-                .getEquipments( ) ) {
-            if( equipment.getId( ).equals( id ) ) {
+        for (final Equipment equipment : Inventory.getInstance()
+                .getEquipments()) {
+            if (equipment.getId().equals(id)) {
                 return equipment;
             }
         }
@@ -394,17 +380,56 @@ public final class Inventory {
     }
 
     /**
+     * Find equipment under repair.
+     *
+     * @return the list
+     */
+    public static List<Equipment> findEquipmentUnderRepair() {
+
+        List<Equipment> equipments = new ArrayList<>();
+
+        for (final Equipment equipment : Inventory.getInstance()
+                .getEquipments()) {
+            if (equipment.getUnderRepair()) {
+                equipments.add(equipment);
+            }
+        }
+
+        return equipments;
+    }
+
+    /**
+     * Find equipments who need repair.
+     *
+     * @return the list
+     */
+    public static List<Equipment> findEquipmentWhoNeedRepair() {
+
+        List<Equipment> equipments = new ArrayList<>();
+
+        for (final Equipment equipment : Inventory.getInstance()
+                .getEquipments()) {
+            if (!equipment.getUnderRepair() && equipment.getHealth().getHealthState().equals(HealthState.NOT_OK)) {
+                equipments.add(equipment);
+            }
+        }
+
+        return equipments;
+
+    }
+
+    /**
      * Find late borrow.
      *
      * @return the list
      */
-    public static List<Borrower.Borrow> findLateBorrow( ) {
-        final List<Borrower.Borrow> borrows = new ArrayList<>( );
-        for( final Borrower.Borrow borrow : Inventory.getInstance( ).getBorrows( ) ) {
+    public static List<Borrower.Borrow> findLateBorrow() {
+        final List<Borrower.Borrow> borrows = new ArrayList<>();
+        for (final Borrower.Borrow borrow : Inventory.getInstance().getBorrows()) {
 
-            if( borrow.getBorrowEnd( ).getTimeInMillis( ) < Calendar
-                    .getInstance( ).getTimeInMillis( ) ) {
-                borrows.add( borrow );
+            if (borrow.getBorrowEnd().getTimeInMillis() < Calendar
+                    .getInstance().getTimeInMillis()) {
+                borrows.add(borrow);
             }
 
         }
@@ -414,14 +439,13 @@ public final class Inventory {
     /**
      * Find person by id.
      *
-     * @param id
-     *            the id
+     * @param id the id
      * @return the person
      */
-    public static Person findPersonById( final String id ) {
+    public static Person findPersonById(final String id) {
 
-        for( final Person person : Person.getPersons( ) ) {
-            if( person.getId( ).equals( id ) ) {
+        for (final Person person : Person.getPersons()) {
+            if (person.getId().equals(id)) {
                 return person;
             }
         }
@@ -432,17 +456,16 @@ public final class Inventory {
     /**
      * Find quantity equipment.
      *
-     * @param findEquipment
-     *            the find equipment
+     * @param findEquipment the find equipment
      * @return the integer
      */
-    public static Integer findQuantityEquipment( final Equipment findEquipment ) {
+    public static Integer findQuantityEquipment(final Equipment findEquipment) {
 
         Integer quantity = 0;
-        for( final Equipment equipment : Inventory.getInstance( )
-                .getEquipments( ) ) {
+        for (final Equipment equipment : Inventory.getInstance()
+                .getEquipments()) {
 
-            if( equipment.equals( findEquipment ) ) {
+            if (equipment.equals(findEquipment)) {
                 quantity++;
             }
 
@@ -454,26 +477,23 @@ public final class Inventory {
     /**
      * Checks if is borrowed.
      *
-     * @param equipmentsId
-     *            the equipments id
-     * @param start
-     *            the start
-     * @param end
-     *            the end
+     * @param equipmentsId the equipments id
+     * @param start        the start
+     * @param end          the end
      * @return true, if is borrowed
      */
-    public static boolean isBorrowed( final List<String> equipmentsId,
-                                      final Calendar start, final Calendar end ) {
+    public static boolean isBorrowed(final List<String> equipmentsId,
+                                     final Calendar start, final Calendar end) {
 
-        for( final Borrower.Borrow borrow : Inventory.getInstance( ).getBorrows( ) ) {
-            for( final String borrowEquipment : borrow.getEquipmentId( ) ) {
-                for( final String materielId : equipmentsId ) {
-                    if( borrowEquipment.equals( materielId )
-                            && ( borrow.getBorrowStart( ).getTimeInMillis( ) < end
-                            .getTimeInMillis( ) )
-                            && ( borrow.getBorrowEnd( ).getTimeInMillis( ) > start
-                            .getTimeInMillis( ) )
-                            && borrow.getState( ).equals( State.ACCEPT ) ) {
+        for (final Borrower.Borrow borrow : Inventory.getInstance().getBorrows()) {
+            for (final String borrowEquipment : borrow.getEquipmentId()) {
+                for (final String materielId : equipmentsId) {
+                    if (borrowEquipment.equals(materielId)
+                            && (borrow.getBorrowStart().getTimeInMillis() < end
+                            .getTimeInMillis())
+                            && (borrow.getBorrowEnd().getTimeInMillis() > start
+                            .getTimeInMillis())
+                            && borrow.getState().equals(BorrowState.ACCEPT)) {
                         return true;
                     }
                 }
@@ -485,21 +505,19 @@ public final class Inventory {
     /**
      * Checks if is borrower.
      *
-     * @param id
-     *            the id
+     * @param id the id
      * @return true, if is borrower
-     * @throws InvalidParameterException
-     *             the invalid parameter exception
+     * @throws InvalidParameterException the invalid parameter exception
      */
-    public static boolean isBorrower( final String id )
+    public static boolean isBorrower(final String id)
             throws InvalidParameterException {
 
-        final Person person = Inventory.findPersonById( id );
-        if( person == null ) {
-            throw new InvalidParameterException( Error.INVALID_ID );
+        final Person person = Inventory.findPersonById(id);
+        if (person == null) {
+            throw new InvalidParameterException(Error.INVALID_ID);
         }
-        return person.getType( ).equals( SaveLoad.PERSON_TYPE_STUDENT )
-                || person.getType( ).equals( SaveLoad.PERSON_TYPE_TEACHER );
+        return person.getType().equals(SaveLoad.PERSON_TYPE_STUDENT)
+                || person.getType().equals(SaveLoad.PERSON_TYPE_TEACHER);
 
     }
 }

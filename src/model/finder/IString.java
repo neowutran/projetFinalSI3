@@ -12,6 +12,6 @@ public interface IString {
      * @param object the object
      * @return true, if is equals
      */
-    boolean isEquals( String object );
+    boolean isEquals(String object);
 
 }

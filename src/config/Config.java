@@ -45,6 +45,8 @@ public final class Config {
     /** The Constant RANDOM_COUNTER. */
     public static final String                   RANDOM_COUNTER      = "random_counter";
 
+    public static final String HEALTH = "health";
+
     /** The configuration. */
     private static java.util.Map<String, Object> configuration;
 

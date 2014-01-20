@@ -11,5 +11,5 @@ public interface IFeature {
      *
      * @return the name
      */
-    String getName( );
+    String getName();
 }

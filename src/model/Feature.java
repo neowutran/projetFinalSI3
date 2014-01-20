@@ -8,7 +8,9 @@ import com.google.gson.annotations.Expose;
  */
 public abstract class Feature implements model.IFeature {
 
-    /** The value. */
+    /**
+     * The value.
+     */
     @Expose
     private String value;
 
@@ -17,7 +19,7 @@ public abstract class Feature implements model.IFeature {
      *
      * @return the value
      */
-    protected String getValue( ) {
+    protected String getValue() {
 
         return this.value;
     }
@@ -27,7 +29,7 @@ public abstract class Feature implements model.IFeature {
      *
      * @param value the new value
      */
-    protected void setValue( final String value ) {
+    protected void setValue(final String value) {
 
         this.value = value;
 
