@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ad44769e-e477-4b3c-8ec1-c187641425d9" name="Default" comment="" />
+    <list default="true" id="ad44769e-e477-4b3c-8ec1-c187641425d9" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MiniProject/data.json" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Equipment.java" afterPath="$PROJECT_DIR$/src/model/Equipment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Feature.java" afterPath="$PROJECT_DIR$/src/model/Feature.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/SaveLoad.java" afterPath="$PROJECT_DIR$/src/model/SaveLoad.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log.xml.3" afterPath="$PROJECT_DIR$/log.xml.3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="miniProjet.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -64,15 +71,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MiniProject.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/demonstrateur/MiniProject.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="73" column="60" selection-start="1904" selection-end="1904" vertical-scroll-proportion="0.0" vertical-offset="1314" max-vertical-offset="1710">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Administrator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/etat/Administrator.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -91,15 +89,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Json.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/lib/Json.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="0" selection-start="841" selection-end="841" vertical-scroll-proportion="0.0" vertical-offset="648" max-vertical-offset="1062">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Error.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/config/Error.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -109,30 +98,49 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HealthState.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/HealthState.java">
+      <file leaf-file-name="log.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/log.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="12" selection-start="28" selection-end="28" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="252">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="594">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Health.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Health.java">
+      <file leaf-file-name="log.xml.6" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/log.xml.6">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="13" selection-start="118" selection-end="118" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="756">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="594">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MiniProjectException.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="SaveLoad.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/model/SaveLoad.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="243" column="0" selection-start="6670" selection-end="6670" vertical-scroll-proportion="0.6466165" vertical-offset="3670" max-vertical-offset="6984">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="data.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/data.json">
+          <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="44" column="16" selection-start="1147" selection-end="1147" vertical-scroll-proportion="-7.0588236" vertical-offset="432" max-vertical-offset="1512">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MiniProjectException.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/MiniProjectException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="6" selection-start="413" selection-end="413" vertical-scroll-proportion="-0.067669176" vertical-offset="432" max-vertical-offset="972">
+            <state line="27" column="5" selection-start="541" selection-end="541" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="972">
               <folding />
             </state>
           </provider>
@@ -212,10 +220,10 @@
         <option value="$PROJECT_DIR$/test/model/MaterielTest.java" />
         <option value="$PROJECT_DIR$/test/model/InventoryTest.java" />
         <option value="$PROJECT_DIR$/src/model/Inventory.java" />
-        <option value="$PROJECT_DIR$/src/model/SaveLoad.java" />
         <option value="$PROJECT_DIR$/src/config.json" />
         <option value="$PROJECT_DIR$/src/config/Error.java" />
         <option value="$PROJECT_DIR$/src/model/Feature.java" />
+        <option value="$PROJECT_DIR$/src/model/SaveLoad.java" />
       </list>
     </option>
   </component>
@@ -808,12 +816,12 @@
       <workItem from="1390228021224" duration="7167000" />
       <workItem from="1390247881404" duration="38000" />
       <workItem from="1390296610236" duration="5693000" />
-      <workItem from="1390304896759" duration="2778000" />
+      <workItem from="1390304896759" duration="3706000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94572000" />
+    <option name="totallyTimeSpent" value="95500000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -837,12 +845,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="-3" width="1684" height="983" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947975" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947975" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -850,14 +858,14 @@
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947975" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283237" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947975" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24969475" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24969475" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3283237" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -887,13 +895,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/views/etat/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="181" column="7" selection-start="5544" selection-end="5544" vertical-scroll-proportion="0.0" vertical-offset="3258" max-vertical-offset="3726">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/etat/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="61" column="54" selection-start="1417" selection-end="1438" vertical-scroll-proportion="0.0" vertical-offset="1098" max-vertical-offset="1386">
@@ -937,10 +938,7 @@
     <entry file="file://$PROJECT_DIR$/src/model/Feature.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="22" selection-start="113" selection-end="113" vertical-scroll-proportion="0.0" vertical-offset="144" max-vertical-offset="756">
-          <folding>
-            <element signature="e#621#622#0" expanded="true" />
-            <element signature="e#657#658#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1072,14 +1070,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1332" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data.json">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="16" selection-start="1147" selection-end="1147" vertical-scroll-proportion="0.08513342" vertical-offset="725" max-vertical-offset="1512" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.classpath">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="840" />
@@ -1088,16 +1078,6 @@
     <entry file="file://$PROJECT_DIR$/src/model/person/Borrower.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="13" selection-start="445" selection-end="445" vertical-scroll-proportion="-0.23728813" vertical-offset="324" max-vertical-offset="6948">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MiniProject/data.json">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="252" selection-start="191" selection-end="252" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="126">
           <folding />
         </state>
       </provider>
@@ -1195,13 +1175,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/SaveLoad.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="55" selection-start="814" selection-end="814" vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="6948">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/config.json">
       <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
         <state />
@@ -1226,16 +1199,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Feature.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="194" column="7" selection-start="4854" selection-end="4854" vertical-scroll-proportion="0.0" vertical-offset="3392" max-vertical-offset="3924">
-          <folding>
-            <element signature="e#621#622#0" expanded="true" />
-            <element signature="e#657#658#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/HealthState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="12" selection-start="28" selection-end="28" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="252">
@@ -1254,7 +1217,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/MiniProjectException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="6" selection-start="413" selection-end="413" vertical-scroll-proportion="-0.067669176" vertical-offset="432" max-vertical-offset="972">
+        <state line="27" column="5" selection-start="541" selection-end="541" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="972">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="594">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log.xml.6">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="594">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data.json">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="16" selection-start="1147" selection-end="1147" vertical-scroll-proportion="-7.0588236" vertical-offset="432" max-vertical-offset="1512">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Feature.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="47" selection-start="918" selection-end="918" vertical-scroll-proportion="0.43984962" vertical-offset="396" max-vertical-offset="3888">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/SaveLoad.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="243" column="0" selection-start="6670" selection-end="6670" vertical-scroll-proportion="0.6466165" vertical-offset="3670" max-vertical-offset="6984">
           <folding />
         </state>
       </provider>

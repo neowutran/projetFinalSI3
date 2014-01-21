@@ -23,15 +23,15 @@ public class Feature {
      */
     private List<String> acceptableValue;
 
-    public String getFeatureName() {
-        return featureName;
+    public String getName() {
+        return name;
     }
 
     /**
      * The name.
      */
     @Expose
-    private String featureName;
+    private String name;
 
     public Boolean getIsDoubleValue() {
         return isDoubleValue;
@@ -44,11 +44,11 @@ public class Feature {
     @Expose
     private String value;
 
-    public Feature(String featureName, String equipmentType, String value) throws Exception {
-        this.featureName = featureName;
+    public Feature(String name, String equipmentType, String value) throws MiniProjectException {
+        this.name = name;
         this.setAcceptableValue(equipmentType);
         if(!acceptableValue.contains(value)){
-            throw new Exception(Error.VALUE_DO_NOT_EXIST);
+            throw new MiniProjectException(Error.VALUE_DO_NOT_EXIST);
         }
         this.value = value;
     }
@@ -74,7 +74,7 @@ public class Feature {
     public int hashCode() {
 
         int result = this.acceptableValue.hashCode();
-        result = 31 * result + this.featureName.hashCode();
+        result = 31 * result + this.name.hashCode();
         result = 31 * result + this.value.hashCode();
 
         return result;
@@ -130,13 +130,13 @@ public class Feature {
 
                 if (((Map) ((Map) Config.getConfiguration().get(
                         Config.EQUIPMENT)).get(entry.getKey()))
-                        .get(this.featureName) != null) {
+                        .get(this.name) != null) {
                     isDoubleValue((List) ((Map) ((Map) Config
                             .getConfiguration().get(Config.EQUIPMENT))
-                            .get(entry.getKey())).get(this.featureName));
+                            .get(entry.getKey())).get(this.name));
                     fullList.addAll((List) ((Map) ((Map) Config
                             .getConfiguration().get(Config.EQUIPMENT))
-                            .get(entry.getKey())).get(this.featureName));
+                            .get(entry.getKey())).get(this.name));
                 }
 
             }
@@ -149,7 +149,7 @@ public class Feature {
                     Config.EQUIPMENT)).containsKey(typeMateriel)) {
                 this.acceptableValue = (List) ((LinkedTreeMap) ((LinkedTreeMap) Config
                         .getConfiguration().get(Config.EQUIPMENT))
-                        .get(typeMateriel)).get(this.featureName);
+                        .get(typeMateriel)).get(this.name);
 
             } else {
 
@@ -221,8 +221,8 @@ public class Feature {
     public String toString() {
         String template = (String) ((Map) ((Map) Config
                 .getConfiguration().get(Config.TEMPLATE))
-                .get(Config.FEATURES)).get(this.featureName);
-        template = template.replaceAll("\\{name\\}", this.featureName);
+                .get(Config.FEATURES)).get(this.name);
+        template = template.replaceAll("\\{name\\}", this.name);
         template = template.replaceAll("\\{value\\}", this.getValue());
 
         return template;

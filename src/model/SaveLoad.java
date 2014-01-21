@@ -245,11 +245,13 @@ public final class SaveLoad {
                 try {
                     final Feature c = new Feature(name,type, value);
                     listFeatures.add(c);
+
                 } catch (Exception e) {
                     MiniProjectController.LOGGER.severe("message:"
                             + e.getMessage() + "\ntrace:"
                             + java.util.Arrays.toString(e.getStackTrace()));
                 }
+
 
             }
 
