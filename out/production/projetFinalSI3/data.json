@@ -24,6 +24,11 @@
                         "value":"Windows"
                     }
                 ],
+                "health":{
+                    "healthState":"OK",
+                    "cause":""
+                },
+                "underRepair":false,
                 "id":"ca072236-8f15-486d-93e4-2b21abb831a5"
             },
             {
@@ -34,6 +39,11 @@
                         "value":"Windows"
                     }
                 ],
+                "health":{
+                    "healthState":"OK",
+                    "cause":""
+                },
+                "underRepair":false,
                 "id":"95984d07-575a-49d1-a6cd-d964c9a38ffe"
             }
         ],
