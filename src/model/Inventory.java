@@ -3,6 +3,7 @@ package model;
 
 import com.google.gson.annotations.Expose;
 import config.Error;
+import controllers.MiniProjectController;
 import model.person.Borrower;
 
 import java.lang.reflect.InvocationTargetException;
@@ -116,9 +117,9 @@ public final class Inventory {
     /**
      * Evaluate.
      *
-     * @param operator      the operator
-     * @param value         the value
-     * @param feature       the feature
+     * @param operator the operator
+     * @param value    the value
+     * @param feature  the feature
      * @return the boolean
      * @throws MiniProjectException the mini project exception
      */
@@ -128,9 +129,9 @@ public final class Inventory {
         Integer type = 0;
         try {
 
-            if(feature.getIsDoubleValue()){
+            if (feature.getIsDoubleValue()) {
                 type = 2;
-            }else{
+            } else {
                 type = 1;
             }
 
@@ -509,20 +510,25 @@ public final class Inventory {
                 || person.getType().equals(SaveLoad.PERSON_TYPE_TEACHER);
 
     }
-    
+
     public static void addEquipment(String type, String numb) {
-    	List<Feature> tmpList = null;//new ArrayList<>(); // empty list 
-    	Equipment tmp = null;
-    	for(int i=0 ; i<Integer.parseInt(numb) ; i++)
-    		{
-    		System.out.println(i);
-			try {
-				 tmp = new Equipment(type, tmpList ,new Health(HealthState.OK),false); // TODO : l'appel au constructeur cause une erreur "null"
-			} catch (MiniProjectException e) {
-				System.out.println(e.getMessage());
-				e.printStackTrace();
-			}
-    	}
+        for (int i = 0; i < Integer.parseInt(numb); i++) {
+            try {
+                // TODO : l'appel au constructeur cause une erreur "null"
+
+                //AVIS DIDIER: ce probleme vient du parametre "type" qui doit etre verifier. Si un type est "jkldsnhfu" et que ce
+                //type n'existe pas dans le fichier de config, alors cela provoquera une erreur.
+                //Il faut donc verifier que le "type" que l'utilisateur veut rajouter est bien present dans le fichier de config (config.json)
+                //Si ce n'est pas le cas, renvoyer un message d'erreur a l'utilisateur
+
+                //RAJOUT: cette methode ne permet pas de saisir les features des equipements, il faudrait que cela soit possible.
+                //Bon courage.
+                new Equipment(type, new ArrayList<Feature>(), new Health(HealthState.OK), false);
+            } catch (MiniProjectException e) {
+                MiniProjectController.LOGGER.severe(java.util.Arrays.toString(e
+                        .getStackTrace()));
+            }
+        }
     }
 
 }

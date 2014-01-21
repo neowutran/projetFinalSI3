@@ -6,6 +6,7 @@ import config.Config;
 import config.Error;
 
 import java.security.InvalidParameterException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -53,7 +54,7 @@ public class Equipment extends InventoryElement {
      * The features.
      */
     @Expose
-    private List<Feature> features;
+    private List<Feature> features = new ArrayList<>();
 
     /**
      * Instantiates a new equipment.
@@ -64,10 +65,9 @@ public class Equipment extends InventoryElement {
      */
     public Equipment(final String type, final List<Feature> features, final Health health, final Boolean underRepair)
             throws MiniProjectException {
-        if (underRepair && health.getHealthState().equals(HealthState.OK)) { 
-            throw new MiniProjectException("Incorrect state, an equipment cannot be fine and under repair");
+        if (underRepair && health.getHealthState().equals(HealthState.OK)) {
+            throw new MiniProjectException(Error.REPAIR_OK);
         }
-        // TODO : Déclenchement de l'erreur "null" lors del'lajout d'un equipement
         this.checkType(type);
         this.checkFeature(features);
         this.health = health;
@@ -77,7 +77,6 @@ public class Equipment extends InventoryElement {
                 .getEquipments();
         inventory.add(this);
         Inventory.getInstance().setEquipments(inventory);
-        System.out.println("yo");
 
     }
 

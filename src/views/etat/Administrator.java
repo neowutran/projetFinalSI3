@@ -192,8 +192,8 @@ public class Administrator extends User {
     }
 
     @SuppressWarnings( "unused" )
-    private void addEquipment(String type, String numb) {  	
-            Inventory.addEquipment( type , numb );   	// TODO faire un try-catch si nécessaire	
+    private void addEquipment(String type, String numb) {
+            Inventory.addEquipment( type , numb );
     }
 
     /*
@@ -269,9 +269,9 @@ public class Administrator extends User {
         args12.add( "type" );
         args12.add("number");
         final Command command12 = new Command( "addEquipment", args12, this,
-                "addEquipment", "Ajout d'un équipement à l'inventaire" );
-        
-        
+                "addEquipment", "Ajout d'un ï¿½quipement ï¿½ l'inventaire" );
+
+
         commands.add( command1 );
         commands.add( command2 );
         commands.add( command3 );
