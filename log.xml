@@ -1,4 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
-</log>
+<record>
+  <date>2014-01-21T13:09:17</date>
+  <millis>1390306157451</millis>
+  <sequence>0</sequence>
+  <logger>MiniProject</logger>
+  <level>SEVERE</level>
+  <class>model.SaveLoad</class>
+  <method>load</method>
+  <thread>1</thread>
+  <message>message:model.feature.OperatingSystem
+trace:[java.net.URLClassLoader$1.run(URLClassLoader.java:366), java.net.URLClassLoader$1.run(URLClassLoader.java:355), java.security.AccessController.doPrivileged(Native Method), java.net.URLClassLoader.findClass(URLClassLoader.java:354), java.lang.ClassLoader.loadClass(ClassLoader.java:425), sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308), java.lang.ClassLoader.loadClass(ClassLoader.java:358), java.lang.Class.forName0(Native Method), java.lang.Class.forName(Class.java:190), model.SaveLoad.load(SaveLoad.java:251), controllers.MiniProjectController.&lt;init&gt;(MiniProjectController.java:42), controllers.MiniProjectController.getInstance(MiniProjectController.java:30), demonstrateur.MiniProject.&lt;init&gt;(MiniProject.java:78), demonstrateur.MiniProject.main(MiniProject.java:48), sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method), sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57), sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43), java.lang.reflect.Method.invoke(Method.java:606), com.intellij.rt.execution.application.AppMain.main(AppMain.java:120)]</message>
+</record>
+<record>
+  <date>2014-01-21T13:09:17</date>
+  <millis>1390306157476</millis>
+  <sequence>1</sequence>
+  <logger>MiniProject</logger>
+  <level>SEVERE</level>
+  <class>model.SaveLoad</class>
+  <method>load</method>
+  <thread>1</thread>
+  <message>message:model.feature.OperatingSystem
+trace:[java.net.URLClassLoader$1.run(URLClassLoader.java:366), java.net.URLClassLoader$1.run(URLClassLoader.java:355), java.security.AccessController.doPrivileged(Native Method), java.net.URLClassLoader.findClass(URLClassLoader.java:354), java.lang.ClassLoader.loadClass(ClassLoader.java:425), sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308), java.lang.ClassLoader.loadClass(ClassLoader.java:358), java.lang.Class.forName0(Native Method), java.lang.Class.forName(Class.java:190), model.SaveLoad.load(SaveLoad.java:251), controllers.MiniProjectController.&lt;init&gt;(MiniProjectController.java:42), controllers.MiniProjectController.getInstance(MiniProjectController.java:30), demonstrateur.MiniProject.&lt;init&gt;(MiniProject.java:78), demonstrateur.MiniProject.main(MiniProject.java:48), sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method), sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57), sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43), java.lang.reflect.Method.invoke(Method.java:606), com.intellij.rt.execution.application.AppMain.main(AppMain.java:120)]</message>
+</record>

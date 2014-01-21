@@ -89,11 +89,6 @@ public final class SaveLoad {
     public static final String VALUE = "value";
 
     /**
-     * The Constant PACKAGE_FEATURE.
-     */
-    public static final String PACKAGE_FEATURE = "model.feature.";
-
-    /**
      * The Constant BORROW_START.
      */
     public static final String BORROW_START = "borrowStart";
@@ -248,19 +243,12 @@ public final class SaveLoad {
                 final String name = (String) feature.get(SaveLoad.NAME);
                 final String value = (String) feature.get(SaveLoad.VALUE);
                 try {
-                    final Class featureClass = Class
-                            .forName(SaveLoad.PACKAGE_FEATURE + name);
-                    final Feature c = (Feature) featureClass.getConstructor(
-                            String.class, String.class).newInstance(value,
-                            type);
+                    final Feature c = new Feature(name,type, value);
                     listFeatures.add(c);
-                } catch (ClassNotFoundException | InstantiationException
-                        | NoSuchMethodException | InvocationTargetException
-                        | IllegalAccessException e) {
+                } catch (Exception e) {
                     MiniProjectController.LOGGER.severe("message:"
                             + e.getMessage() + "\ntrace:"
                             + java.util.Arrays.toString(e.getStackTrace()));
-
                 }
 
             }

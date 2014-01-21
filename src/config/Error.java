@@ -99,7 +99,7 @@ public final class Error {
                                                                  .get( "15" );
 
     /** The Constant OS_DO_NOT_EXIST. */
-    public static final String OS_DO_NOT_EXIST           = ( String ) ( ( Map ) Config
+    public static final String VALUE_DO_NOT_EXIST           = ( String ) ( ( Map ) Config
                                                                  .getConfiguration( )
                                                                  .get( "error" ) )
                                                                  .get( "16" );

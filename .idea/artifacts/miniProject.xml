@@ -5,9 +5,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
       </element>
-      <element id="library" level="project" name="JUnit" />
       <element id="module-output" name="projetFinalSI3" />
-      <element id="library" level="project" name="google-gson-2.2" />
     </root>
   </artifact>
 </component>

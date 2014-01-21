@@ -110,7 +110,7 @@ public class Equipment extends InventoryElement {
 
             if (!((Map) ((Map) Config.getConfiguration().get(
                     Config.EQUIPMENT)).get(this.type))
-                    .containsKey(feature.getName())) {
+                    .containsKey(feature.getFeatureName())) {
                 throw new InvalidParameterException(
                         Error.FEATURE_EQUIPMENT_INVALID);
             }

@@ -8,8 +8,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="JUnit" level="project" />
     <orderEntry type="library" name="google-gson-2.2" level="project" />
-    <orderEntry type="library" name="JUnit1" level="project" />
   </component>
 </module>
 

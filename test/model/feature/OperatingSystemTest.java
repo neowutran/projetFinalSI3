@@ -1,6 +1,7 @@
 package model.feature;
 
 import demonstrateur.*;
+import model.Feature;
 import org.hamcrest.*;
 import org.junit.*;
 
@@ -32,9 +33,10 @@ public class OperatingSystemTest {
     @Test
     public void testEquals() throws Exception {
 
-        OperatingSystem os1 = new OperatingSystem("Linux");
-        OperatingSystem os2 = new OperatingSystem("Linux");
-        OperatingSystem os3 = new OperatingSystem("Windows");
+        Feature os1 = new Feature("OperatingSystem", "", "Linux");
+        Feature os2 = new Feature("OperatingSystem", "", "Linux");
+        Feature os3 = new Feature("OperatingSystem", "", "Windows");
+
         boolean equals1 = os1.equals(os2);
         boolean equals2 = os1.equals(os3);
         Assert.assertThat(true, CoreMatchers.equalTo(equals1));
@@ -46,7 +48,7 @@ public class OperatingSystemTest {
     public void testConstructor() throws Exception {
 
         try {
-            OperatingSystem os = new OperatingSystem("Windows");
+            Feature os = new Feature("OperatingSystem", "", "Windows");
             //BON
         } catch (Exception e) {
             //PAS BON
@@ -54,7 +56,7 @@ public class OperatingSystemTest {
         }
 
         try {
-            OperatingSystem os = new OperatingSystem("Windows7");
+            Feature os = new Feature("OperatingSystem", "", "Windows7");
             //PAS BON
             Assert.assertThat(false, CoreMatchers.equalTo(true));
         } catch (Exception e) {

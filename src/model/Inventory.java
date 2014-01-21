@@ -3,8 +3,6 @@ package model;
 
 import com.google.gson.annotations.Expose;
 import config.Error;
-import model.finder.IInteger;
-import model.finder.IString;
 import model.person.Borrower;
 
 import java.lang.reflect.InvocationTargetException;
@@ -118,29 +116,22 @@ public final class Inventory {
     /**
      * Evaluate.
      *
-     * @param featureString the feature string
      * @param operator      the operator
      * @param value         the value
      * @param feature       the feature
      * @return the boolean
      * @throws MiniProjectException the mini project exception
      */
-    private static Boolean evaluate(final String featureString,
-                                    final String operator, final String value, final Feature feature)
+    private static Boolean evaluate(final String operator, final String value, final Feature feature)
             throws MiniProjectException {
 
         Integer type = 0;
         try {
-            final Class classFeature = Class.forName("model.feature."
-                    + featureString);
-            final Class[] interfaceFeature = classFeature.getInterfaces();
-            for (final Class anInterfaceFeature : interfaceFeature) {
-                if (anInterfaceFeature.equals(IString.class) && (type != 2)) {
-                    type = 1;
-                }
-                if (anInterfaceFeature.equals(IInteger.class)) {
-                    type = 2;
-                }
+
+            if(feature.getIsDoubleValue()){
+                type = 2;
+            }else{
+                type = 1;
             }
 
             if (type == 0) {
@@ -196,7 +187,7 @@ public final class Inventory {
 
             }
 
-        } catch (ClassNotFoundException | NoSuchMethodException
+        } catch (NoSuchMethodException
                 | InvocationTargetException | IllegalAccessException e) {
             throw new MiniProjectException(e);
         }
@@ -229,9 +220,7 @@ public final class Inventory {
 
                 for (final Feature equipmentFeature : equipment.getFeatures()) {
 
-                    if (!Inventory.evaluate(features.get(i),
-                            operators.get(i), value.get(i),
-                            equipmentFeature)) {
+                    if (!Inventory.evaluate(operators.get(i), value.get(i), equipmentFeature)) {
                         good = false;
                     }
 

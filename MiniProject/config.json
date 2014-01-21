@@ -73,7 +73,7 @@
         "13": "Invalid date",
         "14": "Equipment unavailable",
         "15": "You cannot borrow so much in advance",
-        "16": "Your OS does not exist",
+        "16": "Your value does not exist",
         "17": "method not found",
         "18": "This state doesn't exist",
         "19": "You can't put an equipment under repair if the equipment is fine"
