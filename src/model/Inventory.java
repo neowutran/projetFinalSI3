@@ -509,4 +509,20 @@ public final class Inventory {
                 || person.getType().equals(SaveLoad.PERSON_TYPE_TEACHER);
 
     }
+    
+    public static void addEquipment(String type, String numb) {
+    	List<Feature> tmpList = null;//new ArrayList<>(); // empty list 
+    	Equipment tmp = null;
+    	for(int i=0 ; i<Integer.parseInt(numb) ; i++)
+    		{
+    		System.out.println(i);
+			try {
+				 tmp = new Equipment(type, tmpList ,new Health(HealthState.OK),false); // TODO : l'appel au constructeur cause une erreur "null"
+			} catch (MiniProjectException e) {
+				System.out.println(e.getMessage());
+				e.printStackTrace();
+			}
+    	}
+    }
+
 }

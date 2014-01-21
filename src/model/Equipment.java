@@ -64,20 +64,20 @@ public class Equipment extends InventoryElement {
      */
     public Equipment(final String type, final List<Feature> features, final Health health, final Boolean underRepair)
             throws MiniProjectException {
-
-        if (underRepair && health.getHealthState().equals(HealthState.OK)) {
+        if (underRepair && health.getHealthState().equals(HealthState.OK)) { 
             throw new MiniProjectException("Incorrect state, an equipment cannot be fine and under repair");
         }
+        // TODO : Déclenchement de l'erreur "null" lors del'lajout d'un equipement
         this.checkType(type);
         this.checkFeature(features);
         this.health = health;
         this.underRepair = underRepair;
         this.setId();
-
         final List<Equipment> inventory = Inventory.getInstance()
                 .getEquipments();
         inventory.add(this);
         Inventory.getInstance().setEquipments(inventory);
+        System.out.println("yo");
 
     }
 

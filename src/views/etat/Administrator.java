@@ -191,7 +191,10 @@ public class Administrator extends User {
         }
     }
 
-
+    @SuppressWarnings( "unused" )
+    private void addEquipment(String type, String numb) {  	
+            Inventory.addEquipment( type , numb );   	// TODO faire un try-catch si nécessaire	
+    }
 
     /*
      * (non-Javadoc)
@@ -262,6 +265,13 @@ public class Administrator extends User {
                 "equipmentHealth", "Change l'etat de santÃ© d'un equipement" );
 
 
+        final List<String> args12 = new LinkedList<>( );
+        args12.add( "type" );
+        args12.add("number");
+        final Command command12 = new Command( "addEquipment", args12, this,
+                "addEquipment", "Ajout d'un équipement à l'inventaire" );
+        
+        
         commands.add( command1 );
         commands.add( command2 );
         commands.add( command3 );
@@ -273,6 +283,7 @@ public class Administrator extends User {
         commands.add( command9 );
         commands.add( command10 );
         commands.add( command11 );
+        commands.add( command12 );
         commands.addAll( super.setCommands( ) );
 
         return commands;
