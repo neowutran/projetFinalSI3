@@ -1,5 +1,6 @@
 package model;
 
+import static org.junit.Assert.*;
 import controllers.MiniProjectController;
 import demonstrateur.MiniProject;
 import org.junit.Before;
@@ -10,6 +11,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by neowutran on 22/01/14.
@@ -44,7 +47,10 @@ public class EquipmentTest {
 
     @Test
     public void testSetHealth() throws Exception {
-        //TODO
+        Health h = new Health(HealthState.OK);
+        Equipment e = new Equipment("tablet", new ArrayList<Feature>(), new Health(HealthState.NOT_OK), false);
+        e.setHealth(h);
+        assertEquals(h, e.getHealth());
     }
 
     @Test
