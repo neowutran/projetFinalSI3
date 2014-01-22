@@ -567,18 +567,27 @@ public final class Inventory {
 
     
 
+
+    	/**
+         * Add a feature by Id
+         *
+         * @param id the equipment id
+         * @param name  name of the feature
+         * @param value value of the feature
+         * @throws ?????
+         */
 	@SuppressWarnings("unchecked")
 	public static void addFeatureById(String equipmentId, String name, String value) { // TODO : faire un propre try-catch
         //throws InvalidParameterException {
             final Equipment equipment = Inventory.findEquipmentById(equipmentId);
             Map<String,Object> tmpList = (Map<String, Object>) Config.getConfiguration().get("equipment");
-            tmpList =  (Map<String, Object>) tmpList.get(Inventory.findEquipmentById(equipmentId).getType());
-            
-            if ( equipment == null ||  !tmpList.containsKey(value) || !tmpList.containsValue(name) )
+            tmpList =  (Map<String, Object>) tmpList.get("phone"); // TODO : remplacer "phone" par  Inventory.findEquipmentById(equipmentId).getType() mais getType() fait planter (message:null)
+            System.out.println("yo");
+            System.out.println(equipment);
+            if ( equipment == null 
+            		||  ! ((Map<String, Object>) tmpList.get(value)).containsKey(value) 
+            		|| ! ((Map<String, Object>) tmpList.get(value)).containsValue(name) ) // TODO : recast pas bon pour value et name, la verif de l'id quant à elle marche bien.
             	
-            	
-            	/*
-            	|| !((Map<String,Object>) Config.getConfiguration().get("features")).containsKey(value))*/
             	System.out.println("fuckyou");
                 //throw new InvalidParameterException(Error.INVALID_ID);
             else
