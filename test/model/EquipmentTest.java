@@ -79,7 +79,9 @@ public class EquipmentTest {
 
     @Test
     public void testEquals() throws Exception {
-        //TODO
+    	Equipment e1 = new Equipment("tablet", new ArrayList<Feature>(), new Health(HealthState.NOT_OK), false);
+    	Equipment e2 = new Equipment("tablet", new ArrayList<Feature>(), new Health(HealthState.NOT_OK), false);
+    	assertTrue(e1.equals(e2));
     }
 
     @Test
