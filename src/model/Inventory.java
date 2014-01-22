@@ -2,7 +2,10 @@
 package model;
 
 import com.google.gson.annotations.Expose;
+
+import config.Config;
 import config.Error;
+import controllers.MiniProjectController;
 import model.person.Borrower;
 
 import java.lang.reflect.InvocationTargetException;
@@ -10,6 +13,7 @@ import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 /**
  * The Class Inventory.
@@ -116,9 +120,9 @@ public final class Inventory {
     /**
      * Evaluate.
      *
-     * @param operator      the operator
-     * @param value         the value
-     * @param feature       the feature
+     * @param operator the operator
+     * @param value    the value
+     * @param feature  the feature
      * @return the boolean
      * @throws MiniProjectException the mini project exception
      */
@@ -128,9 +132,9 @@ public final class Inventory {
         Integer type = 0;
         try {
 
-            if(feature.getIsDoubleValue()){
+            if (feature.getIsDoubleValue()) {
                 type = 2;
-            }else{
+            } else {
                 type = 1;
             }
 
@@ -463,6 +467,36 @@ public final class Inventory {
 
     }
 
+    public static List<Borrower.Borrow> findBorrowWithEquipmentUnderRepair(){
+        List<Borrower.Borrow> borrows = new ArrayList<>();
+        for(Borrower.Borrow borrow : Inventory.getInstance().borrows){
+            if(borrow.getBorrowEnd().getTimeInMillis() <= Calendar.getInstance().getTimeInMillis()) continue;
+            for(String equipmentId: borrow.getEquipmentId()){
+                if(Inventory.findEquipmentById(equipmentId).getUnderRepair()){
+                    borrows.add(borrow);
+                    break;
+                }
+            }
+        }
+        return borrows;
+
+    }
+
+    public static List<Borrower.Borrow> findBorrowWithEquipmentNotOk(){
+        List<Borrower.Borrow> borrows = new ArrayList<>();
+        for(Borrower.Borrow borrow : Inventory.getInstance().borrows){
+            if(borrow.getBorrowEnd().getTimeInMillis() <= Calendar.getInstance().getTimeInMillis()) continue;
+            for(String equipmentId: borrow.getEquipmentId()){
+                if(Inventory.findEquipmentById(equipmentId).getHealth().getHealthState().equals(HealthState.NOT_OK)){
+                    borrows.add(borrow);
+                    break;
+                }
+            }
+        }
+        return borrows;
+
+    }
+
     /**
      * Checks if is borrowed.
      *
@@ -509,20 +543,51 @@ public final class Inventory {
                 || person.getType().equals(SaveLoad.PERSON_TYPE_TEACHER);
 
     }
+
+   
+
+    	public static void addEquipment(String type, String numb) { // TODO : faire un propre try-catch ; Ajouter la saisie des features
+            boolean test = false;	
+                try {
+                		if (  ((Map<String,Object>) Config.getConfiguration().get("equipment")).containsKey(type) ){ test=true; System.out.println("ok");}
+                		
+                		 if(!test) System.out.println("fuckyou");
+                		 //throw new MiniProjectException("Type doesn't exist");  
+                		 else {
+                			 for(int i=0 ; i<Integer.parseInt(numb) ; i++)
+                		         new Equipment(type, new ArrayList<Feature>(), new Health(HealthState.OK), false);        
+                		 }           
+                }  		 
+                		 catch (MiniProjectException e) {
+                    MiniProjectController.LOGGER.severe(java.util.Arrays.toString(e
+                            .getStackTrace()));
+                }
+            }
+        
+
     
-    public static void addEquipment(String type, String numb) {
-    	List<Feature> tmpList = null;//new ArrayList<>(); // empty list 
-    	Equipment tmp = null;
-    	for(int i=0 ; i<Integer.parseInt(numb) ; i++)
-    		{
-    		System.out.println(i);
-			try {
-				 tmp = new Equipment(type, tmpList ,new Health(HealthState.OK),false); // TODO : l'appel au constructeur cause une erreur "null"
-			} catch (MiniProjectException e) {
-				System.out.println(e.getMessage());
-				e.printStackTrace();
-			}
-    	}
-    }
+
+	public static void addFeatureById(String equipmentId, String name, String value) { // TODO : faire un propre try-catch
+        //throws InvalidParameterException {
+            final Equipment equipment = Inventory.findEquipmentById(equipmentId);
+            
+            if (equipment == null)  System.out.println("fuckyou");
+                //throw new InvalidParameterException(Error.INVALID_ID);
+            else
+            {
+        
+            try {
+            		
+            	List<Feature> tmp = new ArrayList<Feature> (Inventory.findEquipmentById(equipmentId).getFeatures()); 
+            	tmp.add(new Feature(name , Inventory.findEquipmentById(equipmentId).getType() , value));
+            	Inventory.findEquipmentById(equipmentId).setFeatures(tmp);
+            		           
+            }  		 
+            		 catch (MiniProjectException e) {
+                MiniProjectController.LOGGER.severe(java.util.Arrays.toString(e
+                        .getStackTrace()));
+            }
+        }
+	}
 
 }

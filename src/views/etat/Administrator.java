@@ -177,8 +177,6 @@ public class Administrator extends User {
         health.setHealthState(state);
         equipment.setHealth(health);
 
-         //TODO Lors du changement d'etat de santé de materiel (exemple: une tablette tactile qui se casse, il faut prendre en compte que les personnes ayant fait des reservations de cet equipement doivent etre modifier.
-
     }
 
     @SuppressWarnings( "unused" )
@@ -193,6 +191,7 @@ public class Administrator extends User {
     }
 
     @SuppressWarnings( "unused" )
+<<<<<<< HEAD
     private void addEquipment(String type, String numb) {  	
             Inventory.addEquipment( type , numb );   	// TODO faire un try-catch si n�cessaire	
     }
@@ -214,6 +213,26 @@ public class Administrator extends User {
         default:
             throw new MiniProjectException(Error.CANNOT_CREATE_PERSON);
     	}
+=======
+    private void findBorrowWithEquipmentUnderRepair(){
+        System.out.println(Inventory.findBorrowWithEquipmentUnderRepair());
+    }
+
+    @SuppressWarnings( "unused" )
+    private void findBorrowWithEquipmentNotOk(){
+        System.out.println(Inventory.findBorrowWithEquipmentNotOk());
+    }
+
+
+    @SuppressWarnings( "unused" )
+    private void addEquipment(String type, String numb) {
+            Inventory.addEquipment( type , numb );
+    }
+    
+    @SuppressWarnings( "unused" )
+    private void addFeatureById(String id, String name, String value) {
+            Inventory.addFeatureById( id , name , value );
+>>>>>>> b71651496adc4489a0de857fc040046d54baf798
     }
 
     /*
@@ -290,6 +309,7 @@ public class Administrator extends User {
         args12.add("number");
         final Command command12 = new Command( "addEquipment", args12, this,
                 "addEquipment", "Ajout d'un �quipement � l'inventaire" );
+<<<<<<< HEAD
         
         /* Ajout de la méthode pour créer un nouvel utilisateur */
         final List<String> args13 = new LinkedList<>( );
@@ -302,6 +322,30 @@ public class Administrator extends User {
                 "Créer un nouvel utilisateur" );
         
         
+=======
+
+
+        final Command command13 = new Command(
+                "findBorrowWithEquipmentUnderRepair", new LinkedList<String>( ),
+                this, "findBorrowWithEquipmentUnderRepair",
+                "Cherche les emprunts futur ou actuel qui doivent utiliser un materiel indisponible car en cours de reparation" );
+
+
+
+        final Command command14 = new Command(
+                "findBorrowWithEquipmentNotOk", new LinkedList<String>( ),
+                this, "findBorrowWithEquipmentNotOk",
+                "Cherche les emprunts futur ou actuel qui doivent utiliser un materiel endommage" );
+
+
+        final List<String> args15 = new LinkedList<>( );
+        args15.add("id");
+        args15.add( "name" );
+        args15.add("value");
+        final Command command15 = new Command( "addFeatureById", args15, this,
+                "addFeatureById", "Ajout d'une feature � un �quipement" );
+
+>>>>>>> b71651496adc4489a0de857fc040046d54baf798
         commands.add( command1 );
         commands.add( command2 );
         commands.add( command3 );
@@ -315,6 +359,12 @@ public class Administrator extends User {
         commands.add( command11 );
         commands.add( command12 );
         commands.add( command13 );
+<<<<<<< HEAD
+=======
+        commands.add( command14 );
+        commands.add( command15 );
+
+>>>>>>> b71651496adc4489a0de857fc040046d54baf798
         commands.addAll( super.setCommands( ) );
 
         return commands;
