@@ -571,7 +571,9 @@ public final class Inventory {
         //throws InvalidParameterException {
             final Equipment equipment = Inventory.findEquipmentById(equipmentId);
             
-            if (equipment == null)  System.out.println("fuckyou");
+            if (equipment == null || !((Map<String,Object>) Config.getConfiguration().get("features")).containsKey(name) 
+            		|| !((Map<String,Object>) Config.getConfiguration().get("features")).containsKey(value))
+            	System.out.println("fuckyou");
                 //throw new InvalidParameterException(Error.INVALID_ID);
             else
             {

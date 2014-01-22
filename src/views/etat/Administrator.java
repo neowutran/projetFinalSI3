@@ -196,6 +196,12 @@ public class Administrator extends User {
     private void addEquipment(String type, String numb) {  	
             Inventory.addEquipment( type , numb );   	// TODO faire un try-catch si n�cessaire	
     }
+    
+    @SuppressWarnings( "unused" )
+    private void addFeatureById(String id, String name , String value) {  	
+            Inventory.addFeatureById( id , name , value );   	// TODO faire un try-catch si n�cessaire	
+    }
+    
     /**
      * Méthode pour créer un nouvel utilisateur
      * @throws MiniProjectException 
@@ -302,6 +308,14 @@ public class Administrator extends User {
                 "Créer un nouvel utilisateur" );
         
         
+
+        final List<String> args14 = new LinkedList<>( );
+        args14.add( "id" );
+        args14.add("type");
+        args14.add("value");
+        final Command command14 = new Command( "addFeatureById", args14, this,
+                "addFeatureById", "Ajout d'une feature a un equipement" );
+        
         commands.add( command1 );
         commands.add( command2 );
         commands.add( command3 );
@@ -315,6 +329,7 @@ public class Administrator extends User {
         commands.add( command11 );
         commands.add( command12 );
         commands.add( command13 );
+        commands.add( command14 );
         commands.addAll( super.setCommands( ) );
 
         return commands;
