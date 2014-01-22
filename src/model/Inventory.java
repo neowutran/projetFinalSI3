@@ -567,12 +567,18 @@ public final class Inventory {
 
     
 
+	@SuppressWarnings("unchecked")
 	public static void addFeatureById(String equipmentId, String name, String value) { // TODO : faire un propre try-catch
         //throws InvalidParameterException {
             final Equipment equipment = Inventory.findEquipmentById(equipmentId);
+            Map<String,Object> tmpList = (Map<String, Object>) Config.getConfiguration().get("equipment");
+            tmpList =  (Map<String, Object>) tmpList.get(Inventory.findEquipmentById(equipmentId).getType());
             
-            if (equipment == null || !((Map<String,Object>) Config.getConfiguration().get("features")).containsKey(name) 
-            		|| !((Map<String,Object>) Config.getConfiguration().get("features")).containsKey(value))
+            if ( equipment == null ||  !tmpList.containsKey(value) || !tmpList.containsValue(name) )
+            	
+            	
+            	/*
+            	|| !((Map<String,Object>) Config.getConfiguration().get("features")).containsKey(value))*/
             	System.out.println("fuckyou");
                 //throw new InvalidParameterException(Error.INVALID_ID);
             else
