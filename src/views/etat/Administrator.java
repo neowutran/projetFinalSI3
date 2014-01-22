@@ -204,6 +204,11 @@ public class Administrator extends User {
     private void addEquipment(String type, String numb) {
             Inventory.addEquipment( type , numb );
     }
+    
+    @SuppressWarnings( "unused" )
+    private void addFeatureById(String id, String name, String value) {
+            Inventory.addFeatureById( id , name , value );
+    }
 
     /*
      * (non-Javadoc)
@@ -294,6 +299,12 @@ public class Administrator extends User {
                 "Cherche les emprunts futur ou actuel qui doivent utiliser un materiel endommage" );
 
 
+        final List<String> args15 = new LinkedList<>( );
+        args15.add("id");
+        args15.add( "name" );
+        args15.add("value");
+        final Command command15 = new Command( "addFeatureById", args15, this,
+                "addFeatureById", "Ajout d'une feature à un équipement" );
 
         commands.add( command1 );
         commands.add( command2 );
@@ -309,6 +320,7 @@ public class Administrator extends User {
         commands.add( command12 );
         commands.add( command13 );
         commands.add( command14 );
+        commands.add( command15 );
 
         commands.addAll( super.setCommands( ) );
 

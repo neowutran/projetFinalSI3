@@ -565,4 +565,29 @@ public final class Inventory {
             }
         
 
-    }
+    
+
+	public static void addFeatureById(String equipmentId, String name, String value) { // TODO : faire un propre try-catch
+        //throws InvalidParameterException {
+            final Equipment equipment = Inventory.findEquipmentById(equipmentId);
+            
+            if (equipment == null)  System.out.println("fuckyou");
+                //throw new InvalidParameterException(Error.INVALID_ID);
+            else
+            {
+        
+            try {
+            		
+            	List<Feature> tmp = new ArrayList<Feature> (Inventory.findEquipmentById(equipmentId).getFeatures()); 
+            	tmp.add(new Feature(name , Inventory.findEquipmentById(equipmentId).getType() , value));
+            	Inventory.findEquipmentById(equipmentId).setFeatures(tmp);
+            		           
+            }  		 
+            		 catch (MiniProjectException e) {
+                MiniProjectController.LOGGER.severe(java.util.Arrays.toString(e
+                        .getStackTrace()));
+            }
+        }
+	}
+
+}
