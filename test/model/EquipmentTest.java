@@ -86,7 +86,10 @@ public class EquipmentTest {
 
     @Test
     public void testSetFeatures() throws Exception {
-        //TODO
+    	Equipment e1 = new Equipment("tablet", new ArrayList<Feature>(), new Health(HealthState.NOT_OK), false);
+    	List<Feature> f = new ArrayList<Feature>();
+    	e1.setFeatures(f);
+    	assertEquals(e1.getFeatures(), f);
     }
 
 }
