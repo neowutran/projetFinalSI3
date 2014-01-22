@@ -213,7 +213,7 @@ public class Equipment extends InventoryElement {
      * @see java.lang.Object#toString()
      */
     @Override
-    public String toString() {
+    public String toString() { // TODO : afficher les stats nbBorrowed et nbUnderRepair (j'ai pas osé toucher ^^)
 
         String template = (String) ((Map) Config.getConfiguration().get(
                 Config.TEMPLATE)).get(Config.EQUIPMENT);
