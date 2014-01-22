@@ -176,8 +176,6 @@ public class Administrator extends User {
         health.setHealthState(state);
         equipment.setHealth(health);
 
-         //TODO Lors du changement d'etat de santé de materiel (exemple: une tablette tactile qui se casse, il faut prendre en compte que les personnes ayant fait des reservations de cet equipement doivent etre modifier.
-
     }
 
     @SuppressWarnings( "unused" )
@@ -190,6 +188,17 @@ public class Administrator extends User {
             System.out.println(e.getMessage());
         }
     }
+
+    @SuppressWarnings( "unused" )
+    private void findBorrowWithEquipmentUnderRepair(){
+        System.out.println(Inventory.findBorrowWithEquipmentUnderRepair());
+    }
+
+    @SuppressWarnings( "unused" )
+    private void findBorrowWithEquipmentNotOk(){
+        System.out.println(Inventory.findBorrowWithEquipmentNotOk());
+    }
+
 
     @SuppressWarnings( "unused" )
     private void addEquipment(String type, String numb) {
@@ -272,6 +281,20 @@ public class Administrator extends User {
                 "addEquipment", "Ajout d'un �quipement � l'inventaire" );
 
 
+        final Command command13 = new Command(
+                "findBorrowWithEquipmentUnderRepair", new LinkedList<String>( ),
+                this, "findBorrowWithEquipmentUnderRepair",
+                "Cherche les emprunts futur ou actuel qui doivent utiliser un materiel indisponible car en cours de reparation" );
+
+
+
+        final Command command14 = new Command(
+                "findBorrowWithEquipmentNotOk", new LinkedList<String>( ),
+                this, "findBorrowWithEquipmentNotOk",
+                "Cherche les emprunts futur ou actuel qui doivent utiliser un materiel endommage" );
+
+
+
         commands.add( command1 );
         commands.add( command2 );
         commands.add( command3 );
@@ -284,6 +307,9 @@ public class Administrator extends User {
         commands.add( command10 );
         commands.add( command11 );
         commands.add( command12 );
+        commands.add( command13 );
+        commands.add( command14 );
+
         commands.addAll( super.setCommands( ) );
 
         return commands;

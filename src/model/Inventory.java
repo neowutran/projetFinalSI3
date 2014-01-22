@@ -464,6 +464,36 @@ public final class Inventory {
 
     }
 
+    public static List<Borrower.Borrow> findBorrowWithEquipmentUnderRepair(){
+        List<Borrower.Borrow> borrows = new ArrayList<>();
+        for(Borrower.Borrow borrow : Inventory.getInstance().borrows){
+            if(borrow.getBorrowEnd().getTimeInMillis() <= Calendar.getInstance().getTimeInMillis()) continue;
+            for(String equipmentId: borrow.getEquipmentId()){
+                if(Inventory.findEquipmentById(equipmentId).getUnderRepair()){
+                    borrows.add(borrow);
+                    break;
+                }
+            }
+        }
+        return borrows;
+
+    }
+
+    public static List<Borrower.Borrow> findBorrowWithEquipmentNotOk(){
+        List<Borrower.Borrow> borrows = new ArrayList<>();
+        for(Borrower.Borrow borrow : Inventory.getInstance().borrows){
+            if(borrow.getBorrowEnd().getTimeInMillis() <= Calendar.getInstance().getTimeInMillis()) continue;
+            for(String equipmentId: borrow.getEquipmentId()){
+                if(Inventory.findEquipmentById(equipmentId).getHealth().getHealthState().equals(HealthState.NOT_OK)){
+                    borrows.add(borrow);
+                    break;
+                }
+            }
+        }
+        return borrows;
+
+    }
+
     /**
      * Checks if is borrowed.
      *
