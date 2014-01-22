@@ -21,12 +21,15 @@ public class Equipment extends InventoryElement {
     @Expose
     private String type;
 
+    private int nbBorrowed; // TODO : Incrémenter la variable où il faut (j'ai pas trouvé..)
+    private int nbUnderRepair; 
+    
     public Health getHealth() {
         return health;
     }
 
     public void setHealth(Health health) {
-
+    	
         this.health = health;
         if (this.health.getHealthState().equals(HealthState.OK)) {
             this.underRepair = false;
@@ -42,6 +45,8 @@ public class Equipment extends InventoryElement {
             throw new MiniProjectException(Error.REPAIR_OK);
         }
         this.underRepair = underRepair;
+        
+        if(!underRepair) nbUnderRepair++;
     }
 
     @Expose
@@ -68,6 +73,8 @@ public class Equipment extends InventoryElement {
         if (underRepair && health.getHealthState().equals(HealthState.OK)) {
             throw new MiniProjectException(Error.REPAIR_OK);
         }
+        nbBorrowed=0;
+        nbUnderRepair=0;
         this.checkType(type);
         this.checkFeature(features);
         this.health = health;
