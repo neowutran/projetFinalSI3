@@ -2,6 +2,8 @@
 package model;
 
 import com.google.gson.annotations.Expose;
+
+import config.Config;
 import config.Error;
 import controllers.MiniProjectController;
 import model.person.Borrower;
@@ -11,6 +13,7 @@ import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 /**
  * The Class Inventory.
@@ -541,24 +544,25 @@ public final class Inventory {
 
     }
 
-    public static void addEquipment(String type, String numb) {
-        for (int i = 0; i < Integer.parseInt(numb); i++) {
-            try {
-                // TODO : l'appel au constructeur cause une erreur "null"
+   
 
-                //AVIS DIDIER: ce probleme vient du parametre "type" qui doit etre verifier. Si un type est "jkldsnhfu" et que ce
-                //type n'existe pas dans le fichier de config, alors cela provoquera une erreur.
-                //Il faut donc verifier que le "type" que l'utilisateur veut rajouter est bien present dans le fichier de config (config.json)
-                //Si ce n'est pas le cas, renvoyer un message d'erreur a l'utilisateur
-
-                //RAJOUT: cette methode ne permet pas de saisir les features des equipements, il faudrait que cela soit possible.
-                //Bon courage.
-                new Equipment(type, new ArrayList<Feature>(), new Health(HealthState.OK), false);
-            } catch (MiniProjectException e) {
-                MiniProjectController.LOGGER.severe(java.util.Arrays.toString(e
-                        .getStackTrace()));
+    	public static void addEquipment(String type, String numb) { // TODO : faire un propre try-catch ; Ajouter la saisie des features
+            boolean test = false;	
+                try {
+                		if (  ((Map<String,Object>) Config.getConfiguration().get("equipment")).containsKey(type) ){ test=true; System.out.println("ok");}
+                		
+                		 if(!test) System.out.println("fuckyou");
+                		 //throw new MiniProjectException("Type doesn't exist");  
+                		 else {
+                			 for(int i=0 ; i<Integer.parseInt(numb) ; i++)
+                		         new Equipment(type, new ArrayList<Feature>(), new Health(HealthState.OK), false);        
+                		 }           
+                }  		 
+                		 catch (MiniProjectException e) {
+                    MiniProjectController.LOGGER.severe(java.util.Arrays.toString(e
+                            .getStackTrace()));
+                }
             }
-        }
-    }
+        
 
-}
+    }
