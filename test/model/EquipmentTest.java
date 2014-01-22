@@ -1,6 +1,7 @@
 package model;
 
 import static org.junit.Assert.*;
+import config.Error;
 import controllers.MiniProjectController;
 import demonstrateur.MiniProject;
 import org.junit.Before;
@@ -11,6 +12,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +46,10 @@ public class EquipmentTest {
     }
 
 
-
+    /**
+     * @author Fabien Pinel
+     * @throws Exception
+     */
     @Test
     public void testSetHealth() throws Exception {
         Health h = new Health(HealthState.OK);
@@ -55,12 +60,21 @@ public class EquipmentTest {
 
     @Test
     public void testSetUnderRepair() throws Exception {
-        //TODO
+         Equipment e = new Equipment("tablet", new ArrayList<Feature>(), new Health(HealthState.NOT_OK), false);
+         e.setUnderRepair(true);
+         assertEquals(true, e.getUnderRepair());
     }
 
     @Test
     public void testCheckExistence() throws Exception {
-        //TODO
+    	 Equipment e = new Equipment("tablet", new ArrayList<Feature>(), new Health(HealthState.NOT_OK), false);
+    	 Equipment second = e;
+    	 try{
+    	 	second.checkExistence(second.getId());
+    	 }catch(InvalidParameterException ex){
+    		 InvalidParameterException test = new InvalidParameterException(Error.EQUIPMENT_ALREADY_EXIST);
+    		 assertEquals(ex.getMessage(), test.getMessage());
+    	 }
     }
 
     @Test
