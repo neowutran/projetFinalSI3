@@ -1,5 +1,6 @@
 package model;
 
+import static org.junit.Assert.*;
 import controllers.MiniProjectController;
 import demonstrateur.MiniProject;
 import org.junit.Before;
@@ -43,7 +44,10 @@ public class FeatureTest {
 
     @Test
     public void testIsEquals() throws Exception {
-        //TODO
+    	Feature f1 = new Feature("nom", "tablet", "Windows");
+    	Feature f2 = new Feature("nom2", "tablet", "Windows");
+    	assertTrue(f1.equals(f2));
+    	
     }
 
     @Test
