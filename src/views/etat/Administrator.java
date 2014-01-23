@@ -4,6 +4,7 @@ package views.etat;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import config.*;
 import config.Error;
@@ -177,8 +178,6 @@ public class Administrator extends User {
         health.setHealthState(state);
         equipment.setHealth(health);
 
-         //TODO Lors du changement d'etat de santé de materiel (exemple: une tablette tactile qui se casse, il faut prendre en compte que les personnes ayant fait des reservations de cet equipement doivent etre modifier.
-
     }
 
     @SuppressWarnings( "unused" )
@@ -193,35 +192,41 @@ public class Administrator extends User {
     }
 
     @SuppressWarnings( "unused" )
-    private void addEquipment(String type, String numb) {  	
-            Inventory.addEquipment( type , numb );   	// TODO faire un try-catch si n�cessaire	
-    }
-    
-    @SuppressWarnings( "unused" )
-    private void addFeatureById(String id, String name , String value) {  	
-            Inventory.addFeatureById( id , name , value );   	// TODO faire un try-catch si n�cessaire	
-    }
-    
-    /**
-     * Méthode pour créer un nouvel utilisateur
-     * @throws MiniProjectException 
-     */
-    private void createUser(String type, String name, String id, String password) throws MiniProjectException{
-    	switch (type) {
-        case SaveLoad.PERSON_TYPE_STUDENT:
-            new model.person.Borrower(name, id, SaveLoad.PERSON_TYPE_STUDENT, password);
-            break;
-        case SaveLoad.PERSON_TYPE_TEACHER:
-            new model.person.Borrower(name, id, SaveLoad.PERSON_TYPE_TEACHER, password);
-            break;
-        case SaveLoad.PERSON_TYPE_ADMINISTRATOR:
-            new model.person.Administrator(name, id, password);
-            break;
-        default:
-            throw new MiniProjectException(Error.CANNOT_CREATE_PERSON);
-    	}
+    private void addEquipment(String type, String numb) {
+            Inventory.addEquipment( type , numb );
+            System.out.println("OK");
     }
 
+    @SuppressWarnings( "unused" )
+    private void addFeatureById(String id, String name , String value) {
+            Inventory.addFeatureById( id , name , value );
+            System.out.println("OK");
+    }
+
+    @SuppressWarnings( "unused" )
+    private void createUser(String type, String name, String id, String password) throws MiniProjectException{
+        if(SaveLoad.PERSON_TYPE_ADMINISTRATOR.equals(type)){
+            new model.person.Administrator(name, id , password);
+        }else{
+            if(((Map)Config.getConfiguration().get(SaveLoad.PERSON_TYPE_BORROWER)).containsKey(type)){
+                new Borrower(name,id,type,password);
+            }else{
+                throw new MiniProjectException(Error.CANNOT_CREATE_PERSON);
+
+            }
+        }
+
+    }
+
+    @SuppressWarnings( "unused" )
+    private void findBorrowWithEquipmentUnderRepair(){
+        System.out.println(Inventory.findBorrowWithEquipmentUnderRepair());
+    }
+
+    @SuppressWarnings( "unused" )
+    private void findBorrowWithEquipmentNotOk(){
+        System.out.println(Inventory.findBorrowWithEquipmentNotOk());
+    }
     /*
      * (non-Javadoc)
      *
@@ -296,7 +301,7 @@ public class Administrator extends User {
         args12.add("number");
         final Command command12 = new Command( "addEquipment", args12, this,
                 "addEquipment", "Ajout d'un �quipement � l'inventaire" );
-        
+
         /* Ajout de la méthode pour créer un nouvel utilisateur */
         final List<String> args13 = new LinkedList<>( );
         args13.add( "type" );
@@ -306,8 +311,8 @@ public class Administrator extends User {
         final Command command13 = new Command( "createUser",
                 args13, this, "createUser",
                 "Créer un nouvel utilisateur" );
-        
-        
+
+
 
         final List<String> args14 = new LinkedList<>( );
         args14.add( "id" );
@@ -315,7 +320,22 @@ public class Administrator extends User {
         args14.add("value");
         final Command command14 = new Command( "addFeatureById", args14, this,
                 "addFeatureById", "Ajout d'une feature a un equipement" );
-        
+
+
+        final Command command15 = new Command(
+                "findBorrowWithEquipmentUnderRepair", new LinkedList<String>( ),
+                this, "findBorrowWithEquipmentUnderRepair",
+                "Cherche les emprunts futur ou actuel qui doivent utiliser un materiel indisponible car en cours de reparation" );
+
+
+
+        final Command command16 = new Command(
+                "findBorrowWithEquipmentNotOk", new LinkedList<String>( ),
+                this, "findBorrowWithEquipmentNotOk",
+                "Cherche les emprunts futur ou actuel qui doivent utiliser un materiel endommage" );
+
+
+
         commands.add( command1 );
         commands.add( command2 );
         commands.add( command3 );
@@ -330,6 +350,9 @@ public class Administrator extends User {
         commands.add( command12 );
         commands.add( command13 );
         commands.add( command14 );
+        commands.add( command15 );
+        commands.add( command16 );
+
         commands.addAll( super.setCommands( ) );
 
         return commands;
