@@ -3,6 +3,7 @@ package model;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import config.Config;
 import config.Error;
 import controllers.MiniProjectController;
 import lib.Json;
@@ -56,12 +57,7 @@ public final class SaveLoad {
     /**
      * The Constant PERSON_TYPE_STUDENT.
      */
-    public static final String PERSON_TYPE_STUDENT = "student";
-
-    /**
-     * The Constant PERSON_TYPE_TEACHER.
-     */
-    public static final String PERSON_TYPE_TEACHER = "teacher";
+    public static final String PERSON_TYPE_BORROWER = "borrower";
 
     /**
      * The Constant PERSON_TYPE_ADMINISTRATOR.
@@ -205,27 +201,20 @@ public final class SaveLoad {
         for (final Map person : persons) {
 
             final String type = (String) person.get(SaveLoad.TYPE);
-            switch (type) {
-                case PERSON_TYPE_STUDENT:
+            if(PERSON_TYPE_ADMINISTRATOR.equals(type)){
+                new Administrator((String) person.get(SaveLoad.NAME),
+                        (String) person.get(SaveLoad.ID),
+                        (String) person.get(SaveLoad.PASSWORD));
+            }else{
+                if(((Map)Config.getConfiguration().get(PERSON_TYPE_BORROWER)).containsKey(type)){
                     new Borrower((String) person.get(SaveLoad.NAME),
                             (String) person.get(SaveLoad.ID),
-                            SaveLoad.PERSON_TYPE_STUDENT,
+                            type,
                             (String) person.get(SaveLoad.PASSWORD));
-                    break;
-                case PERSON_TYPE_TEACHER:
-                    new Borrower((String) person.get(SaveLoad.NAME),
-                            (String) person.get(SaveLoad.ID),
-                            SaveLoad.PERSON_TYPE_TEACHER,
-                            (String) person.get(SaveLoad.PASSWORD));
-                    break;
-                case PERSON_TYPE_ADMINISTRATOR:
-                    new Administrator((String) person.get(SaveLoad.NAME),
-                            (String) person.get(SaveLoad.ID),
-                            (String) person.get(SaveLoad.PASSWORD));
-                    break;
-                default:
+                }else{
                     throw new MiniProjectException(Error.CANNOT_CREATE_PERSON);
 
+                }
             }
 
         }

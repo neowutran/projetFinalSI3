@@ -6,6 +6,8 @@ import com.google.gson.annotations.Expose;
 import config.Config;
 import config.Error;
 import controllers.MiniProjectController;
+import demonstrateur.MiniProject;
+import model.person.Administrator;
 import model.person.Borrower;
 
 import java.lang.reflect.InvocationTargetException;
@@ -539,72 +541,50 @@ public final class Inventory {
         if (person == null) {
             throw new InvalidParameterException(Error.INVALID_ID);
         }
-        return person.getType().equals(SaveLoad.PERSON_TYPE_STUDENT)
-                || person.getType().equals(SaveLoad.PERSON_TYPE_TEACHER);
+
+        return ((Map)Config.getConfiguration().get(SaveLoad.PERSON_TYPE_BORROWER)).containsKey(person.getType());
 
     }
 
-   
 
-    	public static void addEquipment(String type, String numb) { // TODO : faire un propre try-catch ; Ajouter la saisie des features
-            boolean test = false;	
-                try {
-                		if (  ((Map<String,Object>) Config.getConfiguration().get("equipment")).containsKey(type) ){ test=true; System.out.println("ok");}
-                		
-                		 if(!test) System.out.println("fuckyou");
-                		 //throw new MiniProjectException("Type doesn't exist");  
-                		 else {
-                			 for(int i=0 ; i<Integer.parseInt(numb) ; i++)
-                		         new Equipment(type, new ArrayList<Feature>(), new Health(HealthState.OK), false);        
-                		 }           
-                }  		 
-                		 catch (MiniProjectException e) {
-                    MiniProjectController.LOGGER.severe(java.util.Arrays.toString(e
-                            .getStackTrace()));
+
+    	public static void addEquipment(String type, String numb) throws MiniProjectException{ // TODO : faire un propre try-catch ; Ajouter la saisie des features
+
+            if( ((Map) Config.getConfiguration().get(Config.EQUIPMENT)).containsKey(type)){
+                for(int i=0 ; i<Integer.parseInt(numb) ; i++){
+                    try{
+                    new Equipment(type, new ArrayList<Feature>(), new Health(HealthState.OK), false);
+                    }catch(MiniProjectException e){
+                        MiniProjectController.LOGGER.severe(java.util.Arrays.toString(e
+                                .getStackTrace()));
+                    }
                 }
+                return;
             }
-        
+            throw new MiniProjectException(Error.EQUIPMENT_DO_NOT_EXIST);
 
-    
+            }
 
-
-    	/**
-         * Add a feature by Id
-         *
-         * @param id the equipment id
-         * @param name  name of the feature
-         * @param value value of the feature
-         * @throws ?????
-         */
-	@SuppressWarnings("unchecked")
-	public static void addFeatureById(String equipmentId, String name, String value) { // TODO : faire un propre try-catch
-        //throws InvalidParameterException {
+	public static void addFeatureById(String equipmentId, String name, String value) throws InvalidParameterException{ // TODO : faire un propre try-catch
             final Equipment equipment = Inventory.findEquipmentById(equipmentId);
-            Map<String,Object> tmpList = (Map<String, Object>) Config.getConfiguration().get("equipment");
-            tmpList =  (Map<String, Object>) tmpList.get("phone"); // TODO : remplacer "phone" par  Inventory.findEquipmentById(equipmentId).getType() mais getType() fait planter (message:null)
-            System.out.println("yo");
-            System.out.println(equipment);
-            if ( equipment == null 
-            		||  ! ((Map<String, Object>) tmpList.get(value)).containsKey(value) 
-            		|| ! ((Map<String, Object>) tmpList.get(value)).containsValue(name) ) // TODO : recast pas bon pour value et name, la verif de l'id quant à elle marche bien.
-            	
-            	System.out.println("fuckyou");
-                //throw new InvalidParameterException(Error.INVALID_ID);
-            else
-            {
-        
+            if(null == equipment) throw new InvalidParameterException(Error.EQUIPMENT_DO_NOT_EXIST);
+            Map tmpList = (Map)((Map)(Config.getConfiguration().get(Config.EQUIPMENT))).get(equipment.getType());
+            if (! ((Map) tmpList.get(value)).containsKey(value)	|| ! ((Map) tmpList.get(value)).containsValue(name) ){ // TODO : recast pas bon pour value et name, la verif de l'id quant ï¿½ elle marche bien.
+                throw new InvalidParameterException(Error.INVALID_ID);
+            }
+
             try {
-            		
-            	List<Feature> tmp = new ArrayList<Feature> (Inventory.findEquipmentById(equipmentId).getFeatures()); 
+
+            	List<Feature> tmp = Inventory.findEquipmentById(equipmentId).getFeatures();
             	tmp.add(new Feature(name , Inventory.findEquipmentById(equipmentId).getType() , value));
             	Inventory.findEquipmentById(equipmentId).setFeatures(tmp);
-            		           
-            }  		 
+
+            }
             		 catch (MiniProjectException e) {
                 MiniProjectController.LOGGER.severe(java.util.Arrays.toString(e
                         .getStackTrace()));
             }
-        }
+
 	}
 
 }
