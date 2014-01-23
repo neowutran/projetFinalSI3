@@ -1,28 +1,28 @@
 
 =======================================================================================================================
-Polytech Nice / SI3 / Module POO2 / 2013-2014
+Polytech Nice / SI3 / Module POO2-IPA / 2013-2014
 =======================================================================================================================
 
-MiniProjet
+Projet fin semestre
 
-Auteur : Martini Didier & Jean Philippe Kha
-Responsable : Jean Philippe Kha
-Groupe : SI3 Groupe 2
-Readme : Version : 1.0.0 (Dernière révision 06/12/2013 02:00)
+Auteur : Fabien Pinel & Maxime Touroute & Martini Didier
+Groupe : SI3 Groupe 1,2,3
+Readme : Version : 1.0.0 (Dernière révision 24/01/2014 18:00)
 
 =======================================================================================================================
 Executer le programme:
 =======================================================================================================================
 
-  Lancer le .jar sans parametres: java -jar ./MiniProject.jar
+  Lancer le .jar sans parametres: java -jar ./Project.jar
   Lors de la premiere execution un dossier "MiniProject" contenant le fichier de configuration est crée
 
 =======================================================================================================================
 Sources:
 =======================================================================================================================
 
-  Les sources sont dans le dossier "_SRC"
-  Les tests sont dans le dossier "_TUN"
+  Les sources sont dans le dossier "src"
+  Les tests sont dans le dossier "test"
+  L'executable (.jar) est dans le dossier "jar"
   Le point de lancement est la classe "MiniProject.java" du package "demonstrateur"
 
 =======================================================================================================================
