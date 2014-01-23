@@ -1,7 +1,10 @@
 package model;
 
+import static org.junit.Assert.*;
 import controllers.MiniProjectController;
 import demonstrateur.MiniProject;
+import model.person.Borrower;
+
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -45,23 +48,35 @@ public class InventoryTest {
 
     @Test
     public void testAddBorrow() throws Exception {
-    	model.person.Borrower b = new model.person.Borrower("admin","2222", "student","admin");
+    	model.person.Borrower b = new model.person.Borrower("test","3333", SaveLoad.PERSON_TYPE_BORROWER,"test");
     	List<String> liste = new ArrayList<String>();
-    	liste.add("tablet");
+    	liste.add("ca072236-8f15-486d-93e4-2b21abb831a5");
+    	GregorianCalendar date1 = new GregorianCalendar();
     	GregorianCalendar date2 = new GregorianCalendar();
     	date2.add(GregorianCalendar.MONTH,1);
-    	b.borrow(liste, new GregorianCalendar(), date2);
-    	
+    	b.borrow(liste, date1, date2);
+    	assertTrue(Inventory.isBorrowed(liste, date1, date2));
     }
 
     @Test
     public void testFind() throws Exception {
-        //TODO
+    	List<Equipment> ret = Inventory.find("tablet", new ArrayList<String>(),new ArrayList<String>(),new ArrayList<String>());
+    	//cet ID correspond à l'item qui devrait etre trouvé
+    	assertEquals(ret.get(0).getId(), "ca072236-8f15-486d-93e4-2b21abb831a5");
     }
 
     @Test
     public void testFindActualBorrowByBorrower() throws Exception {
-        //TODO
+    	model.person.Borrower b = new model.person.Borrower("test","4444", SaveLoad.PERSON_TYPE_BORROWER,"test");
+    	List<String> liste = new ArrayList<String>();
+    	liste.add("ca072236-8f15-486d-93e4-2b21abb831a5");
+    	GregorianCalendar date1 = new GregorianCalendar();
+    	GregorianCalendar date2 = new GregorianCalendar();
+    	date2.add(GregorianCalendar.MONTH,1);
+    	b.borrow(liste, date1, date2);
+        List<Borrower.Borrow> borrows = Inventory.findActualBorrowByBorrower("4444");
+        
+       assertTrue(borrows.get(0).getEquipmentId().equals("ca072236-8f15-486d-93e4-2b21abb831a5"));
     }
 
     @Test
