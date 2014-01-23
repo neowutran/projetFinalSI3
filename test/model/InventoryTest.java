@@ -10,6 +10,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.List;
 
 /**
  * Created by neowutran on 22/01/14.
@@ -41,7 +45,11 @@ public class InventoryTest {
 
     @Test
     public void testAddBorrow() throws Exception {
-        //TODO
+    	model.person.Borrower b = new model.person.Borrower("name","id", SaveLoad.PERSON_TYPE_BORROWER,"password");
+    	List<String> liste = new ArrayList<String>();
+    	liste.add("tablet");
+    	b.borrow(liste, new GregorianCalendar(), new GregorianCalendar());
+    	
     }
 
     @Test

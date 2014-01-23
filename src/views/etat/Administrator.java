@@ -192,7 +192,7 @@ public class Administrator extends User {
     }
 
     @SuppressWarnings( "unused" )
-    private void addEquipment(String type, String numb) {
+    private void addEquipment(String type, String numb) throws MiniProjectException {
             Inventory.addEquipment( type , numb );
             System.out.println("OK");
     }
