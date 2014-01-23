@@ -4,7 +4,6 @@
 
 package model.person;
 
-import java.security.InvalidParameterException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -77,7 +76,7 @@ public class Borrower extends model.Person {
 
         /**
          * Instantiates a new borrow.
-         * 
+         *
          * @param equipments
          *            the equipments
          * @param borrowStart
@@ -100,7 +99,7 @@ public class Borrower extends model.Person {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see model.person.InventoryElement#checkExistence(java.lang.String)
          */
         @Override
@@ -108,13 +107,13 @@ public class Borrower extends model.Person {
                 throws MiniProjectException {
 
             if (Inventory.findBorrowById(id) != null) {
-                throw new InvalidParameterException("this borrow already exist");
+                throw new MiniProjectException("this borrow already exist");
             }
         }
 
         /**
          * Gets the borrow end.
-         * 
+         *
          * @return the borrow end
          */
         public java.util.Calendar getBorrowEnd() {
@@ -124,7 +123,7 @@ public class Borrower extends model.Person {
 
         /**
          * Gets the borrower id.
-         * 
+         *
          * @return the borrower id
          */
         public String getBorrowerId() {
@@ -134,7 +133,7 @@ public class Borrower extends model.Person {
 
         /**
          * Gets the borrow start.
-         * 
+         *
          * @return the borrow start
          */
         public java.util.Calendar getBorrowStart() {
@@ -144,7 +143,7 @@ public class Borrower extends model.Person {
 
         /**
          * Gets the equipment id.
-         * 
+         *
          * @return the equipment id
          */
         public List<String> getEquipmentId() {
@@ -154,7 +153,7 @@ public class Borrower extends model.Person {
 
         /**
          * Gets the state.
-         * 
+         *
          * @return the state
          */
         public BorrowState getState() {
@@ -164,7 +163,7 @@ public class Borrower extends model.Person {
 
         /**
          * Sets the state.
-         * 
+         *
          * @param state
          *            the state
          * @param administrator
@@ -193,7 +192,7 @@ public class Borrower extends model.Person {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.lang.Object#toString()
          */
         @Override
@@ -242,7 +241,7 @@ public class Borrower extends model.Person {
 
     /**
      * Instantiates a new borrower.
-     * 
+     *
      * @param name
      *            the name
      * @param id
@@ -253,7 +252,7 @@ public class Borrower extends model.Person {
      *            the password
      */
     public Borrower(final String name, final String id, final String type,
-            final String password) {
+            final String password) throws MiniProjectException{
 
         super(name, id, password);
         this.setType(type);
@@ -267,7 +266,7 @@ public class Borrower extends model.Person {
 
     /**
      * Borrow.
-     * 
+     *
      * @param equipment
      *            the equipment
      * @param start
@@ -275,27 +274,24 @@ public class Borrower extends model.Person {
      * @param end
      *            the end
      * @return the string
-     * @throws InvalidParameterException
-     *             the invalid parameter exception
      * @throws MiniProjectException
-     *             the mini project exception
+     *             the invalid parameter exception
      */
     public String borrow(final List<String> equipment, final Calendar start,
-            final Calendar end) throws InvalidParameterException,
-            MiniProjectException {
+            final Calendar end) throws MiniProjectException {
 
         if (start.getTimeInMillis() >= end.getTimeInMillis()) {
-            throw new InvalidParameterException(Error.INVALID_DATE);
+            throw new MiniProjectException(Error.INVALID_DATE);
         }
         if (Inventory.isBorrowed(equipment, start, end)) {
-            throw new InvalidParameterException(Error.EQUIPMENT_UNAVAILABLE);
+            throw new MiniProjectException(Error.EQUIPMENT_UNAVAILABLE);
         }
         final Calendar now = Calendar.getInstance();
         final Long maximumAdvance = 1000 * 60 * 60 * 24
                 * this.maximumAdvanceDays;
         if (((start.getTimeInMillis() - now.getTimeInMillis()) > maximumAdvance)
                 && (this.maximumAdvanceDays != 0)) {
-            throw new InvalidParameterException(Error.CANNOT_BORROW_ADVANCE);
+            throw new MiniProjectException(Error.CANNOT_BORROW_ADVANCE);
         }
         final Long maximumTimeDuration = 1000 * 60 * 60 * this.maximumHours;
         if (((end.getTimeInMillis() - start.getTimeInMillis()) > maximumTimeDuration)
@@ -321,7 +317,7 @@ public class Borrower extends model.Person {
 
     /**
      * Max time.
-     * 
+     *
      * @param equipmentsId
      *            the equipments id
      * @return the long
@@ -357,7 +353,7 @@ public class Borrower extends model.Person {
 
     /**
      * SaveLoad Borrow.
-     * 
+     *
      * @param equipment
      *            the equipment
      * @param start
@@ -365,18 +361,18 @@ public class Borrower extends model.Person {
      * @param end
      *            the end
      * @return the string
-     * @throws InvalidParameterException
+     * @throws MiniProjectException
      *             the invalid parameter exception
      */
     public String saveLoadBorrow(final List<String> equipment,
             final Calendar start, final Calendar end)
-            throws InvalidParameterException {
+            throws MiniProjectException {
 
         if (start.getTimeInMillis() >= end.getTimeInMillis()) {
-            throw new InvalidParameterException(Error.INVALID_DATE);
+            throw new MiniProjectException(Error.INVALID_DATE);
         }
         if (Inventory.isBorrowed(equipment, start, end)) {
-            throw new InvalidParameterException(Error.EQUIPMENT_UNAVAILABLE);
+            throw new MiniProjectException(Error.EQUIPMENT_UNAVAILABLE);
         }
         Borrow borrow;
         try {

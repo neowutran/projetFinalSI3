@@ -4,7 +4,6 @@
 
 package model;
 
-import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +20,7 @@ public abstract class Person {
 
     /**
      * Exist.
-     * 
+     *
      * @param id
      *            the id
      * @return true, if successful
@@ -41,7 +40,7 @@ public abstract class Person {
 
     /**
      * Gets the persons.
-     * 
+     *
      * @return the persons
      */
     public static List<Person> getPersons() {
@@ -77,21 +76,21 @@ public abstract class Person {
 
     /**
      * Instantiates a new person.
-     * 
+     *
      * @param name
      *            the name
      * @param id
      *            the id
      * @param password
      *            the password
-     * @throws InvalidParameterException
+     * @throws MiniProjectException
      *             the invalid parameter exception
      */
     public Person(final String name, final String id, final String password)
-            throws InvalidParameterException {
+            throws MiniProjectException {
 
         if (Person.exist(id)) {
-            throw new InvalidParameterException(Error.PERSON_ALREADY_EXIST);
+            throw new MiniProjectException(Error.PERSON_ALREADY_EXIST);
         }
         this.name = name;
         this.id = id;
@@ -101,7 +100,7 @@ public abstract class Person {
 
     /**
      * Gets the id.
-     * 
+     *
      * @return the id
      */
     public String getId() {
@@ -111,7 +110,7 @@ public abstract class Person {
 
     /**
      * Gets the name.
-     * 
+     *
      * @return the name
      */
     public String getName() {
@@ -121,7 +120,7 @@ public abstract class Person {
 
     /**
      * Gets the password.
-     * 
+     *
      * @return the password
      */
     public String getPassword() {
@@ -131,7 +130,7 @@ public abstract class Person {
 
     /**
      * Gets the type.
-     * 
+     *
      * @return the type
      */
     public String getType() {
@@ -141,7 +140,7 @@ public abstract class Person {
 
     /**
      * Sets the id.
-     * 
+     *
      * @param id
      *            the new id
      */
@@ -152,7 +151,7 @@ public abstract class Person {
 
     /**
      * Sets the name.
-     * 
+     *
      * @param name
      *            the new name
      */
@@ -163,7 +162,7 @@ public abstract class Person {
 
     /**
      * Sets the password.
-     * 
+     *
      * @param password
      *            the new password
      */
@@ -174,7 +173,7 @@ public abstract class Person {
 
     /**
      * Sets the type.
-     * 
+     *
      * @param type
      *            the new type
      */
@@ -185,7 +184,7 @@ public abstract class Person {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#toString()
      */
     @Override

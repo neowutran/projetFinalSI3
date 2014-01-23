@@ -4,7 +4,6 @@
 
 package model;
 
-import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -84,7 +83,7 @@ public class Equipment extends InventoryElement {
     protected void checkExistence(final String id) throws MiniProjectException {
 
         if (Inventory.findEquipmentById(id) != null) {
-            throw new InvalidParameterException(Error.EQUIPMENT_ALREADY_EXIST);
+            throw new MiniProjectException(Error.EQUIPMENT_ALREADY_EXIST);
         }
     }
 
@@ -93,11 +92,11 @@ public class Equipment extends InventoryElement {
      *
      * @param features
      *            the features
-     * @throws InvalidParameterException
+     * @throws MiniProjectException
      *             the invalid parameter exception
      */
     private void checkFeature(final List<Feature> features)
-            throws InvalidParameterException {
+            throws MiniProjectException {
 
         if ((null == features) || features.isEmpty()) {
             return;
@@ -105,7 +104,7 @@ public class Equipment extends InventoryElement {
         for (final Feature feature : features) {
             if (!((Map) ((Map) Config.getConfiguration().get(Config.EQUIPMENT))
                     .get(this.type)).containsKey(feature.getName())) {
-                throw new InvalidParameterException(
+                throw new MiniProjectException(
                         Error.FEATURE_EQUIPMENT_INVALID);
             }
         }
@@ -117,14 +116,14 @@ public class Equipment extends InventoryElement {
      *
      * @param type
      *            the type
-     * @throws InvalidParameterException
+     * @throws MiniProjectException
      *             the invalid parameter exception
      */
-    private void checkType(final String type) throws InvalidParameterException {
+    private void checkType(final String type) throws MiniProjectException {
 
         if (!((Map) Config.getConfiguration().get(Config.EQUIPMENT))
                 .containsKey(type)) {
-            throw new InvalidParameterException(Error.EQUIPMENT_DO_NOT_EXIST);
+            throw new MiniProjectException(Error.EQUIPMENT_DO_NOT_EXIST);
         }
         this.type = type;
     }
@@ -202,11 +201,11 @@ public class Equipment extends InventoryElement {
      *
      * @param features
      *            the new features
-     * @throws InvalidParameterException
+     * @throws MiniProjectException
      *             the invalid parameter exception
      */
     public void setFeatures(final List<model.Feature> features)
-            throws InvalidParameterException {
+            throws MiniProjectException {
 
         this.checkFeature(features);
     }

@@ -16,7 +16,7 @@ public class Administrator extends model.Person {
 
     /**
      * Instantiates a new administrator.
-     * 
+     *
      * @param name
      *            the name
      * @param id
@@ -25,7 +25,7 @@ public class Administrator extends model.Person {
      *            the password
      */
     public Administrator(final String name, final String id,
-            final String password) {
+            final String password) throws MiniProjectException {
 
         super(name, id, password);
         this.setType(SaveLoad.PERSON_TYPE_ADMINISTRATOR);
@@ -33,7 +33,7 @@ public class Administrator extends model.Person {
 
     /**
      * Sets the borrow stat.
-     * 
+     *
      * @param borrow
      *            the borrow
      * @param state

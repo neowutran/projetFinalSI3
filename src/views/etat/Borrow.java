@@ -4,7 +4,6 @@
 
 package views.etat;
 
-import java.security.InvalidParameterException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -32,7 +31,7 @@ public class Borrow extends State {
 
     /**
      * Adds the.
-     * 
+     *
      * @param id
      *            the id
      */
@@ -53,7 +52,7 @@ public class Borrow extends State {
 
     /**
      * Removes the.
-     * 
+     *
      * @param id
      *            the id
      */
@@ -66,7 +65,7 @@ public class Borrow extends State {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see views.IView#setCommands()
      */
     @Override
@@ -110,7 +109,7 @@ public class Borrow extends State {
 
     /**
      * Sets the end.
-     * 
+     *
      * @param stringDayMonthYear
      *            the string day month year
      * @param stringHourMinute
@@ -135,7 +134,7 @@ public class Borrow extends State {
 
     /**
      * Sets the start.
-     * 
+     *
      * @param stringDayMonthYear
      *            the string day month year
      * @param stringHourMinute
@@ -187,7 +186,7 @@ public class Borrow extends State {
                     this.start, this.end);
             System.out.println("Borrowed.");
             this.cancel();
-        } catch (InvalidParameterException | MiniProjectException e) {
+        } catch (MiniProjectException e) {
             System.out.println(e.getMessage());
         }
     }

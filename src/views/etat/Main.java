@@ -25,7 +25,7 @@ public class Main extends State {
 
     /**
      * Login.
-     * 
+     *
      * @param id
      *            the id
      * @param password
@@ -37,12 +37,16 @@ public class Main extends State {
         if (model.User.getInstance().login(id, password)) {
             System.out.println("Welcome "
                     + Inventory.findPersonById(id).getName());
-            if (Inventory.isBorrower(id)) {
-                System.out.println("Interface borrower");
-                View.setState(new Borrower());
-            } else {
-                System.out.println("Interface administrator");
-                View.setState(new Administrator());
+            try {
+                if (Inventory.isBorrower(id)) {
+                    System.out.println("Interface borrower");
+                    View.setState(new Borrower());
+                } else {
+                    System.out.println("Interface administrator");
+                    View.setState(new Administrator());
+                }
+            } catch (MiniProjectException e) {
+                System.out.println(e.getMessage());
             }
         } else {
             System.out.println("Wrong username or password");
@@ -51,7 +55,7 @@ public class Main extends State {
 
     /**
      * Nouvelle méthode pour l'inscription d'un utilisateur.
-     * 
+     *
      * @param name
      *            nom du nouveau user
      * @param id
@@ -78,7 +82,7 @@ public class Main extends State {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see views.IView#setCommands()
      */
     @Override

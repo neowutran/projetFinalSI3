@@ -2,6 +2,7 @@ package model;
 
 import controllers.MiniProjectController;
 import demonstrateur.MiniProject;
+import model.person.Administrator;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -9,6 +10,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by neowutran on 22/01/14.
@@ -40,12 +44,26 @@ public class PersonTest {
     }
 
     @Test
-    public void testExist() throws Exception {
-        //TODO
+    public void testExist() {
+        assertTrue(Person.exist("123"));
+        assertFalse(Person.exist("blabloubliblop"));
+
     }
 
     @Test
-    public void testConstructor() throws Exception{
-        //TODO
+    public void testConstructor(){
+
+        try {
+            new Administrator("tutu", "9000", "pass");
+            assertTrue(false);
+        } catch (MiniProjectException e) {
+
+        }
+        try {
+            new Administrator("tata", "tata", "pass");
+        } catch (MiniProjectException e) {
+            assertTrue(false);
+        }
+
     }
 }

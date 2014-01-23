@@ -10,7 +10,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -146,7 +145,7 @@ public final class SaveLoad {
 
     /**
      * Gets the state.
-     * 
+     *
      * @return the state
      */
     private static String getState() {
@@ -163,7 +162,7 @@ public final class SaveLoad {
 
     /**
      * Load.
-     * 
+     *
      * @param file
      *            the file
      * @throws MiniProjectException
@@ -283,7 +282,7 @@ public final class SaveLoad {
             try {
                 borrowObject = Inventory.findBorrowById(borrower
                         .saveLoadBorrow(listEquipment, debut, fin));
-            } catch (final InvalidParameterException e) {
+            } catch (final MiniProjectException e) {
                 MiniProjectController.LOGGER.severe("message:" + e.getMessage()
                         + "\ntrace:"
                         + java.util.Arrays.toString(e.getStackTrace()));
@@ -314,7 +313,7 @@ public final class SaveLoad {
 
     /**
      * Save.
-     * 
+     *
      * @param file
      *            the file
      */

@@ -5,13 +5,11 @@
 package model;
 
 import java.lang.reflect.InvocationTargetException;
-import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
-import demonstrateur.MiniProject;
 import model.person.Borrower;
 
 import com.google.gson.annotations.Expose;
@@ -67,24 +65,24 @@ public final class Inventory {
      *            the name
      * @param value
      *            the value
-     * @throws InvalidParameterException
+     * @throws MiniProjectException
      *             the invalid parameter exception
      */
     public static void addFeatureById(final String equipmentId,
             final String name, final String value)
-            throws InvalidParameterException { //TODO !!A TESTER!!
+            throws MiniProjectException { //TODO !!A TESTER!!
 
         final Equipment equipment = Inventory.findEquipmentById(equipmentId);
         if (null == equipment) {
-            throw new InvalidParameterException(Error.EQUIPMENT_DO_NOT_EXIST);
+            throw new MiniProjectException(Error.EQUIPMENT_DO_NOT_EXIST);
         }
         final Map tmpList = (Map) ((Map) (Config.getConfiguration()
                 .get(Config.EQUIPMENT))).get(equipment.getType());
         if(tmpList.get(name) == null){
-            throw new InvalidParameterException(Error.FEATURE_DOESNT_EXIST);
+            throw new MiniProjectException(Error.FEATURE_DOESNT_EXIST);
         }
         if (!((List) tmpList.get(name)).contains(value)) {
-            throw new InvalidParameterException(Error.FEATURE_DOESNT_EXIST);
+            throw new MiniProjectException(Error.FEATURE_DOESNT_EXIST);
         }
 
         final List<Feature> tmp = equipment.getFeatures();
@@ -110,16 +108,16 @@ public final class Inventory {
      *            the operator
      * @param value
      *            the value
-     * @throws InvalidParameterException
+     * @throws MiniProjectException
      *             the invalid parameter exception
      */
     private static void checkSize(final List<String> features,
             final List<String> operator, final List<String> value)
-            throws InvalidParameterException {
+            throws MiniProjectException {
 
         if ((features.size() != operator.size())
                 || (operator.size() != value.size())) {
-            throw new InvalidParameterException(config.Error.NOT_SAME_SIZE);
+            throw new MiniProjectException(config.Error.NOT_SAME_SIZE);
         }
     }
 
@@ -551,15 +549,15 @@ public final class Inventory {
      * @param id
      *            the id
      * @return true, if is borrower
-     * @throws InvalidParameterException
+     * @throws MiniProjectException
      *             the invalid parameter exception
      */
     public static boolean isBorrower(final String id)
-            throws InvalidParameterException {
+            throws MiniProjectException {
 
         final Person person = Inventory.findPersonById(id);
         if (person == null) {
-            throw new InvalidParameterException(Error.INVALID_ID);
+            throw new MiniProjectException(Error.INVALID_ID);
         }
         return ((Map) Config.getConfiguration().get(
                 SaveLoad.PERSON_TYPE_BORROWER)).containsKey(person.getType());

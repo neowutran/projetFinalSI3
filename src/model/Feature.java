@@ -4,7 +4,6 @@
 
 package model;
 
-import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +38,7 @@ public class Feature {
 
     /**
      * Instantiates a new feature.
-     * 
+     *
      * @param name
      *            the name
      * @param equipmentType
@@ -62,7 +61,7 @@ public class Feature {
 
     /**
      * Gets the checks if is double value.
-     * 
+     *
      * @return the checks if is double value
      */
     public Boolean getIsDoubleValue() {
@@ -72,7 +71,7 @@ public class Feature {
 
     /**
      * Gets the name.
-     * 
+     *
      * @return the name
      */
     public String getName() {
@@ -82,7 +81,7 @@ public class Feature {
 
     /**
      * Gets the value.
-     * 
+     *
      * @return the value
      */
     protected String getValue() {
@@ -92,7 +91,7 @@ public class Feature {
 
     /**
      * Greater than.
-     * 
+     *
      * @param object
      *            the object
      * @return true, if successful
@@ -105,7 +104,7 @@ public class Feature {
 
     /**
      * Greater than or equals.
-     * 
+     *
      * @param object
      *            the object
      * @return true, if successful
@@ -119,7 +118,7 @@ public class Feature {
 
     /**
      * Checks if is double value.
-     * 
+     *
      * @param values
      *            the values
      */
@@ -138,12 +137,12 @@ public class Feature {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see model.finder.IString#equals(model.finder.IString)
      */
     /**
      * Checks if is equals.
-     * 
+     *
      * @param string
      *            the string
      * @return true, if is equals
@@ -158,7 +157,7 @@ public class Feature {
 
     /**
      * Lesser than.
-     * 
+     *
      * @param object
      *            the object
      * @return true, if successful
@@ -171,7 +170,7 @@ public class Feature {
 
     /**
      * Lesser than or equals.
-     * 
+     *
      * @param object
      *            the object
      * @return true, if successful
@@ -185,14 +184,14 @@ public class Feature {
 
     /**
      * Sets the acceptable value.
-     * 
+     *
      * @param typeMateriel
      *            the new acceptable value
-     * @throws InvalidParameterException
+     * @throws MiniProjectException
      *             the invalid parameter exception
      */
     private void setAcceptableValue(final String typeMateriel)
-            throws InvalidParameterException {
+            throws MiniProjectException {
 
         if (typeMateriel == null) {
             final List<String> fullList = new ArrayList<String>();
@@ -219,7 +218,7 @@ public class Feature {
                         .getConfiguration().get(Config.EQUIPMENT))
                         .get(typeMateriel)).get(this.name));
             } else {
-                throw new InvalidParameterException(
+                throw new MiniProjectException(
                         config.Error.EQUIPMENT_DO_NOT_EXIST);
             }
         }
@@ -227,7 +226,7 @@ public class Feature {
 
     /**
      * Sets the value.
-     * 
+     *
      * @param value
      *            the new value
      */
@@ -238,7 +237,7 @@ public class Feature {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#toString()
      */
     @Override

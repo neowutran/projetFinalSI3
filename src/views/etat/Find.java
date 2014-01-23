@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import controllers.MiniProjectController;
 import model.Equipment;
 import model.Inventory;
 import model.MiniProjectException;
@@ -31,7 +32,7 @@ public class Find extends State {
 
     /**
      * Adds the.
-     * 
+     *
      * @param feature
      *            the feature
      * @param operator
@@ -55,18 +56,23 @@ public class Find extends State {
      */
     private void cancel() {
 
-        if (Inventory.isBorrower(model.User.getInstance().getPersonId())) {
-            System.out.println("back to the borrower interface");
-            View.setState(new Borrower());
-        } else {
-            System.out.println("back to the administrator interface");
-            View.setState(new Administrator());
+        try {
+            if (Inventory.isBorrower(model.User.getInstance().getPersonId())) {
+                System.out.println("back to the borrower interface");
+                View.setState(new Borrower());
+            } else {
+                System.out.println("back to the administrator interface");
+                View.setState(new Administrator());
+            }
+        } catch (MiniProjectException e) {
+            MiniProjectController.LOGGER.severe(java.util.Arrays.toString(e
+                    .getStackTrace()));
         }
     }
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see views.IView#setCommands()
      */
     @Override
