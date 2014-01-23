@@ -1,3 +1,6 @@
+/*
+ * @author Martini Didier - Fabien Pinel - Maxime Touroute
+ */
 
 package model;
 
@@ -9,8 +12,7 @@ public class User {
     /**
      * The person id.
      */
-    private String personId;
-
+    private String      personId;
     /**
      * The instance.
      */
@@ -18,10 +20,11 @@ public class User {
 
     /**
      * Gets the single instance of User.
-     *
+     * 
      * @return single instance of User
      */
     public static User getInstance() {
+
         if (User.instance == null) {
             User.instance = new User();
         }
@@ -37,7 +40,7 @@ public class User {
 
     /**
      * Gets the person id.
-     *
+     * 
      * @return the person id
      */
     public String getPersonId() {
@@ -47,9 +50,11 @@ public class User {
 
     /**
      * Login.
-     *
-     * @param id       the id
-     * @param password the password
+     * 
+     * @param id
+     *            the id
+     * @param password
+     *            the password
      * @return true, if successful
      */
     public boolean login(final String id, final String password) {
@@ -69,17 +74,18 @@ public class User {
      * Logout.
      */
     public void logout() {
+
         this.setPersonId(null);
     }
 
     /**
      * Sets the person id.
-     *
-     * @param personId the new person id
+     * 
+     * @param personId
+     *            the new person id
      */
     private void setPersonId(final String personId) {
 
         this.personId = personId;
     }
-
 }

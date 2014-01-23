@@ -1,14 +1,18 @@
+/*
+ * @author Martini Didier - Fabien Pinel - Maxime Touroute
+ */
 
 package model;
-
-import com.google.gson.annotations.Expose;
-import config.Config;
-import config.Error;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import com.google.gson.annotations.Expose;
+
+import config.Config;
+import config.Error;
 
 /**
  * The Class Person.
@@ -17,8 +21,9 @@ public abstract class Person {
 
     /**
      * Exist.
-     *
-     * @param id the id
+     * 
+     * @param id
+     *            the id
      * @return true, if successful
      */
     public static boolean exist(final String id) {
@@ -36,7 +41,7 @@ public abstract class Person {
 
     /**
      * Gets the persons.
-     *
+     * 
      * @return the persons
      */
     public static List<Person> getPersons() {
@@ -48,39 +53,39 @@ public abstract class Person {
      * The name.
      */
     @Expose
-    private String name;
-
+    private String              name;
     /**
      * The type.
      */
     @Expose
-    private String type;
-
+    private String              type;
     /**
      * The id.
      */
     @Expose
-    private String id;
-
+    private String              id;
     /**
      * The person.
      */
     @Expose
     private static List<Person> person = new ArrayList<>();
-
     /**
      * The password.
      */
     @Expose
-    private String password;
+    private String              password;
 
     /**
      * Instantiates a new person.
-     *
-     * @param name     the name
-     * @param id       the id
-     * @param password the password
-     * @throws InvalidParameterException the invalid parameter exception
+     * 
+     * @param name
+     *            the name
+     * @param id
+     *            the id
+     * @param password
+     *            the password
+     * @throws InvalidParameterException
+     *             the invalid parameter exception
      */
     public Person(final String name, final String id, final String password)
             throws InvalidParameterException {
@@ -88,7 +93,6 @@ public abstract class Person {
         if (Person.exist(id)) {
             throw new InvalidParameterException(Error.PERSON_ALREADY_EXIST);
         }
-
         this.name = name;
         this.id = id;
         this.password = password;
@@ -97,7 +101,7 @@ public abstract class Person {
 
     /**
      * Gets the id.
-     *
+     * 
      * @return the id
      */
     public String getId() {
@@ -107,7 +111,7 @@ public abstract class Person {
 
     /**
      * Gets the name.
-     *
+     * 
      * @return the name
      */
     public String getName() {
@@ -117,7 +121,7 @@ public abstract class Person {
 
     /**
      * Gets the password.
-     *
+     * 
      * @return the password
      */
     public String getPassword() {
@@ -127,7 +131,7 @@ public abstract class Person {
 
     /**
      * Gets the type.
-     *
+     * 
      * @return the type
      */
     public String getType() {
@@ -137,8 +141,9 @@ public abstract class Person {
 
     /**
      * Sets the id.
-     *
-     * @param id the new id
+     * 
+     * @param id
+     *            the new id
      */
     public void setId(final String id) {
 
@@ -147,8 +152,9 @@ public abstract class Person {
 
     /**
      * Sets the name.
-     *
-     * @param name the new name
+     * 
+     * @param name
+     *            the new name
      */
     public void setName(final String name) {
 
@@ -157,8 +163,9 @@ public abstract class Person {
 
     /**
      * Sets the password.
-     *
-     * @param password the new password
+     * 
+     * @param password
+     *            the new password
      */
     public void setPassword(final String password) {
 
@@ -167,8 +174,9 @@ public abstract class Person {
 
     /**
      * Sets the type.
-     *
-     * @param type the new type
+     * 
+     * @param type
+     *            the new type
      */
     protected void setType(final String type) {
 
@@ -177,7 +185,7 @@ public abstract class Person {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
@@ -185,14 +193,9 @@ public abstract class Person {
 
         String template = (String) ((Map) Config.getConfiguration().get(
                 Config.TEMPLATE)).get(Config.PERSON);
-
         template = template.replaceAll("\\{name\\}", this.name);
         template = template.replaceAll("\\{type\\}", this.type);
-
         template = template.replaceAll("\\{id\\}", this.getId());
-
         return template;
-
     }
-
 }

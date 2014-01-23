@@ -1,41 +1,90 @@
-package model;
+/*
+ * @author Martini Didier - Fabien Pinel - Maxime Touroute
+ */
 
-import com.google.gson.annotations.Expose;
-import config.Config;
+package model;
 
 import java.util.Map;
 
-public class Health {
-    public HealthState getHealthState() {
-        return healthState;
-    }
+import com.google.gson.annotations.Expose;
 
-    public void setHealthState(HealthState healthState) {
+import config.Config;
+
+/**
+ * The Class Health.
+ */
+public class Health {
+
+    /** The health state. */
+    @Expose
+    private HealthState healthState;
+    /** The cause. */
+    @Expose
+    private String      cause = "";
+
+    /**
+     * Instantiates a new health.
+     * 
+     * @param healthState
+     *            the health state
+     */
+    public Health(final HealthState healthState) {
+
         this.healthState = healthState;
     }
 
+    /**
+     * Gets the cause.
+     * 
+     * @return the cause
+     */
     public String getCause() {
-        return cause;
+
+        return this.cause;
     }
 
-    public void setCause(String cause) {
+    /**
+     * Gets the health state.
+     * 
+     * @return the health state
+     */
+    public HealthState getHealthState() {
+
+        return this.healthState;
+    }
+
+    /**
+     * Sets the cause.
+     * 
+     * @param cause
+     *            the new cause
+     */
+    public void setCause(final String cause) {
+
         this.cause = cause;
     }
 
-    @Expose
-    private HealthState healthState;
-    @Expose
-    private String cause = "";
+    /**
+     * Sets the health state.
+     * 
+     * @param healthState
+     *            the new health state
+     */
+    public void setHealthState(final HealthState healthState) {
 
-    public Health(final HealthState healthState) {
         this.healthState = healthState;
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
+
         String template = (String) ((Map) Config.getConfiguration().get(
                 Config.TEMPLATE)).get(Config.HEALTH);
-
         template = template.replaceAll("\\{cause\\}", this.cause);
         template = template.replaceAll("\\{state\\}",
                 this.healthState.toString());

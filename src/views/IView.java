@@ -1,3 +1,6 @@
+/*
+ * @author Martini Didier - Fabien Pinel - Maxime Touroute
+ */
 
 package views;
 
@@ -10,8 +13,8 @@ public interface IView {
 
     /**
      * Sets the commands.
-     *
+     * 
      * @return the list
      */
-    List<Command> setCommands( );
+    List<Command> setCommands();
 }

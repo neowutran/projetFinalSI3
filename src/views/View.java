@@ -14,15 +14,15 @@ import views.etat.Main;
 public class View {
 
     /** The state. */
-    private static State   state = new Main( );
-
+    private static State   state = new Main();
     /** The exit. */
     private static Boolean exit  = false;
 
     /**
      * Exit.
      */
-    public static void exit( ) {
+    public static void exit() {
+
         View.exit = true;
     }
 
@@ -31,7 +31,7 @@ public class View {
      * 
      * @return the state
      */
-    public static State getState( ) {
+    public static State getState() {
 
         return View.state;
     }
@@ -39,29 +39,25 @@ public class View {
     /**
      * Launch.
      */
-    public static void launch( ) {
-        System.out
-                .println( "Welcome to miniProject version 0.1 (pray for not having a bug)" );
-        View.getState( ).printHelp( );
+    public static void launch() {
 
-        View.readLine( );
+        System.out
+                .println("Welcome to miniProject version 0.1 (pray for not having a bug)");
+        View.getState().printHelp();
+        View.readLine();
     }
 
     /**
      * Read line.
      */
-    private static void readLine( ) {
+    private static void readLine() {
 
-        final Scanner scanner = new Scanner( System.in );
-
-        while( !View.exit ) {
-
-            final String line = scanner.nextLine( );
-            View.state.interpreter( line );
-
+        final Scanner scanner = new Scanner(System.in);
+        while (!View.exit) {
+            final String line = scanner.nextLine();
+            View.state.interpreter(line);
         }
-        scanner.close( );
-
+        scanner.close();
     }
 
     /**
@@ -70,13 +66,15 @@ public class View {
      * @param state
      *            the new state
      */
-    public static void setState( final State state ) {
+    public static void setState(final State state) {
+
         View.state = state;
     }
 
     /**
      * Instantiates a new view.
      */
-    private View( ) {
+    private View() {
+
     }
 }

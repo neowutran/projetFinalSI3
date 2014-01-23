@@ -1,3 +1,6 @@
+/*
+ * @author Martini Didier - Fabien Pinel - Maxime Touroute
+ */
 
 package views;
 
@@ -19,16 +22,12 @@ public class Command {
 
     /** The name. */
     private final String name;
-
     /** The args. */
-    private List<String> args = new LinkedList<>( );
-
+    private List<String> args = new LinkedList<>();
     /** The description. */
     private final String description;
-
     /** The state. */
     private final State  state;
-
     /** The method. */
     private final String method;
 
@@ -46,15 +45,14 @@ public class Command {
      * @param description
      *            the description
      */
-    public Command( final String name, final List<String> args,
-            final State state, final String method, final String description ) {
+    public Command(final String name, final List<String> args,
+            final State state, final String method, final String description) {
 
         this.name = name;
         this.args = args;
         this.state = state;
         this.method = method;
         this.description = description;
-
     }
 
     /**
@@ -62,7 +60,7 @@ public class Command {
      * 
      * @return the name
      */
-    public String getName( ) {
+    public String getName() {
 
         return this.name;
     }
@@ -75,56 +73,43 @@ public class Command {
      * @throws MiniProjectException
      *             the mini project exception
      */
-    public void invoke( final String[ ] arg ) throws MiniProjectException {
+    public void invoke(final String[] arg) throws MiniProjectException {
 
-        if( ( arg.length - 1 ) != this.args.size( ) ) {
-
-            this.state.printHelp( );
+        if ((arg.length - 1) != this.args.size()) {
+            this.state.printHelp();
             return;
         }
-
-        final Method[ ] methods = ArrayUtils.concatenate( this.state.getClass( )
-                .getDeclaredMethods( ), this.state.getClass( ).getMethods( ) );
-
-        for( final Method method : methods ) {
-
-            if( !method.getName( ).equals( this.method ) ) {
+        final Method[] methods = ArrayUtils.concatenate(this.state.getClass()
+                .getDeclaredMethods(), this.state.getClass().getMethods());
+        for (final Method method : methods) {
+            if (!method.getName().equals(this.method)) {
                 continue;
             }
-
-            final Class[ ] parameters = method.getParameterTypes( );
-            if( parameters.length != this.args.size( ) ) {
+            final Class[] parameters = method.getParameterTypes();
+            if (parameters.length != this.args.size()) {
                 continue;
             }
-
             Boolean goodMethod = true;
-
-            for( final Class parameter : parameters ) {
-
-                if( !parameter.equals( String.class ) ) {
+            for (final Class parameter : parameters) {
+                if (!parameter.equals(String.class)) {
                     goodMethod = false;
                     break;
                 }
             }
-
-            if( goodMethod ) {
-
-                method.setAccessible( true );
+            if (goodMethod) {
+                method.setAccessible(true);
                 try {
-                    method.invoke( this.state, Arrays.copyOfRange(
-                            ( Object[ ] ) arg, 1, arg.length ) );
-                } catch( IllegalAccessException | InvocationTargetException e ) {
-                    MiniProjectController.LOGGER.severe( "message:"
-                            + e.getMessage( ) + "\ntrace:"
-                            + java.util.Arrays.toString( e.getStackTrace( ) ) );
+                    method.invoke(this.state,
+                            Arrays.copyOfRange((Object[]) arg, 1, arg.length));
+                } catch (IllegalAccessException | InvocationTargetException e) {
+                    MiniProjectController.LOGGER.severe("message:"
+                            + e.getMessage() + "\ntrace:"
+                            + java.util.Arrays.toString(e.getStackTrace()));
                 }
                 return;
-
             }
-
         }
-        throw new MiniProjectException( Error.METHOD_NOT_FOUND );
-
+        throw new MiniProjectException(Error.METHOD_NOT_FOUND);
     }
 
     /*
@@ -133,15 +118,14 @@ public class Command {
      * @see java.lang.Object#toString()
      */
     @Override
-    public String toString( ) {
+    public String toString() {
 
         String show = "- " + this.name + " : " + this.name;
-        for( final String arg : this.args ) {
+        for (final String arg : this.args) {
             show += " " + arg;
         }
         show += "\n";
         show += "\t" + this.description + "\n";
-
         return show;
     }
 }

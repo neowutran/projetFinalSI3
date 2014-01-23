@@ -1,3 +1,6 @@
+/*
+ * @author Martini Didier - Fabien Pinel - Maxime Touroute
+ */
 
 package views.etat;
 
@@ -16,9 +19,10 @@ public class Borrower extends User {
     /**
      * Borrow.
      */
-    @SuppressWarnings( "unused" )
-    private void borrow( ) {
-        View.setState( new Borrow( ) );
+    @SuppressWarnings("unused")
+    private void borrow() {
+
+        View.setState(new Borrow());
     }
 
     /*
@@ -27,17 +31,14 @@ public class Borrower extends User {
      * @see views.IView#setCommands()
      */
     @Override
-    public List<Command> setCommands( ) {
+    public List<Command> setCommands() {
 
-        final List<Command> commands = new ArrayList<>( );
-
-        final Command command1 = new Command( "borrow",
-                new LinkedList<String>( ), this, "borrow",
-                "Rentre en mode de demande d'emprunt" );
-        commands.add( command1 );
-        commands.addAll( super.setCommands( ) );
-
+        final List<Command> commands = new ArrayList<>();
+        final Command command1 = new Command("borrow",
+                new LinkedList<String>(), this, "borrow",
+                "Rentre en mode de demande d'emprunt");
+        commands.add(command1);
+        commands.addAll(super.setCommands());
         return commands;
-
     }
 }
