@@ -44,14 +44,14 @@ public class FeatureTest {
 
     @Test
     public void testIsEquals() throws Exception {
-    	Feature f1 = new Feature("nom", "tablet", "Windows");
-    	Feature f2 = new Feature("nom2", "tablet", "Windows");
-    	assertTrue(f1.equals(f2));
-    	
+    	Feature f1 = new Feature("OperatingSystem", "tablet", "Windows");
+    	Feature f2 = new Feature("OperatingSystem", "tablet", "Windows");
+    	assertTrue(f1.isEquals(f2.getValue()));
     }
 
     @Test
     public void testIsDoubleValue() throws Exception {
-        //TODO
+    	Feature f1 = new Feature("OperatingSystem", "tablet", "Windows");
+    	assertTrue(!f1.getIsDoubleValue());
     }
 }

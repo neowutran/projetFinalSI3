@@ -150,6 +150,10 @@ public class Feature {
                 this.acceptableValue = (List) ((LinkedTreeMap) ((LinkedTreeMap) Config
                         .getConfiguration().get(Config.EQUIPMENT))
                         .get(typeMateriel)).get(this.name);
+                isDoubleValue((List) ((Map) ((Map) Config
+                        .getConfiguration().get(Config.EQUIPMENT))
+                        .get(typeMateriel)).get(this.name));
+                
 
             } else {
 
