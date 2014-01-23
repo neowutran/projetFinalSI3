@@ -11,6 +11,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
+import demonstrateur.MiniProject;
 import model.person.Borrower;
 
 import com.google.gson.annotations.Expose;
@@ -31,7 +32,7 @@ public final class Inventory {
 
     /**
      * Adds the equipment.
-     * 
+     *
      * @param type
      *            the type
      * @param numb
@@ -40,9 +41,8 @@ public final class Inventory {
      *             the mini project exception
      */
     public static void addEquipment(final String type, final String numb)
-            throws MiniProjectException { // TODO : faire un propre try-catch ; Ajouter la saisie
+            throws MiniProjectException { // TODO "Ajouter la saisie"? Maxime, voit ce qu'il faut faire. A TESTER
 
-                                          // des features
         if (((Map) Config.getConfiguration().get(Config.EQUIPMENT))
                 .containsKey(type)) {
             for (int i = 0; i < Integer.parseInt(numb); i++) {
@@ -50,8 +50,7 @@ public final class Inventory {
                     new Equipment(type, new ArrayList<Feature>(), new Health(
                             HealthState.OK), false);
                 } catch (final MiniProjectException e) {
-                    MiniProjectController.LOGGER.severe(java.util.Arrays
-                            .toString(e.getStackTrace()));
+                    throw new MiniProjectException(e);
                 }
             }
             return;
@@ -61,7 +60,7 @@ public final class Inventory {
 
     /**
      * Adds the feature by id.
-     * 
+     *
      * @param equipmentId
      *            the equipment id
      * @param name
@@ -73,7 +72,7 @@ public final class Inventory {
      */
     public static void addFeatureById(final String equipmentId,
             final String name, final String value)
-            throws InvalidParameterException { // TODO : faire un propre try-catch
+            throws InvalidParameterException { //TODO !!A TESTER!!
 
         final Equipment equipment = Inventory.findEquipmentById(equipmentId);
         if (null == equipment) {
@@ -81,28 +80,30 @@ public final class Inventory {
         }
         final Map tmpList = (Map) ((Map) (Config.getConfiguration()
                 .get(Config.EQUIPMENT))).get(equipment.getType());
-        if (!((Map) tmpList.get(value)).containsKey(value)
-                || !((Map) tmpList.get(value)).containsValue(name)) { // TODO : recast pas bon pour
-                                                                      // value et name, la verif de
-                                                                      // l'id quant � elle marche
-                                                                      // bien.
-            throw new InvalidParameterException(Error.INVALID_ID);
+        if(tmpList.get(name) == null){
+            throw new InvalidParameterException(Error.FEATURE_DOESNT_EXIST);
         }
+        if (!((List) tmpList.get(name)).contains(value)) {
+            throw new InvalidParameterException(Error.FEATURE_DOESNT_EXIST);
+        }
+
+        final List<Feature> tmp = equipment.getFeatures();
+
         try {
-            final List<Feature> tmp = Inventory.findEquipmentById(equipmentId)
-                    .getFeatures();
             tmp.add(new Feature(name, Inventory.findEquipmentById(equipmentId)
                     .getType(), value));
-            Inventory.findEquipmentById(equipmentId).setFeatures(tmp);
+
         } catch (final MiniProjectException e) {
             MiniProjectController.LOGGER.severe(java.util.Arrays.toString(e
                     .getStackTrace()));
         }
+        Inventory.findEquipmentById(equipmentId).setFeatures(tmp);
+
     }
 
     /**
      * Check size.
-     * 
+     *
      * @param features
      *            the features
      * @param operator
@@ -124,7 +125,7 @@ public final class Inventory {
 
     /**
      * Evaluate.
-     * 
+     *
      * @param operator
      *            the operator
      * @param value
@@ -145,9 +146,7 @@ public final class Inventory {
             } else {
                 type = 1;
             }
-            if (type == 0) {
-                throw new MiniProjectException(Error.FEATURE_DOESNT_EXIST);
-            }
+
             switch (operator) {
                 case "=":
                     return (Boolean) feature.getClass()
@@ -197,7 +196,7 @@ public final class Inventory {
 
     /**
      * Find.
-     * 
+     *
      * @param type
      *            the type
      * @param features
@@ -239,7 +238,7 @@ public final class Inventory {
 
     /**
      * Find actual borrow by borrower.
-     * 
+     *
      * @param borrowerId
      *            the borrower id
      * @return the list
@@ -260,7 +259,7 @@ public final class Inventory {
 
     /**
      * Find available.
-     * 
+     *
      * @param start
      *            the start
      * @param end
@@ -293,7 +292,7 @@ public final class Inventory {
 
     /**
      * Find borrow by borrower.
-     * 
+     *
      * @param borrowerId
      *            the borrower id
      * @return the list
@@ -313,7 +312,7 @@ public final class Inventory {
 
     /**
      * Find borrow by id.
-     * 
+     *
      * @param id
      *            the id
      * @return the borrow
@@ -331,7 +330,7 @@ public final class Inventory {
 
     /**
      * Find borrow waiting for administrator.
-     * 
+     *
      * @return the list
      */
     public static List<Borrower.Borrow> findBorrowWaitingForAdministrator() {
@@ -348,7 +347,7 @@ public final class Inventory {
 
     /**
      * Find borrow with equipment not ok.
-     * 
+     *
      * @return the list
      */
     public static List<Borrower.Borrow> findBorrowWithEquipmentNotOk() {
@@ -372,7 +371,7 @@ public final class Inventory {
 
     /**
      * Find borrow with equipment under repair.
-     * 
+     *
      * @return the list
      */
     public static List<Borrower.Borrow> findBorrowWithEquipmentUnderRepair() {
@@ -395,7 +394,7 @@ public final class Inventory {
 
     /**
      * Find equipment by id.
-     * 
+     *
      * @param id
      *            the id
      * @return the equipment
@@ -413,7 +412,7 @@ public final class Inventory {
 
     /**
      * Find equipment under repair.
-     * 
+     *
      * @return the list
      */
     public static List<Equipment> findEquipmentUnderRepair() {
@@ -430,7 +429,7 @@ public final class Inventory {
 
     /**
      * Find equipments who need repair.
-     * 
+     *
      * @return the list
      */
     public static List<Equipment> findEquipmentWhoNeedRepair() {
@@ -449,7 +448,7 @@ public final class Inventory {
 
     /**
      * Find late borrow.
-     * 
+     *
      * @return the list
      */
     public static List<Borrower.Borrow> findLateBorrow() {
@@ -467,7 +466,7 @@ public final class Inventory {
 
     /**
      * Find person by id.
-     * 
+     *
      * @param id
      *            the id
      * @return the person
@@ -484,7 +483,7 @@ public final class Inventory {
 
     /**
      * Find quantity equipment.
-     * 
+     *
      * @param findEquipment
      *            the find equipment
      * @return the integer
@@ -503,7 +502,7 @@ public final class Inventory {
 
     /**
      * Gets the single instance of Inventory.
-     * 
+     *
      * @return single instance of Inventory
      */
     public static Inventory getInstance() {
@@ -516,7 +515,7 @@ public final class Inventory {
 
     /**
      * Checks if is borrowed.
-     * 
+     *
      * @param equipmentsId
      *            the equipments id
      * @param start
@@ -548,7 +547,7 @@ public final class Inventory {
 
     /**
      * Checks if is borrower.
-     * 
+     *
      * @param id
      *            the id
      * @return true, if is borrower
@@ -587,7 +586,7 @@ public final class Inventory {
 
     /**
      * Adds the borrow.
-     * 
+     *
      * @param borrow
      *            the borrow
      */
@@ -598,7 +597,7 @@ public final class Inventory {
 
     /**
      * Gets the borrows.
-     * 
+     *
      * @return the borrows
      */
     public List<Borrower.Borrow> getBorrows() {
@@ -608,7 +607,7 @@ public final class Inventory {
 
     /**
      * Gets the equipments.
-     * 
+     *
      * @return the equipments
      */
     public java.util.List<Equipment> getEquipments() {
@@ -618,7 +617,7 @@ public final class Inventory {
 
     /**
      * Sets the equipments.
-     * 
+     *
      * @param equipments
      *            the new equipments
      */

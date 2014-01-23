@@ -43,7 +43,7 @@ public class Equipment extends InventoryElement {
 
     /**
      * Instantiates a new equipment.
-     * 
+     *
      * @param type
      *            the type
      * @param features
@@ -77,7 +77,7 @@ public class Equipment extends InventoryElement {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see model.person.InventoryElement#checkExistence(java.lang.String)
      */
     @Override
@@ -90,7 +90,7 @@ public class Equipment extends InventoryElement {
 
     /**
      * Check feature.
-     * 
+     *
      * @param features
      *            the features
      * @throws InvalidParameterException
@@ -114,7 +114,7 @@ public class Equipment extends InventoryElement {
 
     /**
      * Check type.
-     * 
+     *
      * @param type
      *            the type
      * @throws InvalidParameterException
@@ -131,7 +131,7 @@ public class Equipment extends InventoryElement {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
@@ -144,7 +144,7 @@ public class Equipment extends InventoryElement {
 
     /**
      * Gets the features.
-     * 
+     *
      * @return the features
      */
     public List<model.Feature> getFeatures() {
@@ -154,7 +154,7 @@ public class Equipment extends InventoryElement {
 
     /**
      * Gets the health.
-     * 
+     *
      * @return the health
      */
     public Health getHealth() {
@@ -164,7 +164,7 @@ public class Equipment extends InventoryElement {
 
     /**
      * Gets the type.
-     * 
+     *
      * @return the type
      */
     public String getType() {
@@ -174,7 +174,7 @@ public class Equipment extends InventoryElement {
 
     /**
      * Gets the under repair.
-     * 
+     *
      * @return the under repair
      */
     public Boolean getUnderRepair() {
@@ -184,7 +184,7 @@ public class Equipment extends InventoryElement {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#hashCode()
      */
     @Override
@@ -199,7 +199,7 @@ public class Equipment extends InventoryElement {
 
     /**
      * Sets the features.
-     * 
+     *
      * @param features
      *            the new features
      * @throws InvalidParameterException
@@ -213,7 +213,7 @@ public class Equipment extends InventoryElement {
 
     /**
      * Sets the health.
-     * 
+     *
      * @param health
      *            the new health
      */
@@ -227,7 +227,7 @@ public class Equipment extends InventoryElement {
 
     /**
      * Sets the under repair.
-     * 
+     *
      * @param underRepair
      *            the new under repair
      * @throws MiniProjectException
@@ -247,13 +247,12 @@ public class Equipment extends InventoryElement {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#toString()
      */
     @Override
-    public String toString() { // TODO : afficher les stats nbBorrowed et nbUnderRepair (j'ai pas
+    public String toString() {
 
-                               // os� toucher ^^)
         String template = (String) ((Map) Config.getConfiguration().get(
                 Config.TEMPLATE)).get(Config.EQUIPMENT);
         template = template.replaceAll("\\{type\\}", this.type);

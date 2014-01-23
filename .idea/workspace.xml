@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_TEST_SOURCES" value="false" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="ad44769e-e477-4b3c-8ec1-c187641425d9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Feature.java" afterPath="$PROJECT_DIR$/src/model/Feature.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/MiniProjectController.java" afterPath="$PROJECT_DIR$/src/controllers/MiniProjectController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sonar/pmd-unit-tests.xml" afterPath="$PROJECT_DIR$/.sonar/pmd-unit-tests.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sonar/pmd.xml" afterPath="$PROJECT_DIR$/.sonar/pmd.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Equipment.java" afterPath="$PROJECT_DIR$/src/model/Equipment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Inventory.java" afterPath="$PROJECT_DIR$/src/model/Inventory.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="miniProjet.iws" />
@@ -73,21 +74,17 @@
       <file leaf-file-name="Administrator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/etat/Administrator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="203" column="5" selection-start="5374" selection-end="5374" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6606">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="267" column="5" selection-start="6845" selection-end="6845" vertical-scroll-proportion="0.0" vertical-offset="4806" max-vertical-offset="7614">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Equipment.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Equipment.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/model/Equipment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="215" column="34" selection-start="5300" selection-end="5300" vertical-scroll-proportion="0.0" vertical-offset="1243" max-vertical-offset="4068">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="15" column="0" selection-start="292" selection-end="292" vertical-scroll-proportion="0.1109741" vertical-offset="0" max-vertical-offset="4518">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -95,7 +92,7 @@
       <file leaf-file-name="ArrayUtils.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lib/ArrayUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="13" selection-start="94" selection-end="94" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="828">
+            <state line="11" column="13" selection-start="160" selection-end="160" vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="882">
               <folding />
             </state>
           </provider>
@@ -104,10 +101,8 @@
       <file leaf-file-name="CopyFile.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lib/CopyFile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="19" selection-start="170" selection-end="170" vertical-scroll-proportion="0.0" vertical-offset="4" max-vertical-offset="1026">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="13" column="19" selection-start="170" selection-end="170" vertical-scroll-proportion="0.0" vertical-offset="234" max-vertical-offset="1044">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -115,10 +110,8 @@
       <file leaf-file-name="Json.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lib/Json.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="0" selection-start="15" selection-end="15" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1062">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="6" column="0" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="1098">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -126,10 +119,8 @@
       <file leaf-file-name="Inventory.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/Inventory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="581" column="13" selection-start="17286" selection-end="17286" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="10566">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="43" column="45" selection-start="970" selection-end="970" vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="10962">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -137,10 +128,8 @@
       <file leaf-file-name="MiniProjectController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controllers/MiniProjectController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1422">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="5" column="0" selection-start="55" selection-end="55" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="1350">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -148,19 +137,17 @@
       <file leaf-file-name="MiniProject.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/demonstrateur/MiniProject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="73" column="60" selection-start="1904" selection-end="1904" vertical-scroll-proportion="0.0" vertical-offset="746" max-vertical-offset="1584">
+            <state line="65" column="60" selection-start="1794" selection-end="1794" vertical-scroll-proportion="0.0" vertical-offset="1170" max-vertical-offset="1566">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Feature.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Feature.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/Feature.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="133" column="65" selection-start="3304" selection-end="3304" vertical-scroll-proportion="0.32136446" vertical-offset="2089" max-vertical-offset="3834">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="205" column="36" selection-start="5050" selection-end="5050" vertical-scroll-proportion="0.0" vertical-offset="3144" max-vertical-offset="4248">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -168,10 +155,8 @@
       <file leaf-file-name="SaveLoad.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/SaveLoad.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="0" selection-start="963" selection-end="963" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7146">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="43" column="0" selection-start="999" selection-end="999" vertical-scroll-proportion="0.0" vertical-offset="774" max-vertical-offset="6246">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -227,7 +212,6 @@
         <option value="$PROJECT_DIR$/test/model/MaterielTest.java" />
         <option value="$PROJECT_DIR$/src/config.json" />
         <option value="$PROJECT_DIR$/src/config/Error.java" />
-        <option value="$PROJECT_DIR$/src/model/Equipment.java" />
         <option value="$PROJECT_DIR$/test/model/person/BorrowTest.java" />
         <option value="$PROJECT_DIR$/test/model/EquipmentTest.java" />
         <option value="$PROJECT_DIR$/test/model/FeatureTest.java" />
@@ -237,15 +221,16 @@
         <option value="$PROJECT_DIR$/src/views/etat/Main.java" />
         <option value="$PROJECT_DIR$/src/views/etat/Administrator.java" />
         <option value="$PROJECT_DIR$/src/model/SaveLoad.java" />
-        <option value="$PROJECT_DIR$/src/model/Inventory.java" />
         <option value="$PROJECT_DIR$/src/controllers/MiniProjectController.java" />
         <option value="$PROJECT_DIR$/src/model/Feature.java" />
+        <option value="$PROJECT_DIR$/src/model/Inventory.java" />
+        <option value="$PROJECT_DIR$/src/model/Equipment.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="1" />
-    <option name="width" value="1668" />
+    <option name="width" value="1662" />
     <option name="height" value="976" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -274,8 +259,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -530,6 +513,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -735,19 +720,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -774,6 +746,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -892,11 +877,12 @@
       <workItem from="1390467362004" duration="34000" />
       <workItem from="1390467407763" duration="2260000" />
       <workItem from="1390482008956" duration="479000" />
+      <workItem from="1390483168056" duration="786000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102998000" />
+    <option name="totallyTimeSpent" value="103784000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -919,14 +905,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="0" width="1668" height="976" extended-state="4" />
-    <editor active="false" />
+    <frame x="1" y="0" width="1662" height="976" extended-state="4" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947975" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947975" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947975" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -935,18 +922,17 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947975" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29534882" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29418606" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24907522" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24876237" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32634032" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947975" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32750583" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1253,36 +1239,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Inventory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="581" column="13" selection-start="17286" selection-end="17286" vertical-scroll-proportion="0.0" vertical-offset="9527" max-vertical-offset="10314">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/etat/Administrator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="203" column="5" selection-start="5374" selection-end="5374" vertical-scroll-proportion="0.0" vertical-offset="3654" max-vertical-offset="6606">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="267" column="5" selection-start="6845" selection-end="6845" vertical-scroll-proportion="0.0" vertical-offset="4806" max-vertical-offset="7614">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/SaveLoad.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="963" selection-end="963" vertical-scroll-proportion="0.0" vertical-offset="738" max-vertical-offset="7146">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="43" column="0" selection-start="999" selection-end="999" vertical-scroll-proportion="0.0" vertical-offset="774" max-vertical-offset="6246">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lib/ArrayUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="94" selection-end="94" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="828">
+        <state line="11" column="13" selection-start="160" selection-end="160" vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="882">
           <folding />
         </state>
       </provider>
@@ -1290,33 +1263,27 @@
     <entry file="file://$PROJECT_DIR$/src/lib/CopyFile.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="19" selection-start="170" selection-end="170" vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="990">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lib/Json.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="15" selection-end="15" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1062">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="6" column="0" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="1098">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/MiniProjectController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1422">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="5" column="0" selection-start="55" selection-end="55" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="1350">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/demonstrateur/MiniProject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="60" selection-start="1904" selection-end="1904" vertical-scroll-proportion="0.0" vertical-offset="746" max-vertical-offset="1584">
+        <state line="65" column="60" selection-start="1794" selection-end="1794" vertical-scroll-proportion="0.0" vertical-offset="1170" max-vertical-offset="1566">
           <folding />
         </state>
       </provider>
@@ -1339,21 +1306,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Equipment.java">
+    <entry file="file://$PROJECT_DIR$/src/model/Feature.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="215" column="34" selection-start="5300" selection-end="5300" vertical-scroll-proportion="0.0" vertical-offset="3388" max-vertical-offset="3942">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="205" column="36" selection-start="5050" selection-end="5050" vertical-scroll-proportion="0.0" vertical-offset="3144" max-vertical-offset="4248">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Feature.java">
+    <entry file="file://$PROJECT_DIR$/src/model/Inventory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="133" column="65" selection-start="3304" selection-end="3304" vertical-scroll-proportion="0.32136446" vertical-offset="2089" max-vertical-offset="3834">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="43" column="45" selection-start="970" selection-end="970" vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="10962">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Equipment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="292" selection-end="292" vertical-scroll-proportion="0.1109741" vertical-offset="0" max-vertical-offset="4518">
+          <folding />
         </state>
       </provider>
     </entry>
