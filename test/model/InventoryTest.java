@@ -45,10 +45,12 @@ public class InventoryTest {
 
     @Test
     public void testAddBorrow() throws Exception {
-    	model.person.Borrower b = new model.person.Borrower("name","id", SaveLoad.PERSON_TYPE_BORROWER,"password");
+    	model.person.Borrower b = new model.person.Borrower("admin","2222", "student","admin");
     	List<String> liste = new ArrayList<String>();
     	liste.add("tablet");
-    	b.borrow(liste, new GregorianCalendar(), new GregorianCalendar());
+    	GregorianCalendar date2 = new GregorianCalendar();
+    	date2.add(GregorianCalendar.MONTH,1);
+    	b.borrow(liste, new GregorianCalendar(), date2);
     	
     }
 
