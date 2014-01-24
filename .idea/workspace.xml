@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ad44769e-e477-4b3c-8ec1-c187641425d9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/person/Borrower.java" afterPath="$PROJECT_DIR$/src/model/person/Borrower.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="miniProjet.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -94,7 +93,7 @@
       <file leaf-file-name="Borrower.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/model/person/Borrower.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="182" column="14" selection-start="4614" selection-end="4614" vertical-scroll-proportion="0.66480446" vertical-offset="2613" max-vertical-offset="6804">
+            <state line="177" column="17" selection-start="4326" selection-end="4326" vertical-scroll-proportion="0.4301676" vertical-offset="2649" max-vertical-offset="6858">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -902,12 +901,12 @@
       <workItem from="1390467407763" duration="2260000" />
       <workItem from="1390482008956" duration="479000" />
       <workItem from="1390483168056" duration="2869000" />
-      <workItem from="1390570166131" duration="8636000" />
+      <workItem from="1390570166131" duration="8909000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114503000" />
+    <option name="totallyTimeSpent" value="114776000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1384,7 +1383,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/person/Borrower.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="182" column="14" selection-start="4614" selection-end="4614" vertical-scroll-proportion="0.66480446" vertical-offset="2613" max-vertical-offset="6804">
+        <state line="177" column="17" selection-start="4326" selection-end="4326" vertical-scroll-proportion="0.4301676" vertical-offset="2649" max-vertical-offset="6858">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

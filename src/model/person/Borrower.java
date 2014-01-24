@@ -173,19 +173,22 @@ public class Borrower extends model.Person {
             }
             else if (BorrowState.RETURNED.equals(state)) {
                 this.returned = Calendar.getInstance();
-                //for(int i = 0 ; i < equipmentId.size() ; i++)
-            	//	Inventory.getInstance().findEquipmentById(equipmentId.get(i)).updateLog( borrowerId , "returned");
+                for(int i = 0 ; i < equipmentId.size() ; i++){
+            		Inventory.getInstance().findEquipmentById(equipmentId.get(i)).updateLog( borrowerId , "returned");
+                }
             }else if (BorrowState.ACCEPT.equals(state)
                     && Inventory.isBorrowed(this.getEquipmentId(),
                             this.getBorrowStart(), this.getBorrowEnd())) {
                 throw new MiniProjectException(Error.EQUIPMENT_UNAVAILABLE);
             }
-            //else { //TODO ce else ne doit pas exister
             this.state = state;
             this.administratorId = administrator;
-          //  for(int i = 0 ; i < equipmentId.size() ; i++)
-        	//	Inventory.getInstance().findEquipmentById(equipmentId.get(i)).updateLog( borrowerId , "borrowed");
-           // }
+            if(BorrowState.ACCEPT.equals(state)){
+            for(int i = 0 ; i < equipmentId.size() ; i++){
+        		Inventory.getInstance().findEquipmentById(equipmentId.get(i)).updateLog( borrowerId , "borrowed");
+            }
+            }
+
         }
 
         /*
