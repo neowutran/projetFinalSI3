@@ -3,6 +3,8 @@ package model.person;
 import static org.junit.Assert.*;
 import controllers.MiniProjectController;
 import demonstrateur.MiniProject;
+import model.BorrowState;
+import model.Inventory;
 import model.MiniProjectException;
 import model.SaveLoad;
 import org.junit.Before;
@@ -56,8 +58,15 @@ public class BorrowTest {
 
     @Test
     public void testSetState() throws Exception {
-
-        //TODO
+    	model.person.Borrower b = new model.person.Borrower("test","1110", "student","test");
+    	List<String> liste = new ArrayList<String>();
+    	liste.add("ca072236-8f15-486d-93e4-2b21abb831a5");
+    	GregorianCalendar date1 = new GregorianCalendar();
+    	GregorianCalendar date2 = new GregorianCalendar();
+    	date2.add(GregorianCalendar.DAY_OF_YEAR,1);
+    	String id = b.borrow(liste, date1, date2);
+    	Inventory.findBorrowById(id).setState(BorrowState.ACCEPT, "000");
+    	assertEquals(Inventory.findBorrowById(id).getState(), BorrowState.ACCEPT);
 
     }
 
