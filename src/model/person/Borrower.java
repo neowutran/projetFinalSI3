@@ -172,22 +172,29 @@ public class Borrower extends model.Person {
          *             the mini project exception
          */
         public void setState(final BorrowState state, final String administrator)
-                throws MiniProjectException {
+                throws MiniProjectException { // TODO : Tester les stats (donc faire la sauvegarde)
 
             if (this.state.equals(state)) {
                 return;
             }
-            if (BorrowState.RETURNED.equals(state)) {
+            else if (BorrowState.RETURNED.equals(state)) {
                 this.returned = Calendar.getInstance();
                 this.state = BorrowState.RETURNED;
+                
+                for(int i = 0 ; i < equipmentId.size() ; i++)
+            		Inventory.getInstance().findEquipmentById(equipmentId.get(i)).updateLog( borrowerId , "returned");
             }
-            if (BorrowState.ACCEPT.equals(state)
+            else if (BorrowState.ACCEPT.equals(state)
                     && Inventory.isBorrowed(this.getEquipmentId(),
                             this.getBorrowStart(), this.getBorrowEnd())) {
                 throw new MiniProjectException(Error.EQUIPMENT_UNAVAILABLE);
             }
+            else {
             this.state = state;
             this.administratorId = administrator;
+            for(int i = 0 ; i < equipmentId.size() ; i++)
+        		Inventory.getInstance().findEquipmentById(equipmentId.get(i)).updateLog( borrowerId , "borrowed");
+            }
         }
 
         /*

@@ -70,7 +70,7 @@ public final class Inventory {
      */
     public static void addFeatureById(final String equipmentId,
             final String name, final String value)
-            throws MiniProjectException { //TODO !!A TESTER!!
+            throws MiniProjectException { //TODO !!A TESTER!!->C'est bon tous les ças marchent. (Maxime).
 
         final Equipment equipment = Inventory.findEquipmentById(equipmentId);
         if (null == equipment) {
@@ -535,8 +535,6 @@ public final class Inventory {
                             && (borrow.getBorrowEnd().getTimeInMillis() > start
                                     .getTimeInMillis())
                             && borrow.getState().equals(BorrowState.ACCEPT)) {
-                    	for(int i = 0 ; i < equipmentsId.size() ; i++)
-                    		Inventory.getInstance().findEquipmentById(equipmentsId.get(i)).incrStatsNbBorrowed();
                         return true;
                     }
                 }

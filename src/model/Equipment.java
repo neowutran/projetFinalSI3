@@ -21,10 +21,12 @@ public class Equipment extends InventoryElement {
     /**
      * The type.
      */
+
     @Expose
     private String        type;
     /** The stats */
-    private Stats stats;
+    @Expose
+    private Stats stats;  	//TODO : Faire le load pour stats (Didier)
     /** The health. */
     @Expose
     private Health        health;
@@ -221,15 +223,7 @@ public class Equipment extends InventoryElement {
         }
     }
     
-    /**
-     * Increments stat : nbBorrowed
-     *
-     * 
-     *   
-     */
-    public void incrStatsNbBorrowed(){
-    	stats.incrNbBorrowed();
-    }
+
 
     /**
      * Sets the under repair.
@@ -270,4 +264,14 @@ public class Equipment extends InventoryElement {
         template = template.replaceAll("\\{health\\}", this.health.toString());
         return template;
     }
+
+	 /**
+	 * to update the stats
+    * @param id of the user
+    * @param operation made
+    */
+	public void updateLog(String borrowerId, String operationName) {
+		stats.updateLog(borrowerId, operationName);
+		
+	}
 }
