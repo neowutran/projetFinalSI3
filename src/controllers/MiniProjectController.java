@@ -4,6 +4,7 @@
 
 package controllers;
 
+import model.Logs;
 import model.MiniProjectException;
 import model.SaveLoad;
 import views.View;
@@ -21,7 +22,7 @@ public class MiniProjectController {
 
     /**
      * Gets the single instance of MiniProjectController.
-     * 
+     *
      * @return single instance of MiniProjectController
      */
     public static MiniProjectController getInstance() {
@@ -40,6 +41,7 @@ public class MiniProjectController {
         this.loggingConfig();
         try {
             SaveLoad.load(SaveLoad.DATA);
+            Logs.load(Logs.STATS);
         } catch (final MiniProjectException e) {
             MiniProjectController.LOGGER.severe(java.util.Arrays.toString(e
                     .getStackTrace()));

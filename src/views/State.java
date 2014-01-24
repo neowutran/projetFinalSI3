@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import model.Logs;
 import model.MiniProjectException;
 import model.SaveLoad;
 import controllers.MiniProjectController;
@@ -19,7 +20,7 @@ public abstract class State implements IView {
 
     /**
      * Action.
-     * 
+     *
      * @param line
      *            the line
      */
@@ -51,12 +52,13 @@ public abstract class State implements IView {
     public void exit() {
 
         SaveLoad.save();
+        Logs.save();
         View.exit();
     }
 
     /**
      * Interpreter.
-     * 
+     *
      * @param line
      *            the line
      */
@@ -79,7 +81,7 @@ public abstract class State implements IView {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * see views.IView#setCommands()
      */
     @Override

@@ -96,6 +96,8 @@ public abstract class Person {
         this.id = id;
         this.password = password;
         Person.person.add(this);
+        new Log(Logs.Type.ADD_PERSON, null, null, this, null);
+
     }
 
     /**

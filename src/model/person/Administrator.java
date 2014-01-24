@@ -4,9 +4,7 @@
 
 package model.person;
 
-import model.BorrowState;
-import model.MiniProjectException;
-import model.SaveLoad;
+import model.*;
 import controllers.MiniProjectController;
 
 /**
@@ -51,6 +49,7 @@ public class Administrator extends model.Person {
                             + java.util.Arrays.toString(e.getStackTrace()));
             return false;
         }
+        new Log(Logs.Type.CHANGE_BORROW_STATE, null, borrow, null, state.toString());
         return true;
     }
 }

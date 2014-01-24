@@ -7,16 +7,30 @@ import java.util.Calendar;
 import java.util.List;
 
 public class Stats {
-	   /** The nb borrowed */
+    public void setNbBorrowed(int nbBorrowed) {
+        this.nbBorrowed = nbBorrowed;
+    }
+
+    /** The nb borrowed */
 	@Expose
 	private int nbBorrowed;
-	   /** The nb under repair */
+
+    public void setNbUnderRepair(int nbUnderRepair) {
+        this.nbUnderRepair = nbUnderRepair;
+    }
+
+    /** The nb under repair */
 	@Expose
 	private int nbUnderRepair;
-	   /** The log of operations */
+
+    public void setLogOperations(List<String> logOperations) {
+        this.logOperations = logOperations;
+    }
+
+    /** The log of operations */
 	@Expose
 	private List<String> logOperations;
-	
+
     /**
      * Sets the stats.
      */
@@ -25,14 +39,14 @@ public class Stats {
 		nbUnderRepair=0;
 		logOperations = new ArrayList<String>();
 	}
-	
-	
+
+
 	 /**
 	 * to update the logOperation list and stats
      * @param id of the user
      * @param operation made
      */
-	
+
 	public void updateLog(String userId , String operationName) {
 
 		switch(operationName) {
@@ -48,29 +62,29 @@ public class Stats {
 		default:{
 			break;
 		}
-		
-			
+
+
 		}
 
-			
+
 	}
-	
+
 	 /**
 	 * to write on the logOperation list with the right syntax
     * @param id of the user
     * @param log to add
     */
 	private void writeToLog(String userId, String operation) {
-		
+
 		String tmp="[ "+ Calendar.getInstance().toString() +" ]";
 		tmp+="[ "+operation+" ]";
 		tmp+= "[ by user " + userId +" ]";
-		
+
 		logOperations.add(tmp);
-		
+
 	}
-	
-	
+
+
 	 /**
      * @return number of borrows made
      */
@@ -84,7 +98,7 @@ public class Stats {
 	public void incrNbUnderRepair(){
 		nbUnderRepair++;
 	}
-	
+
     /*
      * (non-Javadoc)
      *

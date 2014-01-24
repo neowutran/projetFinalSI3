@@ -10,11 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import model.BorrowState;
-import model.Equipment;
-import model.Inventory;
-import model.InventoryElement;
-import model.MiniProjectException;
+import model.*;
 
 import com.google.gson.annotations.Expose;
 
@@ -103,12 +99,10 @@ public class Borrower extends model.Person {
          * @see model.person.InventoryElement#checkExistence(java.lang.String)
          */
         @Override
-        protected void checkExistence(final String id)
+        protected boolean checkExistence(final String id)
                 throws MiniProjectException {
 
-            if (Inventory.findBorrowById(id) != null) {
-                throw new MiniProjectException("this borrow already exist");
-            }
+            return Inventory.findBorrowById(id) != null;
         }
 
         /**
@@ -172,7 +166,7 @@ public class Borrower extends model.Person {
          *             the mini project exception
          */
         public void setState(final BorrowState state, final String administrator)
-                throws MiniProjectException { // TODO : Tester les stats (donc faire la sauvegarde)
+                throws MiniProjectException {
 
             if (this.state.equals(state)) {
                 return;
@@ -180,21 +174,20 @@ public class Borrower extends model.Person {
             else if (BorrowState.RETURNED.equals(state)) {
                 this.returned = Calendar.getInstance();
                 this.state = BorrowState.RETURNED;
-                
-                for(int i = 0 ; i < equipmentId.size() ; i++)
-            		Inventory.getInstance().findEquipmentById(equipmentId.get(i)).updateLog( borrowerId , "returned");
-            }
-            else if (BorrowState.ACCEPT.equals(state)
+
+                //for(int i = 0 ; i < equipmentId.size() ; i++)
+            	//	Inventory.getInstance().findEquipmentById(equipmentId.get(i)).updateLog( borrowerId , "returned");
+            }else if (BorrowState.ACCEPT.equals(state)
                     && Inventory.isBorrowed(this.getEquipmentId(),
                             this.getBorrowStart(), this.getBorrowEnd())) {
                 throw new MiniProjectException(Error.EQUIPMENT_UNAVAILABLE);
             }
-            else {
+            //else { //TODO ce else ne doit pas exister
             this.state = state;
             this.administratorId = administrator;
-            for(int i = 0 ; i < equipmentId.size() ; i++)
-        		Inventory.getInstance().findEquipmentById(equipmentId.get(i)).updateLog( borrowerId , "borrowed");
-            }
+          //  for(int i = 0 ; i < equipmentId.size() ; i++)
+        	//	Inventory.getInstance().findEquipmentById(equipmentId.get(i)).updateLog( borrowerId , "borrowed");
+           // }
         }
 
         /*
@@ -269,6 +262,7 @@ public class Borrower extends model.Person {
         this.maximumHours = ((Double) ((Map) ((Map) Config.getConfiguration()
                 .get(Config.BORROWER)).get(this.getType()))
                 .get(Config.MAXIMUM_HOUR)).longValue();
+
     }
 
     /**
@@ -319,6 +313,7 @@ public class Borrower extends model.Person {
             return null;
         }
         Inventory.getInstance().addBorrow(borrow);
+        new Log(Logs.Type.ADD_BORROW, null, borrow, null,null);
         return borrow.getId();
     }
 

@@ -24,6 +24,11 @@ public class Equipment extends InventoryElement {
 
     @Expose
     private String        type;
+
+    public void setStats(Stats stats) {
+        this.stats = stats;
+    }
+
     /** The stats */
     @Expose
     private Stats stats;  	//TODO : Faire le load pour stats (Didier)
@@ -78,11 +83,9 @@ public class Equipment extends InventoryElement {
      * @see model.person.InventoryElement#checkExistence(java.lang.String)
      */
     @Override
-    protected void checkExistence(final String id) throws MiniProjectException {
+    protected boolean checkExistence(final String id) throws MiniProjectException {
 
-        if (Inventory.findEquipmentById(id) != null) {
-            throw new MiniProjectException(Error.EQUIPMENT_ALREADY_EXIST);
-        }
+        return Inventory.findEquipmentById(id) != null;
     }
 
     /**
@@ -108,8 +111,8 @@ public class Equipment extends InventoryElement {
         }
         this.features = features;
     }
-    
-    
+
+
     /**
      * Check type.
      *
@@ -221,8 +224,10 @@ public class Equipment extends InventoryElement {
         if (this.health.getHealthState().equals(HealthState.OK)) {
             this.underRepair = false;
         }
+
+        new Log(Logs.Type.CHANGE_HEALTH, this, null, null, health.toString());
     }
-    
+
 
 
     /**
@@ -240,6 +245,8 @@ public class Equipment extends InventoryElement {
             throw new MiniProjectException(Error.REPAIR_OK);
         }
         this.underRepair = underRepair;
+
+        new Log(Logs.Type.CHANGE_UNDER_REPAIR, this, null, null, underRepair.toString());
         if (!underRepair) {
             stats.incrNbUnderRepair();
         }
@@ -265,13 +272,9 @@ public class Equipment extends InventoryElement {
         return template;
     }
 
-	 /**
-	 * to update the stats
-    * @param id of the user
-    * @param operation made
-    */
+
 	public void updateLog(String borrowerId, String operationName) {
 		stats.updateLog(borrowerId, operationName);
-		
+
 	}
 }

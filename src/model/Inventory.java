@@ -45,8 +45,9 @@ public final class Inventory {
                 .containsKey(type)) {
             for (int i = 0; i < Integer.parseInt(numb); i++) {
                 try {
-                    new Equipment(type, new ArrayList<Feature>(), new Health(
+                    Equipment equipment = new Equipment(type, new ArrayList<Feature>(), new Health(
                             HealthState.OK), false);
+                    new Log(Logs.Type.ADD_EQUIPMENT, equipment, null,null, numb);
                 } catch (final MiniProjectException e) {
                     throw new MiniProjectException(e);
                 }
@@ -70,7 +71,7 @@ public final class Inventory {
      */
     public static void addFeatureById(final String equipmentId,
             final String name, final String value)
-            throws MiniProjectException { //TODO !!A TESTER!!->C'est bon tous les ças marchent. (Maxime).
+            throws MiniProjectException { //TODO !!A TESTER!!->C'est bon tous les ï¿½as marchent. (Maxime).
 
         final Equipment equipment = Inventory.findEquipmentById(equipmentId);
         if (null == equipment) {
@@ -96,6 +97,7 @@ public final class Inventory {
                     .getStackTrace()));
         }
         Inventory.findEquipmentById(equipmentId).setFeatures(tmp);
+        new Log(Logs.Type.ADD_FEATURE, Inventory.findEquipmentById(equipmentId), null, null, name+":"+value);
 
     }
 
