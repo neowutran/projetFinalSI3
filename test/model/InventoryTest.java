@@ -96,8 +96,16 @@ public class InventoryTest {
 
     @Test
     public void testFindBorrowById() throws Exception {
-    	Borrower.Borrow b = Inventory.findBorrowById(boId);
-    	assertEquals(b.getEquipmentId().get(0), "ca072236-8f15-486d-93e4-2b21abb831a5");
+    	model.person.Borrower b = new model.person.Borrower("test","8888", "student","test");
+    	List<String> liste = new ArrayList<String>();
+    	liste.add("ca072236-8f15-486d-93e4-2b21abb831a5");
+    	GregorianCalendar date1 = new GregorianCalendar();
+    	GregorianCalendar date2 = new GregorianCalendar();
+    	date2.add(GregorianCalendar.MONTH,1);
+    	boId = b.borrow(liste, date1, date2);
+    	
+    	Borrower.Borrow bobo = Inventory.findBorrowById(boId);
+    	assertEquals(bobo.getEquipmentId().get(0), "ca072236-8f15-486d-93e4-2b21abb831a5");
     }
 
     @Test
@@ -126,7 +134,7 @@ public class InventoryTest {
     	Equipment e = Inventory.findEquipmentById("ca072236-8f15-486d-93e4-2b21abb831a5");
    	 	e.setHealth(new Health(HealthState.NOT_OK));
    	 	List<Equipment> listeWNR = Inventory.findEquipmentWhoNeedRepair();
-   	 	assertEquals(listeWNR.get(0).getId(),"ca072236-8f15-486d-93e4-2b21abb831a5");
+   	 	assertEquals(listeWNR.get(0).getId(),e.getId());
     }
 
     @Test
@@ -170,21 +178,48 @@ public class InventoryTest {
 
     @Test
     public void testIsBorrower() throws Exception {
-        //TODO
+    	model.person.Borrower b = new model.person.Borrower("test","7777", "student","test");
+    	assertTrue(Inventory.isBorrower(b.getId()));
     }
 
     @Test
     public void testAddEquipment() throws Exception {
-        //TODO
+    	Equipment e = new Equipment("tablet", new ArrayList<Feature>(), new Health(HealthState.OK), false);
+    	int nbTablettes = (int)Inventory.findQuantityEquipment(e);
+    	Inventory.addEquipment("tablet", "1");
+    	nbTablettes++;
+    	assertEquals((int)Inventory.findQuantityEquipment(e),nbTablettes);
     }
 
     @Test
     public void testFindBorrowWithEquipmentUnderRepair() throws Exception{
-        //TODO
+    	model.person.Borrower b = new model.person.Borrower("test","9999", "student","test");
+    	List<String> liste = new ArrayList<String>();
+    	liste.add("ca072236-8f15-486d-93e4-2b21abb831a5");
+    	GregorianCalendar date1 = new GregorianCalendar();
+    	GregorianCalendar date2 = new GregorianCalendar();
+    	date2.add(GregorianCalendar.DAY_OF_YEAR,1);
+    	String id = b.borrow(liste, date1, date2);
+    	Equipment e = Inventory.findEquipmentById("ca072236-8f15-486d-93e4-2b21abb831a5");
+   	 	e.setHealth(new Health(HealthState.NOT_OK));
+   	 	e.setUnderRepair(true);
+   	 	List<Borrower.Borrow> listeEquipRepair = Inventory.findBorrowWithEquipmentUnderRepair();
+   	 	assertEquals(listeEquipRepair.get(0).getId(),id);
+        
     }
 
     @Test
     public void testFindBorrowWithEquipmentNotOk() throws Exception{
-        //TODO
+    	model.person.Borrower b = new model.person.Borrower("test","1010", "student","test");
+    	List<String> liste = new ArrayList<String>();
+    	liste.add("ca072236-8f15-486d-93e4-2b21abb831a5");
+    	GregorianCalendar date1 = new GregorianCalendar();
+    	GregorianCalendar date2 = new GregorianCalendar();
+    	date2.add(GregorianCalendar.DAY_OF_YEAR,1);
+    	String id = b.borrow(liste, date1, date2);
+    	Equipment e = Inventory.findEquipmentById("ca072236-8f15-486d-93e4-2b21abb831a5");
+   	 	e.setHealth(new Health(HealthState.NOT_OK));
+   	 	List<Borrower.Borrow> listeEquipNotOK = Inventory.findBorrowWithEquipmentNotOk();
+   	 	assertEquals(listeEquipNotOK.get(0).getId(),id);
     }
 }
