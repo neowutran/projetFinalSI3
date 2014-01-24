@@ -23,11 +23,8 @@ public class Equipment extends InventoryElement {
      */
     @Expose
     private String        type;
-    /** The nb borrowed. */
-    private final int     nbBorrowed;                  // TODO : Incr�menter la variable o� il faut
-                                                        // (j'ai pas trouv�..)
-    /** The nb under repair. */
-    private int           nbUnderRepair;
+    /** The stats */
+    private Stats stats;
     /** The health. */
     @Expose
     private Health        health;
@@ -61,8 +58,7 @@ public class Equipment extends InventoryElement {
         if (underRepair && health.getHealthState().equals(HealthState.OK)) {
             throw new MiniProjectException(Error.REPAIR_OK);
         }
-        this.nbBorrowed = 0;
-        this.nbUnderRepair = 0;
+        stats = new Stats();
         this.checkType(type);
         this.checkFeature(features);
         this.health = health;
@@ -110,7 +106,8 @@ public class Equipment extends InventoryElement {
         }
         this.features = features;
     }
-
+    
+    
     /**
      * Check type.
      *
@@ -223,6 +220,16 @@ public class Equipment extends InventoryElement {
             this.underRepair = false;
         }
     }
+    
+    /**
+     * Increments stat : nbBorrowed
+     *
+     * 
+     *   
+     */
+    public void incrStatsNbBorrowed(){
+    	stats.incrNbBorrowed();
+    }
 
     /**
      * Sets the under repair.
@@ -240,7 +247,7 @@ public class Equipment extends InventoryElement {
         }
         this.underRepair = underRepair;
         if (!underRepair) {
-            this.nbUnderRepair++;
+            stats.incrNbUnderRepair();
         }
     }
 
@@ -251,7 +258,7 @@ public class Equipment extends InventoryElement {
      */
     @Override
     public String toString() {
-
+    	System.out.println(stats);
         String template = (String) ((Map) Config.getConfiguration().get(
                 Config.TEMPLATE)).get(Config.EQUIPMENT);
         template = template.replaceAll("\\{type\\}", this.type);

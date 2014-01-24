@@ -84,10 +84,11 @@ public class Administrator extends User {
 
         try {
             Inventory.addFeatureById(id, name, value);
+            System.out.println("OK");
         } catch (MiniProjectException e) {
             System.out.println(e.getMessage());
         }
-        System.out.println("OK");
+        
     }
 
     /**
