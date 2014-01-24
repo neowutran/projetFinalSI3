@@ -173,8 +173,6 @@ public class Borrower extends model.Person {
             }
             else if (BorrowState.RETURNED.equals(state)) {
                 this.returned = Calendar.getInstance();
-                this.state = BorrowState.RETURNED;
-
                 //for(int i = 0 ; i < equipmentId.size() ; i++)
             	//	Inventory.getInstance().findEquipmentById(equipmentId.get(i)).updateLog( borrowerId , "returned");
             }else if (BorrowState.ACCEPT.equals(state)
