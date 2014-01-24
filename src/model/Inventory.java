@@ -41,7 +41,7 @@ public final class Inventory {
     public static void addEquipment(final String type, final String numb)
             throws MiniProjectException { // TODO "Ajouter la saisie"? Maxime, voit ce qu'il faut
 
-                                          // faire. A TESTER
+        // faire. A TESTER
         if (((Map) Config.getConfiguration().get(Config.EQUIPMENT))
                 .containsKey(type)) {
             for (int i = 0; i < Integer.parseInt(numb); i++) {
@@ -75,10 +75,10 @@ public final class Inventory {
     public static void addFeatureById(final String equipmentId,
             final String name, final String value) throws MiniProjectException { // TODO !!A
 
-                                                                                 // TESTER!!->C'est
-                                                                                 // bon tous les �as
-                                                                                 // marchent.
-                                                                                 // (Maxime).
+        // TESTER!!->C'est
+        // bon tous les �as
+        // marchent.
+        // (Maxime).
         final Equipment equipment = Inventory.findEquipmentById(equipmentId);
         if (null == equipment) {
             throw new MiniProjectException(Error.EQUIPMENT_DO_NOT_EXIST);

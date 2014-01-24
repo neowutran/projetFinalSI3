@@ -201,16 +201,18 @@ public final class SaveLoad {
                     .get(SaveLoad.EQUIPMENT_UNDER_REPAIR);
             final List<Feature> listFeatures = new ArrayList<>();
             final Map stats = (Map) equipment.get("stats");
-            final Integer nbBorrowed = ((Double) stats.get("nbBorrowed"))
-                    .intValue();
-            final Integer nbUnderRepair = ((Double) stats.get("nbUnderRepair"))
-                    .intValue();
-            final List<String> logOperations = (List<String>) stats
-                    .get("logOperations");
             final Stats stat = new Stats();
-            stat.setLogOperations(logOperations);
-            stat.setNbBorrowed(nbBorrowed);
-            stat.setNbUnderRepair(nbUnderRepair);
+            if (stats != null) {
+                final Integer nbBorrowed = ((Double) stats.get("nbBorrowed"))
+                        .intValue();
+                final Integer nbUnderRepair = ((Double) stats
+                        .get("nbUnderRepair")).intValue();
+                final List<String> logOperations = (List<String>) stats
+                        .get("logOperations");
+                stat.setLogOperations(logOperations);
+                stat.setNbBorrowed(nbBorrowed);
+                stat.setNbUnderRepair(nbUnderRepair);
+            }
             final List<Map> features = (List<Map>) equipment
                     .get(SaveLoad.EQUIPMENT_FEATURE);
             for (final Map feature : features) {

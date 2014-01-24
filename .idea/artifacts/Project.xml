@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="projetFinalSI3:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/projetFinalSI3_jar</output-path>
+  <artifact type="jar" build-on-make="true" name="Project">
+    <output-path>$PROJECT_DIR$/out/artifacts/Project</output-path>
     <root id="archive" name="projetFinalSI3.jar">
       <element id="module-output" name="projetFinalSI3" />
       <element id="extracted-dir" path="$USER_HOME$/Dev/Java/JUnit/junit-4.11.jar" path-in-jar="/" />
