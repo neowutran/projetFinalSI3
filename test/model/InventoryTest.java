@@ -20,6 +20,7 @@ import java.util.List;
 
 /**
  * Created by neowutran on 22/01/14.
+ * edited by Fabien Pinel
  */
 public class InventoryTest {
 	static String boId = "";
