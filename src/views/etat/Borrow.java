@@ -184,6 +184,7 @@ public class Borrow extends State {
             ((model.person.Borrower) Inventory.findPersonById(User
                     .getInstance().getPersonId())).borrow(this.equipments,
                     this.start, this.end);
+
             System.out.println("Borrowed.");
             this.cancel();
         } catch (MiniProjectException e) {
