@@ -4,7 +4,11 @@
 
 package model.person;
 
-import model.*;
+import model.BorrowState;
+import model.Log;
+import model.Logs;
+import model.MiniProjectException;
+import model.SaveLoad;
 import controllers.MiniProjectController;
 
 /**
@@ -14,13 +18,15 @@ public class Administrator extends model.Person {
 
     /**
      * Instantiates a new administrator.
-     *
+     * 
      * @param name
      *            the name
      * @param id
      *            the id
      * @param password
      *            the password
+     * @throws MiniProjectException
+     *             the mini project exception
      */
     public Administrator(final String name, final String id,
             final String password) throws MiniProjectException {
@@ -31,7 +37,7 @@ public class Administrator extends model.Person {
 
     /**
      * Sets the borrow stat.
-     *
+     * 
      * @param borrow
      *            the borrow
      * @param state
@@ -49,7 +55,8 @@ public class Administrator extends model.Person {
                             + java.util.Arrays.toString(e.getStackTrace()));
             return false;
         }
-        new Log(Logs.Type.CHANGE_BORROW_STATE, null, borrow, null, state.toString());
+        new Log(Logs.Type.CHANGE_BORROW_STATE, null, borrow, null,
+                state.toString());
         return true;
     }
 }

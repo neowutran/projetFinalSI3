@@ -31,7 +31,7 @@ public class Borrow extends State {
 
     /**
      * Adds the.
-     *
+     * 
      * @param id
      *            the id
      */
@@ -52,7 +52,7 @@ public class Borrow extends State {
 
     /**
      * Removes the.
-     *
+     * 
      * @param id
      *            the id
      */
@@ -65,7 +65,7 @@ public class Borrow extends State {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see views.IView#setCommands()
      */
     @Override
@@ -109,7 +109,7 @@ public class Borrow extends State {
 
     /**
      * Sets the end.
-     *
+     * 
      * @param stringDayMonthYear
      *            the string day month year
      * @param stringHourMinute
@@ -134,7 +134,7 @@ public class Borrow extends State {
 
     /**
      * Sets the start.
-     *
+     * 
      * @param stringDayMonthYear
      *            the string day month year
      * @param stringHourMinute
@@ -184,10 +184,9 @@ public class Borrow extends State {
             ((model.person.Borrower) Inventory.findPersonById(User
                     .getInstance().getPersonId())).borrow(this.equipments,
                     this.start, this.end);
-
             System.out.println("Borrowed.");
             this.cancel();
-        } catch (MiniProjectException e) {
+        } catch (final MiniProjectException e) {
             System.out.println(e.getMessage());
         }
     }

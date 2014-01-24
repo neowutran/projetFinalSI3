@@ -20,7 +20,7 @@ public abstract class State implements IView {
 
     /**
      * Action.
-     *
+     * 
      * @param line
      *            the line
      */
@@ -58,7 +58,7 @@ public abstract class State implements IView {
 
     /**
      * Interpreter.
-     *
+     * 
      * @param line
      *            the line
      */
@@ -81,7 +81,7 @@ public abstract class State implements IView {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * see views.IView#setCommands()
      */
     @Override

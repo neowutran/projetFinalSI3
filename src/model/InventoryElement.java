@@ -24,20 +24,22 @@ public abstract class InventoryElement {
 
     /**
      * Check existence.
-     *
+     * 
      * @param id
      *            the id
+     * @return true, if successful
      * @throws MiniProjectException
      *             the mini project exception
      */
-    protected boolean checkExistence(final String id) throws MiniProjectException {
+    protected boolean checkExistence(final String id)
+            throws MiniProjectException {
 
         throw new MiniProjectException(Error.UNIMPLEMENTED);
     }
 
     /**
      * Gets the id.
-     *
+     * 
      * @return the id
      */
     public String getId() {
@@ -47,7 +49,7 @@ public abstract class InventoryElement {
 
     /**
      * Sets the id.
-     *
+     * 
      * @throws MiniProjectException
      *             the mini project exception
      */
@@ -61,12 +63,12 @@ public abstract class InventoryElement {
             }
             maxCounter--;
             this.id = UUID.randomUUID().toString();
-        } while (checkExistence(this.id));
+        } while (this.checkExistence(this.id));
     }
 
     /**
      * Sets the id.
-     *
+     * 
      * @param id
      *            the new id
      * @throws MiniProjectException

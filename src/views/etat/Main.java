@@ -25,7 +25,7 @@ public class Main extends State {
 
     /**
      * Login.
-     *
+     * 
      * @param id
      *            the id
      * @param password
@@ -45,7 +45,7 @@ public class Main extends State {
                     System.out.println("Interface administrator");
                     View.setState(new Administrator());
                 }
-            } catch (MiniProjectException e) {
+            } catch (final MiniProjectException e) {
                 System.out.println(e.getMessage());
             }
         } else {
@@ -55,7 +55,7 @@ public class Main extends State {
 
     /**
      * Nouvelle méthode pour l'inscription d'un utilisateur.
-     *
+     * 
      * @param name
      *            nom du nouveau user
      * @param id
@@ -82,7 +82,7 @@ public class Main extends State {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see views.IView#setCommands()
      */
     @Override

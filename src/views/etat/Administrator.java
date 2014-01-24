@@ -28,7 +28,7 @@ public class Administrator extends User {
 
     /**
      * Accept.
-     *
+     * 
      * @param id
      *            the id
      */
@@ -52,7 +52,7 @@ public class Administrator extends User {
 
     /**
      * Adds the equipment.
-     *
+     * 
      * @param type
      *            the type
      * @param numb
@@ -70,7 +70,7 @@ public class Administrator extends User {
 
     /**
      * Adds the feature by id.
-     *
+     * 
      * @param id
      *            the id
      * @param name
@@ -85,15 +85,14 @@ public class Administrator extends User {
         try {
             Inventory.addFeatureById(id, name, value);
             System.out.println("OK");
-        } catch (MiniProjectException e) {
+        } catch (final MiniProjectException e) {
             System.out.println(e.getMessage());
         }
-        
     }
 
     /**
      * Creates the user.
-     *
+     * 
      * @param type
      *            the type
      * @param name
@@ -123,7 +122,7 @@ public class Administrator extends User {
 
     /**
      * Equipment health.
-     *
+     * 
      * @param id
      *            the id
      * @param healthState
@@ -160,7 +159,7 @@ public class Administrator extends User {
 
     /**
      * Equipment health.
-     *
+     * 
      * @param id
      *            the id
      * @param healthState
@@ -184,7 +183,7 @@ public class Administrator extends User {
 
     /**
      * Find actual borrow by borrower.
-     *
+     * 
      * @param id
      *            the id
      */
@@ -196,7 +195,7 @@ public class Administrator extends User {
 
     /**
      * Find borrow by borrower.
-     *
+     * 
      * @param id
      *            the id
      */
@@ -208,7 +207,7 @@ public class Administrator extends User {
 
     /**
      * Find borrow by id.
-     *
+     * 
      * @param id
      *            the id
      */
@@ -274,7 +273,7 @@ public class Administrator extends User {
 
     /**
      * Refuse.
-     *
+     * 
      * @param id
      *            the id
      */
@@ -295,7 +294,7 @@ public class Administrator extends User {
 
     /**
      * Returned.
-     *
+     * 
      * @param id
      *            the id
      */
@@ -316,7 +315,7 @@ public class Administrator extends User {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see views.IView#setCommands()
      */
     @Override

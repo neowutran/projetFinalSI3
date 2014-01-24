@@ -22,7 +22,7 @@ public class MiniProjectController {
 
     /**
      * Gets the single instance of MiniProjectController.
-     *
+     * 
      * @return single instance of MiniProjectController
      */
     public static MiniProjectController getInstance() {

@@ -21,17 +21,11 @@ public class Equipment extends InventoryElement {
     /**
      * The type.
      */
-
     @Expose
     private String        type;
-
-    public void setStats(Stats stats) {
-        this.stats = stats;
-    }
-
-    /** The stats */
+    /** The stats. */
     @Expose
-    private Stats stats;  	//TODO : Faire le load pour stats (Didier)
+    private Stats         stats;                       // TODO : Faire le load pour stats (Didier)
     /** The health. */
     @Expose
     private Health        health;
@@ -46,7 +40,7 @@ public class Equipment extends InventoryElement {
 
     /**
      * Instantiates a new equipment.
-     *
+     * 
      * @param type
      *            the type
      * @param features
@@ -65,7 +59,7 @@ public class Equipment extends InventoryElement {
         if (underRepair && health.getHealthState().equals(HealthState.OK)) {
             throw new MiniProjectException(Error.REPAIR_OK);
         }
-        stats = new Stats();
+        this.stats = new Stats();
         this.checkType(type);
         this.checkFeature(features);
         this.health = health;
@@ -79,18 +73,19 @@ public class Equipment extends InventoryElement {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see model.person.InventoryElement#checkExistence(java.lang.String)
      */
     @Override
-    protected boolean checkExistence(final String id) throws MiniProjectException {
+    protected boolean checkExistence(final String id)
+            throws MiniProjectException {
 
         return Inventory.findEquipmentById(id) != null;
     }
 
     /**
      * Check feature.
-     *
+     * 
      * @param features
      *            the features
      * @throws MiniProjectException
@@ -105,17 +100,15 @@ public class Equipment extends InventoryElement {
         for (final Feature feature : features) {
             if (!((Map) ((Map) Config.getConfiguration().get(Config.EQUIPMENT))
                     .get(this.type)).containsKey(feature.getName())) {
-                throw new MiniProjectException(
-                        Error.FEATURE_EQUIPMENT_INVALID);
+                throw new MiniProjectException(Error.FEATURE_EQUIPMENT_INVALID);
             }
         }
         this.features = features;
     }
 
-
     /**
      * Check type.
-     *
+     * 
      * @param type
      *            the type
      * @throws MiniProjectException
@@ -132,7 +125,7 @@ public class Equipment extends InventoryElement {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
@@ -145,7 +138,7 @@ public class Equipment extends InventoryElement {
 
     /**
      * Gets the features.
-     *
+     * 
      * @return the features
      */
     public List<model.Feature> getFeatures() {
@@ -155,7 +148,7 @@ public class Equipment extends InventoryElement {
 
     /**
      * Gets the health.
-     *
+     * 
      * @return the health
      */
     public Health getHealth() {
@@ -165,7 +158,7 @@ public class Equipment extends InventoryElement {
 
     /**
      * Gets the type.
-     *
+     * 
      * @return the type
      */
     public String getType() {
@@ -175,7 +168,7 @@ public class Equipment extends InventoryElement {
 
     /**
      * Gets the under repair.
-     *
+     * 
      * @return the under repair
      */
     public Boolean getUnderRepair() {
@@ -185,7 +178,7 @@ public class Equipment extends InventoryElement {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#hashCode()
      */
     @Override
@@ -200,7 +193,7 @@ public class Equipment extends InventoryElement {
 
     /**
      * Sets the features.
-     *
+     * 
      * @param features
      *            the new features
      * @throws MiniProjectException
@@ -214,7 +207,7 @@ public class Equipment extends InventoryElement {
 
     /**
      * Sets the health.
-     *
+     * 
      * @param health
      *            the new health
      */
@@ -224,15 +217,23 @@ public class Equipment extends InventoryElement {
         if (this.health.getHealthState().equals(HealthState.OK)) {
             this.underRepair = false;
         }
-
         new Log(Logs.Type.CHANGE_HEALTH, this, null, null, health.toString());
     }
 
+    /**
+     * Sets the stats.
+     * 
+     * @param stats
+     *            the new stats
+     */
+    public void setStats(final Stats stats) {
 
+        this.stats = stats;
+    }
 
     /**
      * Sets the under repair.
-     *
+     * 
      * @param underRepair
      *            the new under repair
      * @throws MiniProjectException
@@ -245,21 +246,22 @@ public class Equipment extends InventoryElement {
             throw new MiniProjectException(Error.REPAIR_OK);
         }
         this.underRepair = underRepair;
-
-        new Log(Logs.Type.CHANGE_UNDER_REPAIR, this, null, null, underRepair.toString());
+        new Log(Logs.Type.CHANGE_UNDER_REPAIR, this, null, null,
+                underRepair.toString());
         if (!underRepair) {
-            stats.incrNbUnderRepair();
+            this.stats.incrNbUnderRepair();
         }
     }
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
-    	System.out.println(stats);
+
+        System.out.println(this.stats);
         String template = (String) ((Map) Config.getConfiguration().get(
                 Config.TEMPLATE)).get(Config.EQUIPMENT);
         template = template.replaceAll("\\{type\\}", this.type);
@@ -272,9 +274,16 @@ public class Equipment extends InventoryElement {
         return template;
     }
 
+    /**
+     * Update log.
+     * 
+     * @param borrowerId
+     *            the borrower id
+     * @param operationName
+     *            the operation name
+     */
+    public void updateLog(final String borrowerId, final String operationName) {
 
-	public void updateLog(String borrowerId, String operationName) {
-		stats.updateLog(borrowerId, operationName);
-
-	}
+        this.stats.updateLog(borrowerId, operationName);
+    }
 }

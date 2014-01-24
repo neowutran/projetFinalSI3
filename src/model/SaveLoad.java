@@ -145,7 +145,7 @@ public final class SaveLoad {
 
     /**
      * Gets the state.
-     *
+     * 
      * @return the state
      */
     private static String getState() {
@@ -162,7 +162,7 @@ public final class SaveLoad {
 
     /**
      * Load.
-     *
+     * 
      * @param file
      *            the file
      * @throws MiniProjectException
@@ -200,17 +200,17 @@ public final class SaveLoad {
             final Boolean underRepair = (Boolean) equipment
                     .get(SaveLoad.EQUIPMENT_UNDER_REPAIR);
             final List<Feature> listFeatures = new ArrayList<>();
-
-            final Map stats =(Map)equipment.get("stats");
-            final Integer nbBorrowed = ((Double) stats.get("nbBorrowed")).intValue();
-            final Integer nbUnderRepair = ((Double) stats.get("nbUnderRepair")).intValue();
-            final List<String> logOperations = (List<String>)stats.get("logOperations");
-            Stats stat = new Stats();
+            final Map stats = (Map) equipment.get("stats");
+            final Integer nbBorrowed = ((Double) stats.get("nbBorrowed"))
+                    .intValue();
+            final Integer nbUnderRepair = ((Double) stats.get("nbUnderRepair"))
+                    .intValue();
+            final List<String> logOperations = (List<String>) stats
+                    .get("logOperations");
+            final Stats stat = new Stats();
             stat.setLogOperations(logOperations);
             stat.setNbBorrowed(nbBorrowed);
             stat.setNbUnderRepair(nbUnderRepair);
-
-
             final List<Map> features = (List<Map>) equipment
                     .get(SaveLoad.EQUIPMENT_FEATURE);
             for (final Map feature : features) {
@@ -241,7 +241,7 @@ public final class SaveLoad {
                     throw new MiniProjectException(Error.STATE_DO_NOT_EXIST);
             }
             health.setCause(healthCause);
-            Equipment equipmentObject = new Equipment(type, listFeatures,
+            final Equipment equipmentObject = new Equipment(type, listFeatures,
                     health, underRepair);
             equipmentObject.setStats(stat);
             equipmentObject.setId(id);
@@ -325,7 +325,7 @@ public final class SaveLoad {
 
     /**
      * Save.
-     *
+     * 
      * @param file
      *            the file
      */

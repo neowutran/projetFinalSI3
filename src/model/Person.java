@@ -20,7 +20,7 @@ public abstract class Person {
 
     /**
      * Exist.
-     *
+     * 
      * @param id
      *            the id
      * @return true, if successful
@@ -40,7 +40,7 @@ public abstract class Person {
 
     /**
      * Gets the persons.
-     *
+     * 
      * @return the persons
      */
     public static List<Person> getPersons() {
@@ -76,7 +76,7 @@ public abstract class Person {
 
     /**
      * Instantiates a new person.
-     *
+     * 
      * @param name
      *            the name
      * @param id
@@ -97,12 +97,11 @@ public abstract class Person {
         this.password = password;
         Person.person.add(this);
         new Log(Logs.Type.ADD_PERSON, null, null, this, null);
-
     }
 
     /**
      * Gets the id.
-     *
+     * 
      * @return the id
      */
     public String getId() {
@@ -112,7 +111,7 @@ public abstract class Person {
 
     /**
      * Gets the name.
-     *
+     * 
      * @return the name
      */
     public String getName() {
@@ -122,7 +121,7 @@ public abstract class Person {
 
     /**
      * Gets the password.
-     *
+     * 
      * @return the password
      */
     public String getPassword() {
@@ -132,7 +131,7 @@ public abstract class Person {
 
     /**
      * Gets the type.
-     *
+     * 
      * @return the type
      */
     public String getType() {
@@ -142,7 +141,7 @@ public abstract class Person {
 
     /**
      * Sets the id.
-     *
+     * 
      * @param id
      *            the new id
      */
@@ -153,7 +152,7 @@ public abstract class Person {
 
     /**
      * Sets the name.
-     *
+     * 
      * @param name
      *            the new name
      */
@@ -164,7 +163,7 @@ public abstract class Person {
 
     /**
      * Sets the password.
-     *
+     * 
      * @param password
      *            the new password
      */
@@ -175,7 +174,7 @@ public abstract class Person {
 
     /**
      * Sets the type.
-     *
+     * 
      * @param type
      *            the new type
      */
@@ -186,7 +185,7 @@ public abstract class Person {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     @Override

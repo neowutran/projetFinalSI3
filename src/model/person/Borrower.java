@@ -10,7 +10,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import model.*;
+import model.BorrowState;
+import model.Equipment;
+import model.Inventory;
+import model.InventoryElement;
+import model.Log;
+import model.Logs;
+import model.MiniProjectException;
 
 import com.google.gson.annotations.Expose;
 
@@ -72,7 +78,7 @@ public class Borrower extends model.Person {
 
         /**
          * Instantiates a new borrow.
-         *
+         * 
          * @param equipments
          *            the equipments
          * @param borrowStart
@@ -95,7 +101,7 @@ public class Borrower extends model.Person {
 
         /*
          * (non-Javadoc)
-         *
+         * 
          * @see model.person.InventoryElement#checkExistence(java.lang.String)
          */
         @Override
@@ -107,7 +113,7 @@ public class Borrower extends model.Person {
 
         /**
          * Gets the borrow end.
-         *
+         * 
          * @return the borrow end
          */
         public java.util.Calendar getBorrowEnd() {
@@ -117,7 +123,7 @@ public class Borrower extends model.Person {
 
         /**
          * Gets the borrower id.
-         *
+         * 
          * @return the borrower id
          */
         public String getBorrowerId() {
@@ -127,7 +133,7 @@ public class Borrower extends model.Person {
 
         /**
          * Gets the borrow start.
-         *
+         * 
          * @return the borrow start
          */
         public java.util.Calendar getBorrowStart() {
@@ -137,7 +143,7 @@ public class Borrower extends model.Person {
 
         /**
          * Gets the equipment id.
-         *
+         * 
          * @return the equipment id
          */
         public List<String> getEquipmentId() {
@@ -147,7 +153,7 @@ public class Borrower extends model.Person {
 
         /**
          * Gets the state.
-         *
+         * 
          * @return the state
          */
         public BorrowState getState() {
@@ -157,7 +163,7 @@ public class Borrower extends model.Person {
 
         /**
          * Sets the state.
-         *
+         * 
          * @param state
          *            the state
          * @param administrator
@@ -170,30 +176,32 @@ public class Borrower extends model.Person {
 
             if (this.state.equals(state)) {
                 return;
-            }
-            else if (BorrowState.RETURNED.equals(state)) {
+            } else if (BorrowState.RETURNED.equals(state)) {
                 this.returned = Calendar.getInstance();
-                for(int i = 0 ; i < equipmentId.size() ; i++){
-            		Inventory.getInstance().findEquipmentById(equipmentId.get(i)).updateLog( borrowerId , "returned");
+                for (int i = 0; i < this.equipmentId.size(); i++) {
+                    Inventory.getInstance();
+                    Inventory.findEquipmentById(this.equipmentId.get(i))
+                            .updateLog(this.borrowerId, "returned");
                 }
-            }else if (BorrowState.ACCEPT.equals(state)
+            } else if (BorrowState.ACCEPT.equals(state)
                     && Inventory.isBorrowed(this.getEquipmentId(),
                             this.getBorrowStart(), this.getBorrowEnd())) {
                 throw new MiniProjectException(Error.EQUIPMENT_UNAVAILABLE);
             }
             this.state = state;
             this.administratorId = administrator;
-            if(BorrowState.ACCEPT.equals(state)){
-            for(int i = 0 ; i < equipmentId.size() ; i++){
-        		Inventory.getInstance().findEquipmentById(equipmentId.get(i)).updateLog( borrowerId , "borrowed");
+            if (BorrowState.ACCEPT.equals(state)) {
+                for (int i = 0; i < this.equipmentId.size(); i++) {
+                    Inventory.getInstance();
+                    Inventory.findEquipmentById(this.equipmentId.get(i))
+                            .updateLog(this.borrowerId, "borrowed");
+                }
             }
-            }
-
         }
 
         /*
          * (non-Javadoc)
-         *
+         * 
          * @see java.lang.Object#toString()
          */
         @Override
@@ -242,7 +250,7 @@ public class Borrower extends model.Person {
 
     /**
      * Instantiates a new borrower.
-     *
+     * 
      * @param name
      *            the name
      * @param id
@@ -251,9 +259,11 @@ public class Borrower extends model.Person {
      *            the type
      * @param password
      *            the password
+     * @throws MiniProjectException
+     *             the mini project exception
      */
     public Borrower(final String name, final String id, final String type,
-            final String password) throws MiniProjectException{
+            final String password) throws MiniProjectException {
 
         super(name, id, password);
         this.setType(type);
@@ -263,12 +273,11 @@ public class Borrower extends model.Person {
         this.maximumHours = ((Double) ((Map) ((Map) Config.getConfiguration()
                 .get(Config.BORROWER)).get(this.getType()))
                 .get(Config.MAXIMUM_HOUR)).longValue();
-
     }
 
     /**
      * Borrow.
-     *
+     * 
      * @param equipment
      *            the equipment
      * @param start
@@ -314,13 +323,13 @@ public class Borrower extends model.Person {
             return null;
         }
         Inventory.getInstance().addBorrow(borrow);
-        new Log(Logs.Type.ADD_BORROW, null, borrow, null,null);
+        new Log(Logs.Type.ADD_BORROW, null, borrow, null, null);
         return borrow.getId();
     }
 
     /**
      * Max time.
-     *
+     * 
      * @param equipmentsId
      *            the equipments id
      * @return the long
@@ -356,7 +365,7 @@ public class Borrower extends model.Person {
 
     /**
      * SaveLoad Borrow.
-     *
+     * 
      * @param equipment
      *            the equipment
      * @param start

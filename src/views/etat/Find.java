@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import controllers.MiniProjectController;
 import model.Equipment;
 import model.Inventory;
 import model.MiniProjectException;
 import views.Command;
 import views.State;
 import views.View;
+import controllers.MiniProjectController;
 
 /**
  * The Class Find.
@@ -32,7 +32,7 @@ public class Find extends State {
 
     /**
      * Adds the.
-     *
+     * 
      * @param feature
      *            the feature
      * @param operator
@@ -64,7 +64,7 @@ public class Find extends State {
                 System.out.println("back to the administrator interface");
                 View.setState(new Administrator());
             }
-        } catch (MiniProjectException e) {
+        } catch (final MiniProjectException e) {
             MiniProjectController.LOGGER.severe(java.util.Arrays.toString(e
                     .getStackTrace()));
         }
@@ -72,7 +72,7 @@ public class Find extends State {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see views.IView#setCommands()
      */
     @Override

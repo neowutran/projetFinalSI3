@@ -20,7 +20,7 @@ public class User {
 
     /**
      * Gets the single instance of User.
-     *
+     * 
      * @return single instance of User
      */
     public static User getInstance() {
@@ -40,7 +40,7 @@ public class User {
 
     /**
      * Gets the person id.
-     *
+     * 
      * @return the person id
      */
     public String getPersonId() {
@@ -50,7 +50,7 @@ public class User {
 
     /**
      * Login.
-     *
+     * 
      * @param id
      *            the id
      * @param password
@@ -80,7 +80,7 @@ public class User {
 
     /**
      * Sets the person id.
-     *
+     * 
      * @param personId
      *            the new person id
      */
