@@ -14,6 +14,7 @@ import java.nio.file.Paths;
 
 /**
  * Created by neowutran on 22/01/14.
+ * Edited by Fabien Pinel
  */
 public class FeatureTest {
 
