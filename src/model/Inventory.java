@@ -536,7 +536,7 @@ public final class Inventory {
                                     .getTimeInMillis())
                             && borrow.getState().equals(BorrowState.ACCEPT)) {
                     	for(int i = 0 ; i < equipmentsId.size() ; i++)
-                    		Inventory.getInstance().findEquipmentById(equipmentsId.get(i)).getStats().incrNbBorrowed();
+                    		Inventory.getInstance().findEquipmentById(equipmentsId.get(i)).incrStatsNbBorrowed();
                         return true;
                     }
                 }

@@ -222,13 +222,13 @@ public class Equipment extends InventoryElement {
     }
     
     /**
-     * Gets the stats
+     * Increments stat : nbBorrowed
      *
-     * @return stats instance
+     * 
      *   
      */
-    public Stats getStats(){
-    	return this.stats;
+    public void incrStatsNbBorrowed(){
+    	stats.incrNbBorrowed();
     }
 
     /**
@@ -258,7 +258,7 @@ public class Equipment extends InventoryElement {
      */
     @Override
     public String toString() {
-    	//System.out.println(stats);
+    	System.out.println(stats);
         String template = (String) ((Map) Config.getConfiguration().get(
                 Config.TEMPLATE)).get(Config.EQUIPMENT);
         template = template.replaceAll("\\{type\\}", this.type);
