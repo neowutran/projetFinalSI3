@@ -4,9 +4,7 @@
     <option name="ANALYZE_TEST_SOURCES" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad44769e-e477-4b3c-8ec1-c187641425d9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/person/Borrower.java" afterPath="$PROJECT_DIR$/src/model/person/Borrower.java" />
-    </list>
+    <list default="true" id="ad44769e-e477-4b3c-8ec1-c187641425d9" name="Default" comment="" />
     <ignored path="miniProjet.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -901,12 +899,12 @@
       <workItem from="1390467407763" duration="2260000" />
       <workItem from="1390482008956" duration="479000" />
       <workItem from="1390483168056" duration="2869000" />
-      <workItem from="1390570166131" duration="8909000" />
+      <workItem from="1390570166131" duration="8979000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114776000" />
+    <option name="totallyTimeSpent" value="114846000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
