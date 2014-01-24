@@ -3,6 +3,7 @@ package model;
 import static org.junit.Assert.*;
 import controllers.MiniProjectController;
 import demonstrateur.MiniProject;
+import model.person.Administrator;
 import model.person.Borrower;
 
 import org.junit.Before;
@@ -58,7 +59,11 @@ public class InventoryTest {
     	GregorianCalendar date2 = new GregorianCalendar();
     	date2.add(GregorianCalendar.DAY_OF_YEAR,2);
     	String id = b.borrow(liste, date1, date2);
+    	
+    	Administrator admin = new Administrator("name", "000", "pass");
+    	admin.setBorrowStat(Inventory.findBorrowById(id), BorrowState.ACCEPT);
     	assertTrue(Inventory.isBorrowed(liste, date1, date2));
+    	admin.setBorrowStat(Inventory.findBorrowById(id), BorrowState.RETURNED);
     }
 
     @Test
@@ -134,6 +139,7 @@ public class InventoryTest {
     public void testFindEquipmentWhoNeedRepair() throws Exception {
     	Equipment e = Inventory.findEquipmentById("ca072236-8f15-486d-93e4-2b21abb831a5");
    	 	e.setHealth(new Health(HealthState.NOT_OK));
+   	 	e.setUnderRepair(false);
    	 	List<Equipment> listeWNR = Inventory.findEquipmentWhoNeedRepair();
    	 	assertEquals(listeWNR.get(0).getId(),e.getId());
     }
@@ -173,7 +179,10 @@ public class InventoryTest {
     	GregorianCalendar date2 = new GregorianCalendar();
     	date2.add(GregorianCalendar.DAY_OF_YEAR,1);
     	String id = b.borrow(liste, date1, date2);
+    	Administrator admin = new Administrator("name", "0001", "pass");
+    	admin.setBorrowStat(Inventory.findBorrowById(id), BorrowState.ACCEPT);
     	assertTrue(Inventory.isBorrowed(liste,date1, date2));
+    	admin.setBorrowStat(Inventory.findBorrowById(id), BorrowState.RETURNED);
     	
     }
 
@@ -221,6 +230,6 @@ public class InventoryTest {
     	Equipment e = Inventory.findEquipmentById("ca072236-8f15-486d-93e4-2b21abb831a5");
    	 	e.setHealth(new Health(HealthState.NOT_OK));
    	 	List<Borrower.Borrow> listeEquipNotOK = Inventory.findBorrowWithEquipmentNotOk();
-   	 	assertEquals(listeEquipNotOK.get(0).getId(),id);
+   	 	assertEquals(listeEquipNotOK.get(listeEquipNotOK.size()-1).getId(),id);
     }
 }

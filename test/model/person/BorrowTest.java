@@ -1,5 +1,6 @@
 package model.person;
 
+import static org.junit.Assert.*;
 import controllers.MiniProjectController;
 import demonstrateur.MiniProject;
 import model.MiniProjectException;
@@ -12,6 +13,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+import java.util.List;
 
 /**
  * Created by neowutran on 22/01/14.
@@ -46,7 +50,8 @@ public class BorrowTest {
 
     @Test
     public void testCheckExistence() throws Exception {
-        //TODO
+    	
+    	
     }
 
     @Test
