@@ -258,7 +258,7 @@ public class Equipment extends InventoryElement {
      */
     @Override
     public String toString() {
-    	System.out.println(stats);
+    	//System.out.println(stats);
         String template = (String) ((Map) Config.getConfiguration().get(
                 Config.TEMPLATE)).get(Config.EQUIPMENT);
         template = template.replaceAll("\\{type\\}", this.type);
