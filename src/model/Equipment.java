@@ -23,7 +23,7 @@ public class Equipment extends InventoryElement {
      */
     @Expose
     private String        type;
-    /** The nb borrowed. */
+    /** The stats */
     private Stats stats;
     /** The health. */
     @Expose
